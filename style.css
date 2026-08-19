@@ -37,9 +37,9 @@ img {
 }
 
 
-/* =====================================================
+/* =========================
    HEADER
-===================================================== */
+========================= */
 
 .header {
   height: 76px;
@@ -54,7 +54,7 @@ img {
 .nav-shell {
   max-width: 1280px;
   height: 100%;
-  margin: auto;
+  margin: 0 auto;
   padding: 0 28px;
 
   display: flex;
@@ -67,7 +67,6 @@ img {
   display: flex;
   align-items: center;
   gap: 12px;
-
   font-weight: 700;
   letter-spacing: -0.2px;
 }
@@ -97,7 +96,7 @@ img {
   color: var(--ink);
 }
 
-.nav a.active:after {
+.nav a.active::after {
   content: "";
   position: absolute;
   left: 0;
@@ -112,16 +111,17 @@ img {
   border: 0;
   background: transparent;
   font-size: 25px;
+  cursor: pointer;
 }
 
 
-/* =====================================================
+/* =========================
    GENERAL
-===================================================== */
+========================= */
 
 .section {
   max-width: var(--max);
-  margin: auto;
+  margin: 0 auto;
   padding: 96px 30px;
 }
 
@@ -134,13 +134,13 @@ img {
 }
 
 
-/* =====================================================
+/* =========================
    HOME HERO
-===================================================== */
+========================= */
 
 .home-hero {
   max-width: 1280px;
-  margin: auto;
+  margin: 0 auto;
   min-height: 620px;
   padding: 90px 70px;
 
@@ -211,10 +211,10 @@ img {
 }
 
 
-/* =====================================================
+/* =========================
    HERO LOGO
-   Only the logo — no shapes, circles, cards, stars, etc.
-===================================================== */
+   LOGO ONLY
+========================= */
 
 .hero-art {
   height: 420px;
@@ -244,9 +244,9 @@ img {
 }
 
 
-/* =====================================================
+/* =========================
    MISSION
-===================================================== */
+========================= */
 
 .mission {
   border-top: 1px solid var(--line);
@@ -277,6 +277,7 @@ img {
 
 /* =====================================================
    WHERE WE FOCUS
+   WIDE THREE-COLUMN VERSION
 ===================================================== */
 
 .focus {
@@ -287,7 +288,6 @@ img {
   padding: 110px 50px;
 
   background: var(--cream);
-  box-sizing: border-box;
 }
 
 
@@ -316,35 +316,35 @@ img {
 }
 
 
-/* Three wide cards */
+/* Three boxes */
 
 .focus-grid {
   width: 100%;
 
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
 
   gap: 30px;
-
-  box-sizing: border-box;
 }
 
 
-/* Cards */
+/* Individual box */
 
 .focus-card {
   width: 100%;
   min-width: 0;
-  box-sizing: border-box;
 
   padding: 38px 34px;
 
-  background: #ffffff;
+  background: #fff;
 
   border: 1px solid #e1e4e3;
   border-radius: 22px;
 
-  box-shadow: 0 8px 28px rgba(40, 50, 50, 0.05);
+  box-shadow:
+    0 8px 28px rgba(40, 50, 50, 0.05);
 
   transition:
     transform 0.25s ease,
@@ -375,7 +375,7 @@ img {
 }
 
 
-/* Card title */
+/* Title */
 
 .focus-card h3 {
   margin: 0 0 20px;
@@ -385,7 +385,7 @@ img {
 }
 
 
-/* Card text */
+/* Paragraphs */
 
 .focus-card p {
   margin: 0 0 20px;
@@ -410,9 +410,9 @@ img {
 }
 
 
-/* =====================================================
+/* =========================
    FUNDRAISING
-===================================================== */
+========================= */
 
 .fundraising {
   background: var(--blue);
@@ -421,7 +421,7 @@ img {
 
 .fundraising-inner {
   max-width: 1180px;
-  margin: auto;
+  margin: 0 auto;
 
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -441,9 +441,9 @@ img {
 }
 
 
-/* =====================================================
-   CLOSING / GET INVOLVED
-===================================================== */
+/* =========================
+   GET INVOLVED
+========================= */
 
 .closing {
   padding-top: 85px;
@@ -470,9 +470,9 @@ img {
 }
 
 
-/* =====================================================
+/* =========================
    FOOTER
-===================================================== */
+========================= */
 
 .footer {
   background: #202628;
@@ -483,7 +483,7 @@ img {
 
 .footer-top {
   max-width: 1180px;
-  margin: auto;
+  margin: 0 auto;
 
   display: grid;
   grid-template-columns: 1.5fr 1fr 1.4fr;
@@ -570,7 +570,7 @@ img {
 
 .about-heading {
   max-width: 1180px;
-  margin: auto;
+  margin: 0 auto;
 
   min-height: 350px;
 
@@ -619,7 +619,7 @@ img {
 
   max-width: 920px;
 
-  margin: auto;
+  margin: 0 auto;
 }
 
 
@@ -633,14 +633,22 @@ img {
   background: var(--cream);
 
   display: grid;
+
   grid-template-columns: 440px 1fr;
 
   gap: 90px;
 
   align-items: center;
 
-  padding-left: max(30px, calc((100vw - 1120px) / 2));
-  padding-right: max(30px, calc((100vw - 1120px) / 2));
+  padding-left: max(
+    30px,
+    calc((100vw - 1120px) / 2)
+  );
+
+  padding-right: max(
+    30px,
+    calc((100vw - 1120px) / 2)
+  );
 }
 
 .logo-display {
@@ -663,12 +671,7 @@ img {
   object-fit: contain;
 }
 
-.logo-meaning > div:last-child {
-  max-width: 650px;
-}
-
-.logo-meaning p:last-child,
-.transparency p {
+.logo-meaning p {
   font-size: 17px;
   line-height: 1.85;
 
@@ -700,6 +703,11 @@ img {
 
 .transparency p {
   max-width: 850px;
+
+  font-size: 17px;
+  line-height: 1.85;
+
+  color: #515a5c;
 }
 
 
@@ -781,7 +789,7 @@ img {
     padding: 10px 0;
   }
 
-  .nav a.active:after {
+  .nav a.active::after {
     bottom: 3px;
   }
 
@@ -824,7 +832,7 @@ img {
   }
 
 
-  /* Logo meaning */
+  /* Logo Meaning */
 
   .logo-meaning {
     grid-template-columns: 1fr;
@@ -914,6 +922,7 @@ img {
 
   .focus-card {
     padding: 28px 24px;
+
     border-radius: 18px;
   }
 
@@ -964,7 +973,7 @@ img {
   }
 
 
-  /* Logo meaning */
+  /* Logo Meaning */
 
   .logo-meaning {
     padding-left: 22px;
