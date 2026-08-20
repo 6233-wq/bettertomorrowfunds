@@ -8,10 +8,15 @@ html {
 
 body {
   margin: 0;
-  background: #fff;
   color: #202426;
+  background: #fff;
   font-family: "DM Sans", Arial, sans-serif;
   line-height: 1.65;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
 }
 
 img {
@@ -19,42 +24,48 @@ img {
   display: block;
 }
 
-a {
-  color: inherit;
-}
-
 :root {
   --ink: #202426;
-  --blue: #eaf5f7;
-  --blue-dark: #285d70;
+  --blue: #dcecf1;
+  --blue2: #4f879a;
+  --blue3: #285d70;
   --cream: #faf8f1;
   --pink: #eabbb4;
   --line: #e5e8e8;
   --muted: #687174;
+  --max: 1180px;
 }
 
 
-/* =========================================
+/* =====================================================
    HEADER
-========================================= */
+===================================================== */
 
 .header {
-  height: 72px;
-  background: rgba(255,255,255,.88);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-
-  border-bottom: 1px solid rgba(0,0,0,.06);
+  height: 76px;
+  background: rgba(255, 255, 255, 0.88);
+  border-bottom: 1px solid rgba(229, 232, 232, 0.8);
 
   position: sticky;
   top: 0;
   z-index: 100;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.header.scrolled {
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 8px 30px rgba(20, 30, 35, 0.06);
 }
 
 .nav-shell {
-  height: 100%;
   max-width: 1280px;
-
+  height: 100%;
   margin: 0 auto;
   padding: 0 28px;
 
@@ -64,44 +75,48 @@ a {
 }
 
 .brand {
+  text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 11px;
+  gap: 12px;
 
-  text-decoration: none;
-  font-size: 15px;
   font-weight: 700;
+  letter-spacing: -0.2px;
 }
 
 .brand img {
-  width: 38px;
-  height: 38px;
+  width: 43px;
+  height: 43px;
   object-fit: contain;
+
+  transition: transform 0.3s ease;
+}
+
+.brand:hover img {
+  transform: scale(1.05);
 }
 
 .nav {
   display: flex;
+  gap: 30px;
   align-items: center;
-  gap: 28px;
 }
 
 .nav a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #5e6668;
+
+  padding: 28px 0;
+
   position: relative;
 
-  padding: 26px 0;
-
-  color: #666e70;
-
-  font-size: 13px;
-
-  text-decoration: none;
-
-  transition: color .2s ease;
+  transition: color 0.25s ease;
 }
 
 .nav a:hover,
 .nav a.active {
-  color: #202426;
+  color: var(--ink);
 }
 
 .nav a.active::after {
@@ -111,11 +126,24 @@ a {
 
   left: 0;
   right: 0;
-  bottom: 17px;
+  bottom: 18px;
 
   height: 2px;
 
-  background: var(--blue-dark);
+  background: var(--blue3);
+
+  transform-origin: center;
+  animation: navLine 0.35s ease;
+}
+
+@keyframes navLine {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
 }
 
 .menu {
@@ -124,568 +152,662 @@ a {
   border: 0;
   background: transparent;
 
-  font-size: 24px;
+  font-size: 25px;
 
   cursor: pointer;
 }
 
 
-/* =========================================
-   HERO
-========================================= */
+/* =====================================================
+   GENERAL
+===================================================== */
 
-.hero-premium {
-  min-height: calc(100vh - 72px);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 90px 30px 120px;
-
-  overflow: hidden;
+.section {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 110px 30px;
 }
 
-.hero-inner {
-  width: 100%;
-  max-width: 1180px;
+.kicker {
+  font-size: 11px;
+  letter-spacing: 2.2px;
+  font-weight: 700;
+  color: var(--blue3);
 
-  text-align: center;
+  margin: 0 0 12px;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.home-hero {
+  max-width: 1280px;
+  min-height: calc(100vh - 76px);
+
+  margin: 0 auto;
+
+  padding: 90px 70px;
+
+  display: grid;
+
+  grid-template-columns: 1.02fr 0.98fr;
+
+  align-items: center;
+
+  gap: 50px;
 
   position: relative;
 }
 
-.hero-label,
-.section-label,
-.mission-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 2.4px;
 
-  color: var(--blue-dark);
+/* Hero text animation */
+
+.hero-copy {
+  opacity: 0;
+  transform: translateY(35px);
+
+  animation: heroTextIn 1s cubic-bezier(0.22, 1, 0.36, 1)
+    0.15s forwards;
 }
 
-.hero-label {
-  margin-bottom: 30px;
-
-  animation: fadeUp .8s ease both;
+@keyframes heroTextIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.hero-inner h1 {
-  max-width: 1050px;
-
-  margin: 0 auto;
-
+.hero-copy h1 {
   font-family: "Playfair Display", Georgia, serif;
 
-  font-size: clamp(58px, 9vw, 122px);
+  font-size: clamp(52px, 6vw, 82px);
 
-  line-height: .98;
+  line-height: 1.03;
 
-  letter-spacing: -5px;
+  letter-spacing: -2.8px;
 
-  font-weight: 700;
+  margin: 0;
 
-  animation: fadeUp .9s .08s ease both;
+  max-width: 720px;
 }
 
-.hero-inner h1 span {
-  display: block;
-
-  color: #6b858d;
-
+.hero-copy h1 span {
   font-style: italic;
 
-  font-weight: 600;
+  text-decoration: underline;
+
+  text-decoration-color: var(--pink);
+
+  text-decoration-thickness: 9px;
+
+  text-underline-offset: 7px;
 }
 
-.hero-description {
-  max-width: 650px;
+.hero-lead {
+  font-size: 19px;
 
-  margin: 38px auto 0;
+  color: #5d6668;
 
-  color: #687174;
+  max-width: 620px;
 
-  font-size: 18px;
-
-  line-height: 1.75;
-
-  animation: fadeUp .9s .16s ease both;
+  margin: 28px 0 30px;
 }
 
 .hero-actions {
-  margin-top: 35px;
-
   display: flex;
-
-  justify-content: center;
-  align-items: center;
 
   gap: 26px;
 
-  animation: fadeUp .9s .24s ease both;
+  align-items: center;
 }
 
 .btn {
   display: inline-block;
 
-  padding: 13px 23px;
+  text-decoration: none;
 
   border-radius: 999px;
 
-  text-decoration: none;
+  padding: 12px 22px;
 
-  font-size: 13px;
+  font-size: 14px;
+
   font-weight: 700;
 
   transition:
-    transform .25s ease,
-    box-shadow .25s ease;
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .btn-dark {
-  background: #202426;
+  background: var(--ink);
   color: #fff;
 }
 
 .btn-dark:hover {
   transform: translateY(-3px);
 
-  box-shadow:
-    0 12px 25px rgba(0,0,0,.14);
+  background: #000;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 .text-link {
   text-decoration: none;
 
-  font-size: 13px;
+  font-size: 14px;
+
   font-weight: 700;
+
+  transition: transform 0.25s ease;
 }
 
 .text-link span {
   margin-left: 7px;
 
-  transition: transform .2s ease;
+  display: inline-block;
+
+  transition: transform 0.25s ease;
 }
 
 .text-link:hover span {
-  display: inline-block;
-  transform: translateX(4px);
+  transform: translateX(5px);
 }
 
 
-/* Logo */
+/* =====================================================
+   HERO LOGO
+===================================================== */
 
-.hero-logo {
-  margin: 75px auto 0;
-
-  width: 310px;
-  height: 310px;
+.hero-art {
+  height: 420px;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
-  animation: logoAppear 1.2s .35s ease both;
+  opacity: 0;
+
+  transform: translateY(40px) scale(0.94);
+
+  animation: heroLogoIn 1.2s cubic-bezier(0.22, 1, 0.36, 1)
+    0.3s forwards;
+
+  will-change: transform;
 }
 
-.hero-logo img {
-  width: 100%;
-  height: 100%;
+.hero-art img {
+  width: min(360px, 75%);
+
+  height: auto;
 
   object-fit: contain;
 
-  animation: subtleFloat 5s ease-in-out infinite;
+  transition: transform 0.2s linear;
 }
 
-@keyframes subtleFloat {
-  0%,100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-9px);
-  }
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-
+@keyframes heroLogoIn {
   to {
     opacity: 1;
-    transform: translateY(0);
-  }
-}
 
-@keyframes logoAppear {
-  from {
-    opacity: 0;
-    transform: scale(.9);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
+    transform:
+      translateY(0)
+      scale(1);
   }
 }
 
 
-/* =========================================
+/* =====================================================
    MISSION
-========================================= */
+===================================================== */
 
-.mission-premium {
-  padding: 170px 30px 190px;
+.mission {
+  border-top: 1px solid var(--line);
 
   text-align: center;
 
-  border-top: 1px solid var(--line);
+  min-height: 620px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
 }
 
-.mission-label {
-  margin-bottom: 25px;
+.section-heading {
+  opacity: 0;
+
+  transform: translateY(45px);
+
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.mission-premium h2 {
-  max-width: 900px;
+.mission-copy {
+  max-width: 1030px;
+
+  margin: 28px auto 0;
+
+  font-size: 18px;
+
+  line-height: 1.85;
+
+  color: #4f585a;
+
+  opacity: 0;
+
+  transform: translateY(45px);
+
+  transition:
+    opacity 1s ease 0.15s,
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+}
+
+.reveal.visible .section-heading,
+.section-heading.visible {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+.reveal.visible .mission-copy,
+.mission-copy.visible {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+.section-heading h2,
+.focus h2,
+.fundraising h2,
+.closing h2,
+.logo-meaning h2,
+.transparency h2,
+.team-card h2 {
+  font-family: "Playfair Display", Georgia, serif;
+
+  line-height: 1.13;
+
+  font-size: clamp(39px, 4.5vw, 58px);
+
+  margin: 0;
+}
+
+
+/* =====================================================
+   FOCUS
+===================================================== */
+
+.focus {
+  max-width: 1500px;
 
   margin: 0 auto;
 
-  font-family: "Playfair Display", Georgia, serif;
-
-  font-size: clamp(45px, 6vw, 75px);
-
-  line-height: 1.08;
-
-  letter-spacing: -2px;
-}
-
-.mission-premium h2 em {
-  color: #6b858d;
-  font-weight: 600;
-}
-
-.mission-premium > p {
-  max-width: 880px;
-
-  margin: 45px auto 0;
-
-  color: #687174;
-
-  font-size: 17px;
-
-  line-height: 1.9;
-}
-
-
-/* =========================================
-   FOCUS
-========================================= */
-
-.focus-premium {
-  padding: 130px 50px 150px;
+  padding: 120px 50px;
 
   background: var(--cream);
 }
 
-.focus-heading {
-  max-width: 1250px;
+.focus-intro {
+  max-width: 700px;
 
-  margin: 0 auto 65px;
+  margin-bottom: 55px;
 
-  display: grid;
+  opacity: 0;
 
-  grid-template-columns: 1.3fr .7fr;
+  transform: translateY(40px);
 
-  gap: 80px;
-
-  align-items: end;
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.focus-heading h2 {
-  margin: 18px 0 0;
+.focus-intro.visible {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+.focus-intro h2 {
+  max-width: 650px;
+
+  margin: 12px 0 20px;
 
   font-family: "Playfair Display", Georgia, serif;
 
-  font-size: clamp(45px, 5.5vw, 72px);
+  font-size: clamp(40px, 4.5vw, 58px);
 
-  line-height: 1.02;
-
-  letter-spacing: -2px;
+  line-height: 1.13;
 }
 
-.focus-heading h2 span {
-  display: block;
-
-  color: #76909a;
-
-  font-style: italic;
-}
-
-.focus-heading > p {
-  max-width: 390px;
+.focus-intro > p:last-child {
+  max-width: 600px;
 
   margin: 0;
 
   color: var(--muted);
 
-  font-size: 16px;
+  font-size: 17px;
 }
 
 
-/* Cards */
+/* =====================================================
+   FOCUS CARDS
+===================================================== */
 
-.focus-grid-premium {
-  max-width: 1250px;
-
-  margin: 0 auto;
+.focus-grid {
+  width: 100%;
 
   display: grid;
 
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
 
-  gap: 20px;
+  gap: 30px;
 }
 
-.focus-card-premium {
-  min-height: 650px;
+.focus-card {
+  width: 100%;
 
-  padding: 42px 38px;
+  min-width: 0;
+
+  padding: 40px 34px;
 
   background: #fff;
 
-  border-radius: 24px;
+  border: 1px solid #e1e4e3;
 
-  border: 1px solid rgba(0,0,0,.055);
+  border-radius: 22px;
+
+  box-shadow:
+    0 8px 28px rgba(40, 50, 50, 0.04);
+
+  opacity: 0;
+
+  transform: translateY(70px);
 
   transition:
-    transform .4s cubic-bezier(.2,.7,.2,1),
-    box-shadow .4s ease;
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease;
 }
 
-.focus-card-premium:hover {
+.focus-card:nth-child(2) {
+  transition-delay: 0.12s;
+}
+
+.focus-card:nth-child(3) {
+  transition-delay: 0.24s;
+}
+
+.focus-card.visible {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+.focus-card:hover {
   transform: translateY(-8px);
 
   box-shadow:
-    0 25px 60px rgba(40,50,50,.10);
+    0 20px 45px rgba(40, 50, 50, 0.10);
 }
 
-.focus-number {
-  color: #829da6;
+.focus-card > div > span,
+.focus-card > span {
+  display: block;
 
-  font-size: 12px;
+  margin-bottom: 20px;
+
+  font-size: 13px;
+
   font-weight: 700;
 
-  letter-spacing: 2px;
+  letter-spacing: 1.8px;
 
-  margin-bottom: 55px;
+  color: var(--blue3);
 }
 
-.focus-card-premium h3 {
-  margin: 0 0 35px;
-
-  font-family: "Playfair Display", Georgia, serif;
-
-  font-size: 39px;
-
-  line-height: 1.02;
-
-  letter-spacing: -1px;
-}
-
-.focus-card-premium p {
+.focus-card h3 {
   margin: 0 0 20px;
 
-  color: #697174;
+  font-size: 25px;
 
-  font-size: 15px;
-
-  line-height: 1.72;
+  line-height: 1.2;
 }
 
-.focus-card-premium ul {
-  margin: 22px 0;
+.focus-card p {
+  margin: 0 0 20px;
 
-  padding-left: 20px;
+  color: var(--muted);
 
-  color: #697174;
+  font-size: 16px;
 
-  font-size: 15px;
-
-  line-height: 1.75;
+  line-height: 1.65;
 }
 
-.focus-card-premium li {
-  margin-bottom: 10px;
+.focus-card ul {
+  margin: 18px 0 20px;
+
+  padding-left: 22px;
+
+  color: var(--muted);
+
+  font-size: 16px;
+
+  line-height: 1.7;
+}
+
+.focus-card li {
+  margin-bottom: 8px;
 }
 
 
-/* =========================================
+/* =====================================================
    FUNDRAISING
-========================================= */
+===================================================== */
 
-.fundraising-premium {
-  padding: 180px 30px;
+.fundraising {
+  background: var(--blue);
 
-  background: #dcecf1;
+  padding: 110px 30px;
+
+  overflow: hidden;
 }
 
-.fundraising-inner-premium {
-  max-width: 1050px;
-
-  margin: 0 auto;
-
-  text-align: center;
-}
-
-.fundraising-inner-premium h2 {
-  max-width: 850px;
-
-  margin: 25px auto;
-
-  font-family: "Playfair Display", Georgia, serif;
-
-  font-size: clamp(48px, 6vw, 78px);
-
-  line-height: 1.02;
-
-  letter-spacing: -2px;
-}
-
-.fundraising-description {
-  max-width: 650px;
-
-  margin: 35px auto 0;
-
-  color: #526970;
-
-  font-size: 17px;
-
-  line-height: 1.8;
-}
-
-
-/* =========================================
-   CLOSING
-========================================= */
-
-.closing-premium {
-  padding: 180px 30px;
-
-  text-align: center;
-}
-
-.closing-content {
-  max-width: 900px;
-
-  margin: 0 auto;
-}
-
-.closing-content h2 {
-  margin: 25px auto 45px;
-
-  font-family: "Playfair Display", Georgia, serif;
-
-  font-size: clamp(48px, 6vw, 78px);
-
-  line-height: 1.03;
-
-  letter-spacing: -2px;
-}
-
-.closing-content h2 em {
-  color: #76909a;
-}
-
-
-/* =========================================
-   FOOTER
-========================================= */
-
-.footer-premium {
-  padding: 75px 30px 25px;
-
-  background: #202426;
-
-  color: #fff;
-}
-
-.footer-top-premium {
+.fundraising-inner {
   max-width: 1180px;
 
   margin: 0 auto;
 
   display: grid;
 
-  grid-template-columns: 1.5fr 1fr 1.4fr;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 90px;
+
+  align-items: center;
+}
+
+.fundraising-inner > div {
+  opacity: 0;
+
+  transform: translateX(-50px);
+
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fundraising-inner > p {
+  opacity: 0;
+
+  transform: translateX(50px);
+
+  transition:
+    opacity 0.9s ease 0.15s,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+
+  font-size: 18px;
+
+  color: #425a62;
+
+  max-width: 560px;
+}
+
+.fundraising-inner.visible > div,
+.fundraising-inner.visible > p {
+  opacity: 1;
+
+  transform: translateX(0);
+}
+
+.fundraising h2 {
+  max-width: 650px;
+}
+
+
+/* =====================================================
+   CLOSING
+===================================================== */
+
+.closing {
+  padding-top: 110px;
+
+  padding-bottom: 110px;
+}
+
+.closing-box {
+  background: #f5eee7;
+
+  border-radius: 28px;
+
+  padding: 65px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 40px;
+
+  opacity: 0;
+
+  transform: translateY(60px) scale(0.98);
+
+  transition:
+    opacity 1s ease,
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.closing-box.visible {
+  opacity: 1;
+
+  transform:
+    translateY(0)
+    scale(1);
+}
+
+.closing h2 {
+  font-size: 43px;
+
+  max-width: 730px;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer {
+  background: #202628;
+
+  color: #fff;
+
+  padding: 65px 30px 25px;
+}
+
+.footer-top {
+  max-width: 1180px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    1.5fr 1fr 1.4fr;
 
   gap: 80px;
 }
 
-.footer-brand-premium img {
+.footer-brand img {
   width: 48px;
+
   height: 48px;
 
   object-fit: contain;
 
-  margin-bottom: 18px;
+  margin-bottom: 15px;
 }
 
-.footer-brand-premium h3 {
-  margin: 0 0 5px;
-
+.footer h3 {
   font-size: 19px;
+
+  margin: 0 0 5px;
 }
 
-.footer-premium h4 {
-  margin: 3px 0 16px;
-
-  color: #a9cbd5;
-
-  font-size: 10px;
+.footer h4 {
+  font-size: 11px;
 
   letter-spacing: 2px;
 
   text-transform: uppercase;
+
+  color: #a9cbd5;
+
+  margin: 2px 0 15px;
 }
 
-.footer-premium p {
-  max-width: 390px;
-
-  margin: 0;
-
+.footer p {
   color: #aeb8ba;
 
   font-size: 13px;
+
+  max-width: 380px;
 }
 
-.footer-premium a {
+.footer a {
   display: block;
 
-  margin: 7px 0;
+  text-decoration: none;
 
   color: #d8ddde;
 
   font-size: 13px;
 
-  text-decoration: none;
+  margin: 7px 0;
 
-  transition: color .2s ease;
+  transition: color 0.2s ease;
 }
 
-.footer-premium a:hover {
+.footer a:hover {
   color: #fff;
 }
 
-.footer-bottom-premium {
+.footer-bottom {
   max-width: 1180px;
 
-  margin: 55px auto 0;
+  margin: 45px auto 0;
 
-  padding-top: 22px;
+  padding-top: 20px;
 
   border-top: 1px solid #3c4547;
 
@@ -694,20 +816,28 @@ a {
   justify-content: space-between;
 
   gap: 30px;
+
+  align-items: center;
 }
 
-.footer-bottom-premium span {
-  white-space: nowrap;
+.footer-bottom p {
+  margin: 0;
+
+  max-width: 750px;
+}
+
+.footer-bottom span {
+  font-size: 12px;
 
   color: #879194;
 
-  font-size: 12px;
+  white-space: nowrap;
 }
 
 
-/* =========================================
-   TABLET
-========================================= */
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media (max-width: 950px) {
 
@@ -718,16 +848,15 @@ a {
 
     left: 0;
     right: 0;
-    top: 72px;
 
-    padding: 20px 28px 25px;
+    top: 75px;
 
-    background: rgba(255,255,255,.97);
+    background: #fff;
 
-    backdrop-filter: blur(15px);
+    padding: 15px 25px 25px;
 
     box-shadow:
-      0 15px 35px rgba(0,0,0,.08);
+      0 15px 30px rgba(0, 0, 0, 0.08);
 
     flex-direction: column;
 
@@ -745,171 +874,174 @@ a {
   }
 
   .nav a.active::after {
-    bottom: 2px;
+    bottom: 3px;
   }
 
   .menu {
     display: block;
   }
 
-
-  .hero-premium {
-    min-height: auto;
-
-    padding-top: 90px;
-  }
-
-  .hero-inner h1 {
-    letter-spacing: -3px;
-  }
-
-
-  .focus-heading {
+  .home-hero {
     grid-template-columns: 1fr;
 
-    gap: 20px;
-  }
+    padding: 75px 35px;
 
-  .focus-grid-premium {
-    grid-template-columns: 1fr;
-  }
-
-  .focus-card-premium {
     min-height: auto;
   }
 
+  .hero-art {
+    height: 360px;
+  }
 
-  .footer-top-premium {
+  .focus {
+    padding: 90px 35px;
+  }
+
+  .focus-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fundraising-inner {
+    grid-template-columns: 1fr;
+
+    gap: 30px;
+  }
+
+  .footer-top {
     grid-template-columns: 1fr 1fr;
 
     gap: 45px;
   }
 
-  .footer-brand-premium {
+  .footer-brand {
     grid-column: 1 / -1;
   }
 }
 
 
-/* =========================================
-   MOBILE
-========================================= */
-
 @media (max-width: 600px) {
 
   .header {
-    height: 66px;
-  }
-
-  .nav {
-    top: 66px;
+    height: 68px;
   }
 
   .brand span {
     font-size: 14px;
   }
 
-
-  .hero-premium {
-    padding: 75px 22px 100px;
+  .home-hero {
+    padding: 60px 22px;
   }
 
-  .hero-label {
-    font-size: 9px;
+  .hero-copy h1 {
+    font-size: 50px;
 
-    letter-spacing: 1.8px;
+    letter-spacing: -2px;
   }
 
-  .hero-inner h1 {
-    font-size: 55px;
-
-    letter-spacing: -2.5px;
-  }
-
-  .hero-description {
+  .hero-lead {
     font-size: 16px;
   }
 
-  .hero-actions {
-    flex-direction: column;
-
-    gap: 18px;
+  .hero-art {
+    height: 280px;
   }
 
-  .hero-logo {
-    width: 220px;
-    height: 220px;
-
-    margin-top: 55px;
+  .hero-art img {
+    width: 65%;
   }
 
-
-  .mission-premium {
-    padding: 110px 22px 125px;
+  .section {
+    padding: 75px 22px;
   }
 
-  .mission-premium h2 {
-    font-size: 45px;
+  .mission {
+    min-height: auto;
   }
 
-  .mission-premium > p {
+  .mission-copy {
     font-size: 16px;
   }
 
-
-  .focus-premium {
-    padding: 95px 22px 110px;
+  .focus {
+    padding: 75px 22px;
   }
 
-  .focus-heading h2 {
-    font-size: 48px;
+  .focus-card {
+    padding: 30px 24px;
+
+    border-radius: 18px;
   }
 
-  .focus-card-premium {
-    padding: 32px 27px;
+  .focus-card h3 {
+    font-size: 22px;
   }
 
-  .focus-card-premium h3 {
-    font-size: 34px;
+  .focus-card p,
+  .focus-card ul {
+    font-size: 15px;
   }
 
-
-  .fundraising-premium {
-    padding: 120px 22px;
+  .fundraising {
+    padding: 75px 22px;
   }
 
-  .fundraising-inner-premium h2 {
-    font-size: 50px;
+  .closing {
+    padding: 75px 22px;
   }
 
+  .closing-box {
+    padding: 40px 28px;
 
-  .closing-premium {
-    padding: 120px 22px;
+    display: block;
   }
 
-  .closing-content h2 {
-    font-size: 50px;
+  .closing h2 {
+    font-size: 36px;
+
+    margin-bottom: 30px;
   }
 
-
-  .footer-top-premium {
+  .footer-top {
     grid-template-columns: 1fr;
 
     gap: 35px;
   }
 
-  .footer-brand-premium {
-    grid-column: auto;
-  }
-
-  .footer-bottom-premium {
+  .footer-bottom {
     display: block;
   }
 
-  .footer-bottom-premium span {
+  .footer-bottom span {
     display: block;
 
-    margin-top: 15px;
+    margin-top: 12px;
   }
 
+  .hero-actions {
+    flex-wrap: wrap;
+  }
+}
+
+
+/* =====================================================
+   ACCESSIBILITY
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+
+    scroll-behavior: auto !important;
+  }
 }
