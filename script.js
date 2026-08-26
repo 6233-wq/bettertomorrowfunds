@@ -11,7 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     menu.addEventListener("click", () => {
 
-      const isOpen = nav.classList.toggle("open");
+      const isOpen =
+        nav.classList.toggle("open");
 
       menu.setAttribute(
         "aria-expanded",
@@ -43,7 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
      HEADER SCROLL EFFECT
   ===================================================== */
 
-  const header = document.querySelector(".header");
+  const header =
+    document.querySelector(".header");
+
 
   function updateHeader() {
 
@@ -61,12 +64,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
 
+
   window.addEventListener(
     "scroll",
     updateHeader,
-    {
-      passive: true
-    }
+    { passive: true }
   );
 
   updateHeader();
@@ -76,36 +78,42 @@ document.addEventListener("DOMContentLoaded", () => {
      SCROLL REVEAL
   ===================================================== */
 
-  const revealElements = document.querySelectorAll(
-    ".section-heading, .mission-copy, .focus-intro, .focus-card, .fundraising-inner, .fundraising-stats, .closing-box"
-  );
+  const revealElements =
+    document.querySelectorAll(
+      ".section-heading, " +
+      ".mission-copy, " +
+      ".focus-intro, " +
+      ".focus-card, " +
+      ".fundraising-inner, " +
+      ".closing-box"
+    );
 
 
   if ("IntersectionObserver" in window) {
 
-    const observer = new IntersectionObserver(
-      (entries) => {
+    const observer =
+      new IntersectionObserver(
+        (entries) => {
 
-        entries.forEach((entry) => {
+          entries.forEach((entry) => {
 
-          if (entry.isIntersecting) {
+            if (!entry.isIntersecting) return;
 
             entry.target.classList.add("visible");
 
-            observer.unobserve(entry.target);
+            observer.unobserve(
+              entry.target
+            );
 
-          }
+          });
 
-        });
-
-      },
-      {
-        threshold: 0.15,
-
-        rootMargin:
-          "0px 0px -60px 0px"
-      }
-    );
+        },
+        {
+          threshold: 0.15,
+          rootMargin:
+            "0px 0px -60px 0px"
+        }
+      );
 
 
     revealElements.forEach((element) => {
@@ -126,48 +134,68 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =====================================================
-     FUNDRAISING COUNTER ANIMATION
-  ===================================================== */
+     FUNDRAISING COUNTER
+     ===================================================== */
 
-  const statNumbers =
-    document.querySelectorAll(".stat-number");
+  const fundraising =
+    document.querySelector("#fundraising");
+
+  const counters =
+    document.querySelectorAll(
+      ".stat-number"
+    );
 
 
-  function animateCounter(element) {
+  let countersStarted = false;
+
+
+  function formatNumber(
+    value,
+    decimals,
+    prefix
+  ) {
+
+    return (
+      prefix +
+      Number(value).toLocaleString(
+        "en-US",
+        {
+          minimumFractionDigits: decimals,
+          maximumFractionDigits: decimals
+        }
+      )
+    );
+
+  }
+
+
+  function animateCounter(counter) {
 
     const target =
       parseFloat(
-        element.dataset.target
+        counter.dataset.target
       );
 
-    if (isNaN(target)) return;
-
+    const decimals =
+      parseInt(
+        counter.dataset.decimals || "0",
+        10
+      );
 
     const prefix =
-      element.dataset.prefix || "";
+      counter.dataset.prefix || "";
 
 
-    const suffix =
-      element.dataset.suffix || "";
-
-
-    const decimals =
-      target % 1 !== 0
-        ? 1
-        : 0;
-
-
-    const duration = 1800;
+    const duration = 1600;
 
     const startTime =
       performance.now();
 
 
-    function updateCounter(currentTime) {
+    function update(currentTime) {
 
       const elapsed =
         currentTime - startTime;
-
 
       const progress =
         Math.min(
@@ -177,42 +205,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
       /*
-        Ease-out animation.
+       * Ease-out curve.
+       * Starts quickly and slows down
+       * near the final number.
+       */
 
-        Starts quickly and slows down
-        as it approaches the final number.
-      */
-
-      const easedProgress =
-        1 -
-        Math.pow(
+      const eased =
+        1 - Math.pow(
           1 - progress,
           3
         );
 
 
-      const currentValue =
-        target * easedProgress;
+      const current =
+        target * eased;
 
 
-      element.textContent =
-        prefix +
-        currentValue.toFixed(decimals) +
-        suffix;
+      counter.textContent =
+        formatNumber(
+          current,
+          decimals,
+          prefix
+        );
 
 
       if (progress < 1) {
 
         requestAnimationFrame(
-          updateCounter
+          update
         );
 
       } else {
 
-        element.textContent =
-          prefix +
-          target.toFixed(decimals) +
-          suffix;
+        counter.textContent =
+          formatNumber(
+            target,
+            decimals,
+            prefix
+          );
 
       }
 
@@ -220,14 +250,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     requestAnimationFrame(
-      updateCounter
+      update
+    );
+
+  }
+
+
+  function startCounters() {
+
+    if (countersStarted) return;
+
+    countersStarted = true;
+
+    counters.forEach(
+      (counter, index) => {
+
+        setTimeout(
+          () => {
+            animateCounter(counter);
+          },
+          index * 180
+        );
+
+      }
     );
 
   }
 
 
   if (
-    statNumbers.length &&
+    fundraising &&
+    counters.length > 0 &&
     "IntersectionObserver" in window
   ) {
 
@@ -241,9 +294,7 @@ document.addEventListener("DOMContentLoaded", () => {
               entry.isIntersecting
             ) {
 
-              animateCounter(
-                entry.target
-              );
+              startCounters();
 
               counterObserver.unobserve(
                 entry.target
@@ -255,57 +306,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
         },
         {
-          threshold: 0.5
+          threshold: 0.35
         }
       );
 
 
-    statNumbers.forEach((stat) => {
+    counterObserver.observe(
+      fundraising
+    );
 
-      counterObserver.observe(stat);
+  } else if (counters.length > 0) {
 
-    });
-
-  } else {
-
-    /*
-      Fallback for browsers without
-      IntersectionObserver.
-    */
-
-    statNumbers.forEach((stat) => {
-
-      const target =
-        parseFloat(
-          stat.dataset.target
-        );
-
-      const prefix =
-        stat.dataset.prefix || "";
-
-      const decimals =
-        target % 1 !== 0
-          ? 1
-          : 0;
-
-      stat.textContent =
-        prefix +
-        target.toFixed(decimals);
-
-    });
+    startCounters();
 
   }
 
 
   /* =====================================================
      HERO LOGO SCROLL MOVEMENT
-  ===================================================== */
+     ===================================================== */
 
   const hero =
-    document.querySelector(".home-hero");
+    document.querySelector(
+      ".home-hero"
+    );
 
   const heroLogo =
-    document.querySelector(".hero-art img");
+    document.querySelector(
+      ".hero-art img"
+    );
 
 
   if (hero && heroLogo) {
@@ -314,7 +343,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const scrollY =
         window.scrollY;
-
 
       const heroHeight =
         hero.offsetHeight;
@@ -345,9 +373,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener(
       "scroll",
       moveHeroLogo,
-      {
-        passive: true
-      }
+      { passive: true }
     );
 
 
