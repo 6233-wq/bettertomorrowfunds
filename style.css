@@ -52,7 +52,7 @@ img {
   border-bottom: 1px solid var(--line);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
   backdrop-filter: blur(10px);
 }
 
@@ -122,14 +122,8 @@ img {
 
 
 /* =========================================================
-   GENERAL SECTIONS
+   GENERAL
    ========================================================= */
-
-.section {
-  max-width: var(--max);
-  margin: auto;
-  padding: 96px 30px;
-}
 
 .kicker {
   font-size: 11px;
@@ -139,9 +133,33 @@ img {
   margin: 0 0 12px;
 }
 
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-size: 14px;
+  font-weight: 700;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.btn-dark {
+  background: var(--ink);
+  color: #fff;
+}
+
+.btn-dark:hover {
+  transform: translateY(-3px);
+  background: #000;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
 
 /* =========================================================
-   HOMEPAGE HERO
+   HERO
    ========================================================= */
 
 .home-hero {
@@ -149,16 +167,15 @@ img {
   margin: auto;
   min-height: 620px;
   padding: 90px 70px;
+
   display: grid;
   grid-template-columns: 1.02fr 0.98fr;
   align-items: center;
   gap: 50px;
 
-  opacity: 0;
-  transform: translateY(30px);
-
-  animation: homeHeroReveal 1s cubic-bezier(0.22, 1, 0.36, 1)
-    forwards;
+  animation:
+    homeHeroReveal 1s cubic-bezier(0.22, 1, 0.36, 1)
+    both;
 }
 
 .hero-copy h1 {
@@ -191,30 +208,6 @@ img {
   align-items: center;
 }
 
-.btn {
-  display: inline-block;
-  text-decoration: none;
-  border-radius: 999px;
-  padding: 12px 22px;
-  font-size: 14px;
-  font-weight: 700;
-  transition:
-    transform 0.25s ease,
-    background 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-.btn-dark {
-  background: var(--ink);
-  color: #fff;
-}
-
-.btn-dark:hover {
-  transform: translateY(-3px);
-  background: #000;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
 .text-link {
   text-decoration: none;
   font-size: 14px;
@@ -233,16 +226,16 @@ img {
   margin-left: 7px;
 }
 
-
-/* =========================================================
-   HOMEPAGE HERO LOGO
-   ========================================================= */
-
 .hero-art {
   height: 420px;
   position: relative;
+
   background: var(--blue);
-  border-radius: 44% 56% 50% 50% / 48% 45% 55% 52%;
+
+  border-radius:
+    44% 56% 50% 50% /
+    48% 45% 55% 52%;
+
   overflow: hidden;
 
   display: flex;
@@ -261,128 +254,154 @@ img {
 
   animation:
     logoFloat 5s ease-in-out infinite,
-    logoReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both;
+    logoReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1)
+    0.35s both;
 }
 
 
 /* =========================================================
-   MISSION
+   SCROLL WHEEL
    ========================================================= */
 
-.mission {
-  border-top: 1px solid var(--line);
-  text-align: center;
+.wheel-stage {
+  position: relative;
+  height: 430vh;
 }
 
-.section-heading h2,
-.focus h2,
-.fundraising h2,
-.closing h2,
-.logo-meaning h2,
-.transparency h2,
-.team-card h2 {
+.wheel-track {
+  position: sticky;
+  top: 76px;
+
+  height: calc(100vh - 76px);
+
+  overflow: hidden;
+
+  perspective: 1400px;
+
+  background: #fff;
+}
+
+.wheel-panel {
+  position: absolute;
+
+  left: 5vw;
+  right: 5vw;
+  top: 50%;
+
+  width: auto;
+
+  transform-style: preserve-3d;
+  transform-origin: center center;
+
+  will-change:
+    transform,
+    opacity,
+    filter;
+
+  transition: none;
+
+  border-radius: 34px;
+
+  overflow: hidden;
+}
+
+.wheel-panel-inner {
+  min-height: calc(100vh - 150px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 70px 7vw;
+}
+
+
+/* =========================================================
+   MISSION PANEL
+   ========================================================= */
+
+.mission-panel {
+  background: #fff;
+  border: 1px solid var(--line);
+}
+
+.mission-panel h2 {
   font-family: "Playfair Display", Georgia, serif;
-  line-height: 1.13;
-  font-size: clamp(39px, 4.5vw, 58px);
+  font-size: clamp(52px, 6vw, 82px);
+  line-height: 1.05;
   margin: 0;
 }
 
 .mission-copy {
-  max-width: 1030px;
-  margin: 28px auto 0;
-  font-size: 18px;
-  line-height: 1.85;
+  max-width: 950px;
+  margin: 32px 0 0;
+
+  font-size: clamp(17px, 1.6vw, 21px);
+  line-height: 1.8;
+
   color: #4f585a;
 }
 
 
 /* =========================================================
-   HOMEPAGE SCROLL REVEAL
-
-   IMPORTANT:
-   The previous version used .home-page, but index.html
-   does not have that class on <body>.
-   These selectors work directly with the existing HTML.
+   FOCUS PANEL
    ========================================================= */
 
-.mission,
-.focus-intro,
-.focus-card,
-.fundraising,
-.closing {
-  opacity: 0;
-  transform: translateY(45px);
-
-  transition:
-    opacity 0.9s ease,
-    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.mission.visible,
-.focus-intro.visible,
-.focus-card.visible,
-.fundraising.visible,
-.closing.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-/* =========================================================
-   WHERE WE FOCUS
-   ========================================================= */
-
-.focus {
-  max-width: none;
+.focus-panel {
   background: var(--cream);
+}
 
-  display: grid;
-  grid-template-columns: 0.8fr 2.2fr;
-  gap: 70px;
-  align-items: start;
-
-  padding: 100px 5vw;
+.focus-content {
+  justify-content: center;
 }
 
 .focus-intro {
-  max-width: 360px;
-  padding-top: 15px;
+  max-width: 700px;
+  margin-bottom: 35px;
 }
 
 .focus-intro h2 {
-  margin: 12px 0 22px;
+  margin: 0 0 18px;
+
   font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(42px, 4vw, 64px);
+
+  font-size: clamp(42px, 5vw, 65px);
+
   line-height: 1.05;
-  color: #202426;
 }
 
-.focus-intro p:last-child {
-  font-size: 18px;
-  line-height: 1.6;
+.focus-intro > p:last-child {
+  font-size: 17px;
   color: #687277;
 }
 
 
 /* =========================================================
-   THREE HORIZONTAL CARDS
+   FOCUS CARDS
    ========================================================= */
 
 .focus-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 28px;
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 22px;
   width: 100%;
 }
 
 .focus-card {
   background: #fff;
-  border: 1px solid #e1e2df;
-  border-radius: 20px;
-  padding: 30px;
-  min-height: 500px;
 
-  box-shadow: 0 8px 25px rgba(30, 40, 45, 0.05);
+  border: 1px solid #e1e2df;
+
+  border-radius: 20px;
+
+  padding: 28px;
+
+  min-height: 380px;
+
+  box-shadow:
+    0 8px 25px rgba(30, 40, 45, 0.05);
 
   transition:
     transform 0.35s ease,
@@ -391,155 +410,203 @@ img {
 
 .focus-card:hover {
   transform: translateY(-7px);
-  box-shadow: 0 18px 40px rgba(30, 40, 45, 0.1);
+
+  box-shadow:
+    0 18px 40px rgba(30, 40, 45, 0.1);
 }
 
-.focus-card > div {
-  height: 100%;
-}
-
-.focus-card > div > span {
+.focus-card > span {
   display: block;
-  margin-bottom: 22px;
+
+  margin-bottom: 20px;
+
   font-size: 17px;
   font-weight: 700;
+
   letter-spacing: 0.08em;
+
   color: #28657a;
 }
 
 .focus-card h3 {
-  margin: 0 0 20px;
-  font-size: 25px;
+  margin: 0 0 18px;
+
+  font-size: 24px;
   line-height: 1.2;
-  color: #202426;
 }
 
 .focus-card p {
   margin: 0;
-  font-size: 16px;
-  line-height: 1.65;
+
+  font-size: 14px;
+  line-height: 1.6;
+
   color: #687277;
 }
 
 .focus-card ul {
-  margin: 20px 0;
-  padding-left: 22px;
+  margin: 16px 0;
+  padding-left: 20px;
 }
 
 .focus-card li {
-  margin-bottom: 12px;
-  font-size: 16px;
-  line-height: 1.55;
+  margin-bottom: 9px;
+
+  font-size: 14px;
+  line-height: 1.5;
+
   color: #687277;
 }
 
 
 /* =========================================================
-   FUNDRAISING
+   FUNDRAISING PANEL
    ========================================================= */
 
-.fundraising {
+.fundraising-panel {
   background: var(--blue);
-  padding: 82px 30px;
 }
 
 .fundraising-inner {
-  max-width: 1180px;
-  margin: auto;
-
   display: grid;
-  grid-template-columns: 1fr 1fr;
+
+  grid-template-columns:
+    1fr 1fr;
+
   gap: 90px;
+
   align-items: center;
 }
 
-.fundraising h2 {
-  max-width: 650px;
+.fundraising-inner h2 {
+  max-width: 700px;
+
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: clamp(48px, 5vw, 70px);
+
+  line-height: 1.08;
+
+  margin: 0;
 }
 
 .fundraising-inner > p {
-  font-size: 18px;
-  color: #425a62;
   max-width: 560px;
+
+  font-size: 19px;
+
+  line-height: 1.75;
+
+  color: #425a62;
 }
 
 
 /* =========================================================
-   CLOSING
+   CLOSING PANEL
    ========================================================= */
 
-.closing {
-  padding-top: 85px;
-  padding-bottom: 85px;
+.closing-panel {
+  background: #fff;
 }
 
 .closing-box {
   background: #f5eee7;
+
   border-radius: 28px;
-  padding: 58px 65px;
+
+  padding: 60px;
 
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
+
   gap: 40px;
 }
 
-.closing h2 {
-  font-size: 43px;
+.closing-box h2 {
   max-width: 730px;
+
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: clamp(42px, 5vw, 62px);
+
+  line-height: 1.08;
+
+  margin: 0;
 }
 
 
 /* =========================================================
-   FOOTER
+   FOOTER / CONTACT
    ========================================================= */
 
 .footer {
   background: #202628;
+
   color: #fff;
+
   padding: 65px 30px 25px;
 }
 
 .footer-top {
   max-width: 1180px;
+
   margin: auto;
 
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1.4fr;
+
+  grid-template-columns:
+    1.5fr 1fr 1.4fr;
+
   gap: 80px;
 }
 
 .footer-brand img {
   width: 48px;
   height: 48px;
+
   object-fit: contain;
+
   margin-bottom: 15px;
 }
 
 .footer h3 {
   font-size: 19px;
+
   margin: 0 0 5px;
 }
 
 .footer h4 {
   font-size: 11px;
+
   letter-spacing: 2px;
+
   text-transform: uppercase;
+
   color: #a9cbd5;
+
   margin: 2px 0 15px;
 }
 
 .footer p {
   color: #aeb8ba;
+
   font-size: 13px;
+
   max-width: 380px;
 }
 
 .footer a {
   display: block;
+
   text-decoration: none;
+
   color: #d8ddde;
+
   font-size: 13px;
+
   margin: 7px 0;
 }
 
@@ -549,173 +616,44 @@ img {
 
 .footer-bottom {
   max-width: 1180px;
+
   margin: 45px auto 0;
+
   padding-top: 20px;
-  border-top: 1px solid #3c4547;
+
+  border-top:
+    1px solid #3c4547;
 
   display: flex;
+
   justify-content: space-between;
+
   gap: 30px;
+
   align-items: center;
 }
 
 .footer-bottom p {
   margin: 0;
+
   max-width: 750px;
 }
 
 .footer-bottom span {
   font-size: 12px;
+
   color: #879194;
+
   white-space: nowrap;
 }
 
 
 /* =========================================================
-   ABOUT US
-   ========================================================= */
-
-.about-heading {
-  max-width: 1180px;
-  margin: auto;
-  min-height: 350px;
-  padding: 75px 30px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  background: var(--blue);
-  border-radius: 0 0 34px 34px;
-}
-
-.about-heading h1 {
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(48px, 6vw, 76px);
-  line-height: 1.05;
-  margin: 0;
-  max-width: 700px;
-}
-
-.about-heading img {
-  width: 190px;
-  height: 190px;
-  object-fit: contain;
-  margin-right: 70px;
-}
-
-.about-intro {
-  text-align: center;
-  padding-top: 82px;
-  padding-bottom: 82px;
-}
-
-.about-intro p {
-  font-size: 21px;
-  line-height: 1.8;
-  max-width: 920px;
-  margin: auto;
-}
-
-.logo-meaning {
-  max-width: none;
-  background: var(--cream);
-
-  display: grid;
-  grid-template-columns: 440px 1fr;
-  gap: 90px;
-  align-items: center;
-
-  padding-left: max(30px, calc((100vw - 1120px) / 2));
-  padding-right: max(30px, calc((100vw - 1120px) / 2));
-}
-
-.logo-display {
-  height: 400px;
-  background: #fff;
-  border-radius: 28px;
-
-  display: grid;
-  place-items: center;
-
-  border: 1px solid #e9e7df;
-}
-
-.logo-display img {
-  width: 250px;
-  height: 250px;
-  object-fit: contain;
-}
-
-.logo-meaning > div:last-child {
-  max-width: 650px;
-}
-
-.logo-meaning p:last-child,
-.transparency p {
-  font-size: 17px;
-  line-height: 1.85;
-  color: #515a5c;
-}
-
-.transparency {
-  max-width: 950px;
-}
-
-.transparency-label {
-  display: inline-block;
-  padding: 7px 13px;
-  background: var(--pink);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1.7px;
-  margin-bottom: 15px;
-}
-
-.transparency p {
-  max-width: 850px;
-}
-
-
-/* =========================================================
-   TEAM
-   ========================================================= */
-
-.team {
-  max-width: 950px;
-}
-
-.team-card {
-  text-align: center;
-  background: var(--cream);
-  border-radius: 30px;
-  padding: 70px 40px;
-}
-
-.team-card img {
-  width: 120px;
-  height: 120px;
-  object-fit: contain;
-  margin: 0 auto 20px;
-}
-
-.team-card p:not(.kicker) {
-  max-width: 700px;
-  margin: 20px auto;
-  color: #5e6668;
-  font-size: 18px;
-}
-
-.team-card .btn {
-  margin-top: 10px;
-}
-
-
-/* =========================================================
-   HOMEPAGE ANIMATIONS
+   ANIMATIONS
    ========================================================= */
 
 @keyframes homeHeroReveal {
+
   from {
     opacity: 0;
     transform: translateY(30px);
@@ -725,9 +663,11 @@ img {
     opacity: 1;
     transform: translateY(0);
   }
+
 }
 
 @keyframes heroArtReveal {
+
   from {
     opacity: 0;
     transform: scale(0.94);
@@ -737,9 +677,11 @@ img {
     opacity: 1;
     transform: scale(1);
   }
+
 }
 
 @keyframes logoReveal {
+
   from {
     opacity: 0;
     transform: scale(0.8);
@@ -749,9 +691,11 @@ img {
     opacity: 1;
     transform: scale(1);
   }
+
 }
 
 @keyframes logoFloat {
+
   0%,
   100% {
     transform: translateY(0);
@@ -760,6 +704,7 @@ img {
   50% {
     transform: translateY(-10px);
   }
+
 }
 
 
@@ -771,18 +716,27 @@ img {
 
   .nav {
     display: none;
+
     position: absolute;
+
     left: 0;
     right: 0;
+
     top: 75px;
 
     background: #fff;
-    padding: 15px 25px 25px;
 
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    padding:
+      15px 25px 25px;
+
+    box-shadow:
+      0 15px 30px
+      rgba(0, 0, 0, 0.08);
 
     flex-direction: column;
+
     align-items: flex-start;
+
     gap: 0;
   }
 
@@ -802,54 +756,86 @@ img {
     display: block;
   }
 
+
   .home-hero {
     grid-template-columns: 1fr;
-    padding: 75px 35px;
+
+    padding:
+      75px 35px;
   }
 
   .hero-art {
     height: 360px;
   }
 
-  .focus {
-    grid-template-columns: 1fr;
-    gap: 45px;
+
+  .wheel-stage {
+    height: auto;
   }
 
-  .focus-intro {
-    max-width: 600px;
+  .wheel-track {
+    position: relative;
+
+    top: auto;
+
+    height: auto;
+
+    overflow: visible;
+
+    perspective: none;
   }
+
+  .wheel-panel {
+    position: relative;
+
+    left: auto;
+    right: auto;
+    top: auto;
+
+    transform: none !important;
+
+    opacity: 1 !important;
+
+    filter: none !important;
+
+    margin:
+      25px 22px;
+
+    border-radius: 28px;
+  }
+
+  .wheel-panel-inner {
+    min-height: auto;
+
+    padding:
+      70px 35px;
+  }
+
 
   .focus-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
   }
+
 
   .fundraising-inner {
     grid-template-columns: 1fr;
-    gap: 20px;
+
+    gap: 25px;
   }
 
-  .logo-meaning {
-    grid-template-columns: 1fr;
-    gap: 45px;
-  }
-
-  .logo-display {
-    height: 330px;
-  }
-
-  .about-heading img {
-    margin-right: 0;
-  }
 
   .footer-top {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:
+      1fr 1fr;
+
     gap: 45px;
   }
 
   .footer-brand {
     grid-column: 1 / -1;
   }
+
 }
 
 
@@ -859,20 +845,22 @@ img {
 
 @media (max-width: 750px) {
 
-  .focus {
-    padding: 75px 6vw;
-  }
-
   .focus-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+
+    gap: 18px;
   }
 
   .focus-card {
     min-height: auto;
   }
+
 }
 
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
 
 @media (max-width: 600px) {
 
@@ -901,13 +889,17 @@ img {
     font-size: 14px;
   }
 
+
   .home-hero {
-    padding: 60px 22px;
+    padding:
+      60px 22px;
+
     min-height: auto;
   }
 
   .hero-copy h1 {
     font-size: 50px;
+
     letter-spacing: -2px;
   }
 
@@ -917,10 +909,13 @@ img {
 
   .hero-actions {
     gap: 18px;
+
+    flex-wrap: wrap;
   }
 
   .hero-art {
     height: 300px;
+
     border-radius: 30px;
   }
 
@@ -929,52 +924,51 @@ img {
     height: 180px;
   }
 
-  .section {
-    padding: 68px 22px;
+
+  .wheel-panel {
+    margin:
+      18px 14px;
   }
 
-  .section-heading h2,
-  .focus h2 {
-    font-size: 42px;
+  .wheel-panel-inner {
+    padding:
+      55px 24px;
+  }
+
+  .mission-panel h2 {
+    font-size: 45px;
   }
 
   .mission-copy {
     font-size: 16px;
   }
 
-  .focus {
-    padding-left: 22px;
-    padding-right: 22px;
-  }
 
-  .focus-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .focus-card {
-    min-height: auto;
-    padding: 27px;
-  }
-
-  .fundraising {
-    padding: 68px 22px;
-  }
-
-  .fundraising h2 {
+  .focus-intro h2 {
     font-size: 42px;
   }
 
-  .closing {
-    padding-top: 60px;
-    padding-bottom: 60px;
+  .focus-card {
+    padding: 25px;
   }
+
+
+  .fundraising-inner h2 {
+    font-size: 43px;
+  }
+
+  .fundraising-inner > p {
+    font-size: 16px;
+  }
+
 
   .closing-box {
     padding: 38px 28px;
+
     display: block;
   }
 
-  .closing h2 {
+  .closing-box h2 {
     font-size: 36px;
   }
 
@@ -982,37 +976,6 @@ img {
     margin-top: 25px;
   }
 
-  .about-heading {
-    min-height: 300px;
-    padding: 55px 22px;
-  }
-
-  .about-heading h1 {
-    font-size: 50px;
-  }
-
-  .about-heading img {
-    width: 100px;
-    height: 100px;
-  }
-
-  .about-intro p {
-    font-size: 17px;
-  }
-
-  .logo-meaning {
-    padding-left: 22px;
-    padding-right: 22px;
-  }
-
-  .logo-display {
-    height: 280px;
-  }
-
-  .logo-display img {
-    width: 180px;
-    height: 180px;
-  }
 
   .footer {
     padding-left: 22px;
@@ -1021,6 +984,7 @@ img {
 
   .footer-top {
     grid-template-columns: 1fr;
+
     gap: 35px;
   }
 
@@ -1034,12 +998,10 @@ img {
 
   .footer-bottom span {
     display: block;
+
     margin-top: 12px;
   }
 
-  .hero-actions {
-    flex-wrap: wrap;
-  }
 }
 
 
@@ -1057,16 +1019,10 @@ img {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+
     animation-iteration-count: 1 !important;
+
     transition-duration: 0.01ms !important;
   }
 
-  .mission,
-  .focus-intro,
-  .focus-card,
-  .fundraising,
-  .closing {
-    opacity: 1;
-    transform: none;
-  }
 }
