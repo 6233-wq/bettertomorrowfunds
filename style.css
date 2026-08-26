@@ -574,7 +574,202 @@ img {
 
   margin: auto;
 }
+/* =========================================================
+   FUNDRAISING STATS
+   ========================================================= */
 
+.fundraising {
+  position: relative;
+  overflow: hidden;
+}
+
+.fundraising-inner {
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 90px;
+}
+
+.fundraising-copy {
+  max-width: 650px;
+}
+
+.fundraising-copy > p:last-child {
+  margin: 28px 0 0;
+  max-width: 560px;
+  font-size: 18px;
+  line-height: 1.75;
+  color: #425a62;
+}
+
+
+/* =========================================================
+   STAT GRID
+   ========================================================= */
+
+.fundraising-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+
+/* Large first statistic */
+
+.fundraising-stat:first-child {
+  grid-column: 1 / -1;
+}
+
+
+/* Individual stat */
+
+.fundraising-stat {
+  min-height: 170px;
+
+  padding: 30px;
+
+  background: rgba(255, 255, 255, 0.58);
+
+  border: 1px solid rgba(40, 93, 112, 0.12);
+
+  border-radius: 24px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.fundraising-stat:hover {
+  transform: translateY(-5px);
+
+  background: rgba(255, 255, 255, 0.82);
+
+  box-shadow:
+    0 15px 35px rgba(40, 93, 112, 0.08);
+}
+
+
+/* Number */
+
+.stat-number {
+  display: block;
+
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size: clamp(52px, 5vw, 76px);
+
+  line-height: 0.95;
+
+  letter-spacing: -2px;
+
+  color: var(--ink);
+
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* Label */
+
+.stat-label {
+  display: block;
+
+  margin-top: 15px;
+
+  max-width: 230px;
+
+  font-size: 12px;
+
+  line-height: 1.4;
+
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  color: var(--blue3);
+}
+
+
+/* =========================================================
+   FUNDRAISING ANIMATION
+   ========================================================= */
+
+.fundraising-stats {
+  opacity: 0;
+  transform: translateY(35px);
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fundraising.visible .fundraising-stats {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fundraising.visible .fundraising-stat:nth-child(1) {
+  transition-delay: 0.05s;
+}
+
+.fundraising.visible .fundraising-stat:nth-child(2) {
+  transition-delay: 0.15s;
+}
+
+.fundraising.visible .fundraising-stat:nth-child(3) {
+  transition-delay: 0.25s;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1050px) {
+
+  .fundraising-inner {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .fundraising-copy {
+    max-width: 700px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .fundraising-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .fundraising-stat:first-child {
+    grid-column: auto;
+  }
+
+  .fundraising-stat {
+    min-height: 145px;
+    padding: 26px;
+  }
+
+  .stat-number {
+    font-size: 55px;
+  }
+
+}
 
 /* =========================================================
    CLOSING
