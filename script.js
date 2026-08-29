@@ -11,8 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     menu.addEventListener("click", () => {
 
-      const isOpen =
-        nav.classList.toggle("open");
+      const isOpen = nav.classList.toggle("open");
 
       menu.setAttribute(
         "aria-expanded",
@@ -20,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
     });
-
 
     nav.querySelectorAll("a").forEach((link) => {
 
@@ -44,9 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
      HEADER SCROLL EFFECT
   ===================================================== */
 
-  const header =
-    document.querySelector(".header");
-
+  const header = document.querySelector(".header");
 
   function updateHeader() {
 
@@ -64,7 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
 
-
   window.addEventListener(
     "scroll",
     updateHeader,
@@ -78,43 +73,33 @@ document.addEventListener("DOMContentLoaded", () => {
      SCROLL REVEAL
   ===================================================== */
 
-  const revealElements =
-    document.querySelectorAll(
-      ".section-heading, " +
-      ".mission-copy, " +
-      ".focus-intro, " +
-      ".focus-card, " +
-      ".fundraising-inner, " +
-      ".closing-box"
-    );
-
+  const revealElements = document.querySelectorAll(
+    ".section-heading, .mission-copy, .focus-intro, .focus-card, .fundraising-inner, .fundraising-stat, .closing-box"
+  );
 
   if ("IntersectionObserver" in window) {
 
-    const observer =
-      new IntersectionObserver(
-        (entries) => {
+    const observer = new IntersectionObserver(
+      (entries) => {
 
-          entries.forEach((entry) => {
+        entries.forEach((entry) => {
 
-            if (!entry.isIntersecting) return;
+          if (entry.isIntersecting) {
 
             entry.target.classList.add("visible");
 
-            observer.unobserve(
-              entry.target
-            );
+            observer.unobserve(entry.target);
 
-          });
+          }
 
-        },
-        {
-          threshold: 0.15,
-          rootMargin:
-            "0px 0px -60px 0px"
-        }
-      );
+        });
 
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -50px 0px"
+      }
+    );
 
     revealElements.forEach((element) => {
 
@@ -134,233 +119,175 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =====================================================
-     FUNDRAISING COUNTER
-     ===================================================== */
+     FUNDRAISING COUNTERS
+  ===================================================== */
 
-  const fundraising =
-    document.querySelector("#fundraising");
+  const counters = document.querySelectorAll(".counter");
 
-  const counters =
-    document.querySelectorAll(
-      ".stat-number"
-    );
+  if (counters.length > 0) {
 
-
-  let countersStarted = false;
-
-
-  function formatNumber(
-    value,
-    decimals,
-    prefix
-  ) {
-
-    return (
-      prefix +
-      Number(value).toLocaleString(
-        "en-US",
-        {
-          minimumFractionDigits: decimals,
-          maximumFractionDigits: decimals
-        }
-      )
-    );
-
-  }
-
-
-  function animateCounter(counter) {
-
-    const target =
-      parseFloat(
-        counter.dataset.target
-      );
-
-    const decimals =
-      parseInt(
-        counter.dataset.decimals || "0",
-        10
-      );
-
-    const prefix =
-      counter.dataset.prefix || "";
-
-
-    const duration = 1600;
-
-    const startTime =
-      performance.now();
-
-
-    function update(currentTime) {
-
-      const elapsed =
-        currentTime - startTime;
-
-      const progress =
-        Math.min(
-          elapsed / duration,
-          1
-        );
-
+    const animateCounter = (counter) => {
 
       /*
-       * Ease-out curve.
-       * Starts quickly and slows down
-       * near the final number.
-       */
+        Read the target directly from the HTML.
 
-      const eased =
-        1 - Math.pow(
-          1 - progress,
-          3
-        );
+        Example:
 
+        data-target="728"
+        data-decimals="0"
 
-      const current =
-        target * eased;
+        or:
 
+        data-target="6.5"
+        data-decimals="1"
+      */
 
-      counter.textContent =
-        formatNumber(
-          current,
-          decimals,
-          prefix
-        );
-
-
-      if (progress < 1) {
-
-        requestAnimationFrame(
-          update
-        );
-
-      } else {
-
-        counter.textContent =
-          formatNumber(
-            target,
-            decimals,
-            prefix
-          );
-
-      }
-
-    }
-
-
-    requestAnimationFrame(
-      update
-    );
-
-  }
-
-
-  function startCounters() {
-
-    if (countersStarted) return;
-
-    countersStarted = true;
-
-    counters.forEach(
-      (counter, index) => {
-
-        setTimeout(
-          () => {
-            animateCounter(counter);
-          },
-          index * 180
-        );
-
-      }
-    );
-
-  }
-
-
-  if (
-    fundraising &&
-    counters.length > 0 &&
-    "IntersectionObserver" in window
-  ) {
-
-    const counterObserver =
-      new IntersectionObserver(
-        (entries) => {
-
-          entries.forEach((entry) => {
-
-            if (
-              entry.isIntersecting
-            ) {
-
-              startCounters();
-
-              counterObserver.unobserve(
-                entry.target
-              );
-
-            }
-
-          });
-
-        },
-        {
-          threshold: 0.35
-        }
+      const target = Number(
+        counter.getAttribute("data-target")
       );
 
+      const decimals = Number(
+        counter.getAttribute("data-decimals") || 0
+      );
 
-    counterObserver.observe(
-      fundraising
-    );
+      /*
+        Prevent NaN from ever appearing.
+      */
 
-  } else if (counters.length > 0) {
+      if (!Number.isFinite(target)) {
 
-    startCounters();
+        counter.textContent = "0";
+
+        return;
+
+      }
+
+      const duration = 1600;
+
+      const startTime = performance.now();
+
+      function updateCounter(currentTime) {
+
+        const elapsed =
+          currentTime - startTime;
+
+        const progress =
+          Math.min(elapsed / duration, 1);
+
+        /*
+          Ease-out animation.
+          Starts quickly and slows down near the end.
+        */
+
+        const eased =
+          1 - Math.pow(1 - progress, 3);
+
+        const currentValue =
+          target * eased;
+
+        counter.textContent =
+          currentValue.toFixed(decimals);
+
+        if (progress < 1) {
+
+          requestAnimationFrame(updateCounter);
+
+        } else {
+
+          /*
+            Make absolutely sure the final number
+            is exactly the target.
+          */
+
+          counter.textContent =
+            target.toFixed(decimals);
+
+        }
+
+      }
+
+      counter.textContent =
+        (0).toFixed(decimals);
+
+      requestAnimationFrame(updateCounter);
+
+    };
+
+
+    /*
+      Only start the counter when the stats
+      actually enter the screen.
+    */
+
+    if ("IntersectionObserver" in window) {
+
+      const counterObserver =
+        new IntersectionObserver(
+          (entries, observer) => {
+
+            entries.forEach((entry) => {
+
+              if (entry.isIntersecting) {
+
+                animateCounter(entry.target);
+
+                observer.unobserve(entry.target);
+
+              }
+
+            });
+
+          },
+          {
+            threshold: 0.35
+          }
+        );
+
+      counters.forEach((counter) => {
+
+        counterObserver.observe(counter);
+
+      });
+
+    } else {
+
+      counters.forEach((counter) => {
+
+        animateCounter(counter);
+
+      });
+
+    }
 
   }
 
 
   /* =====================================================
      HERO LOGO SCROLL MOVEMENT
-     ===================================================== */
+  ===================================================== */
 
-  const hero =
-    document.querySelector(
-      ".home-hero"
-    );
-
-  const heroLogo =
-    document.querySelector(
-      ".hero-art img"
-    );
-
+  const hero = document.querySelector(".home-hero");
+  const heroLogo = document.querySelector(".hero-art img");
 
   if (hero && heroLogo) {
 
     function moveHeroLogo() {
 
-      const scrollY =
-        window.scrollY;
+      const scrollY = window.scrollY;
 
       const heroHeight =
         hero.offsetHeight;
-
 
       if (scrollY <= heroHeight) {
 
         const movement =
           scrollY * 0.10;
 
-
         const scale =
-          1 -
-          Math.min(
+          1 - Math.min(
             scrollY / heroHeight,
             0.15
           );
-
 
         heroLogo.style.transform =
           `translateY(${movement}px) scale(${scale})`;
@@ -369,13 +296,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-
     window.addEventListener(
       "scroll",
       moveHeroLogo,
       { passive: true }
     );
-
 
     moveHeroLogo();
 
@@ -387,9 +312,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ===================================================== */
 
   document
-    .querySelectorAll(
-      'a[href^="#"]'
-    )
+    .querySelectorAll('a[href^="#"]')
     .forEach((link) => {
 
       link.addEventListener(
@@ -397,22 +320,25 @@ document.addEventListener("DOMContentLoaded", () => {
         (event) => {
 
           const targetId =
-            link.getAttribute(
-              "href"
-            );
+            link.getAttribute("href");
 
+          /*
+            Ignore empty "#" links.
+          */
+
+          if (
+            !targetId ||
+            targetId === "#"
+          ) {
+            return;
+          }
 
           const target =
-            document.querySelector(
-              targetId
-            );
-
+            document.querySelector(targetId);
 
           if (!target) return;
 
-
           event.preventDefault();
-
 
           target.scrollIntoView({
             behavior: "smooth",
@@ -430,10 +356,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ===================================================== */
 
   const year =
-    document.getElementById(
-      "year"
-    );
-
+    document.getElementById("year");
 
   if (year) {
 
