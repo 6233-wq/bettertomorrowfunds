@@ -2117,3 +2117,72 @@ body {
   }
 
 }
+
+/* =========================================================
+   FUNDRAISING STATS
+   ========================================================= */
+
+.fundraising-stats {
+  max-width: 1180px;
+  margin: 65px auto 0;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 24px;
+}
+
+.fundraising-stat {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(40, 93, 112, 0.12);
+
+  border-radius: 24px;
+
+  padding: 34px 30px;
+
+  min-width: 0;
+
+  opacity: 0;
+  transform: translateY(30px);
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fundraising-stat.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fundraising-stat:nth-child(2) {
+  transition-delay: 0.1s;
+}
+
+.fundraising-stat:nth-child(3) {
+  transition-delay: 0.2s;
+}
+
+.stat-number {
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: clamp(48px, 6vw, 72px);
+
+  line-height: 1;
+
+  letter-spacing: -2px;
+
+  color: var(--ink);
+
+  margin-bottom: 16px;
+}
+
+.fundraising-stat p {
+  margin: 0;
+
+  font-size: 15px;
+
+  line-height: 1.5;
+
+  color: #526267;
+}
