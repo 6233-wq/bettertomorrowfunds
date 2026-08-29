@@ -1904,3 +1904,216 @@ img {
   }
 
 }
+/* =========================================================
+   MOBILE OVERFLOW FIX
+   ABOUT US + ALL PAGES
+   ========================================================= */
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   ABOUT US — MOBILE
+   ========================================================= */
+
+@media (max-width: 750px) {
+
+  /* Prevent wide grid sections from extending past viewport */
+
+  .about-heading,
+  .about-intro,
+  .logo-meaning,
+  .transparency,
+  .team,
+  .team-members {
+    width: 100%;
+    max-width: 100%;
+  }
+
+
+  /* ABOUT HEADING */
+
+  .about-heading {
+    min-height: auto;
+    padding: 55px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 30px;
+    overflow: hidden;
+  }
+
+  .about-heading > div {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .about-heading h1 {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(46px, 12vw, 64px);
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  .about-heading img {
+    width: 110px;
+    height: 110px;
+    margin: 0;
+    align-self: center;
+  }
+
+
+  /* ABOUT INTRO */
+
+  .about-intro {
+    padding: 65px 22px;
+    text-align: center;
+  }
+
+  .about-intro p {
+    width: 100%;
+    max-width: 100%;
+    font-size: 17px;
+    line-height: 1.75;
+    overflow-wrap: break-word;
+  }
+
+
+  /* LOGO MEANING */
+
+  .logo-meaning {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+
+    padding-left: 22px;
+    padding-right: 22px;
+
+    overflow: hidden;
+  }
+
+  .logo-meaning > * {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .logo-display {
+    width: 100%;
+    max-width: 100%;
+    height: 280px;
+  }
+
+  .logo-display img {
+    max-width: 180px;
+    width: 180px;
+    height: 180px;
+  }
+
+  .logo-meaning > div:last-child {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .logo-meaning h2 {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(36px, 9vw, 52px);
+    overflow-wrap: break-word;
+  }
+
+  .logo-meaning p {
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+
+
+  /* TRANSPARENCY */
+
+  .transparency {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .transparency p {
+    width: 100%;
+    max-width: 100%;
+    font-size: 16px;
+    overflow-wrap: break-word;
+  }
+
+
+  /* GENERAL HEADINGS */
+
+  .section-heading h2,
+  .focus h2,
+  .fundraising h2,
+  .closing h2,
+  .logo-meaning h2,
+  .transparency h2,
+  .team-card h2 {
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+
+
+  /* PREVENT GRID/FLEX CHILDREN FROM CREATING OVERFLOW */
+
+  .section,
+  .focus,
+  .fundraising,
+  .closing {
+    min-width: 0;
+  }
+
+  .section > *,
+  .focus > *,
+  .fundraising > *,
+  .closing > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  .about-heading {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .about-heading h1 {
+    font-size: 44px;
+    letter-spacing: -1.5px;
+  }
+
+  .about-intro {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .logo-meaning {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .transparency {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+}
