@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ===================================================== */
 
   const revealElements = document.querySelectorAll(
-    ".section-heading, .mission-copy, .focus-intro, .focus-card, .fundraising-inner, .fundraising-stat, .closing-box"
+    ".section-heading, .mission-copy, .focus-intro, .focus-card, .fundraising-inner, .closing-box"
   );
 
   if ("IntersectionObserver" in window) {
@@ -117,149 +117,113 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
 
+/* =====================================================
+   FUNDRAISING COUNTERS
+===================================================== */
 
-  /* =====================================================
-     FUNDRAISING COUNTERS
-  ===================================================== */
+const counters = document.querySelectorAll(".counter");
 
-  const counters = document.querySelectorAll(".counter");
+if (counters.length) {
 
-  if (counters.length > 0) {
+  const counterObserver = new IntersectionObserver(
+    (entries) => {
 
-    const animateCounter = (counter) => {
+      entries.forEach((entry) => {
 
-      /*
-        Read the target directly from the HTML.
+        if (!entry.isIntersecting) return;
 
-        Example:
+        const counter = entry.target;
 
-        data-target="728"
-        data-decimals="0"
+        const target =
+          parseFloat(counter.dataset.target);
 
-        or:
+        if (Number.isNaN(target)) {
+          console.error(
+            "Invalid counter target:",
+            counter.dataset.target
+          );
+          return;
+        }
 
-        data-target="6.5"
-        data-decimals="1"
-      */
+        const start = performance.now();
+        const duration = 1800;
 
-      const target = Number(
-        counter.getAttribute("data-target")
-      );
+        function animateCounter(now) {
 
-      const decimals = Number(
-        counter.getAttribute("data-decimals") || 0
-      );
-
-      /*
-        Prevent NaN from ever appearing.
-      */
-
-      if (!Number.isFinite(target)) {
-
-        counter.textContent = "0";
-
-        return;
-
-      }
-
-      const duration = 1600;
-
-      const startTime = performance.now();
-
-      function updateCounter(currentTime) {
-
-        const elapsed =
-          currentTime - startTime;
-
-        const progress =
-          Math.min(elapsed / duration, 1);
-
-        /*
-          Ease-out animation.
-          Starts quickly and slows down near the end.
-        */
-
-        const eased =
-          1 - Math.pow(1 - progress, 3);
-
-        const currentValue =
-          target * eased;
-
-        counter.textContent =
-          currentValue.toFixed(decimals);
-
-        if (progress < 1) {
-
-          requestAnimationFrame(updateCounter);
-
-        } else {
+          const progress =
+            Math.min((now - start) / duration, 1);
 
           /*
-            Make absolutely sure the final number
-            is exactly the target.
+            Ease-out animation
           */
+          const eased =
+            1 - Math.pow(1 - progress, 3);
 
-          counter.textContent =
-            target.toFixed(decimals);
+          const value =
+            target * eased;
+
+          /*
+            Keep 6.5 as a decimal,
+            while whole numbers use commas.
+          */
+          if (target % 1 !== 0) {
+
+            counter.textContent =
+              value.toFixed(1);
+
+          } else {
+
+            counter.textContent =
+              Math.floor(value).toLocaleString();
+
+          }
+
+          if (progress < 1) {
+
+            requestAnimationFrame(
+              animateCounter
+            );
+
+          } else {
+
+            /*
+              Final exact value
+            */
+            counter.textContent =
+              target % 1 !== 0
+                ? target.toFixed(1)
+                : target.toLocaleString();
+
+          }
 
         }
 
-      }
-
-      counter.textContent =
-        (0).toFixed(decimals);
-
-      requestAnimationFrame(updateCounter);
-
-    };
-
-
-    /*
-      Only start the counter when the stats
-      actually enter the screen.
-    */
-
-    if ("IntersectionObserver" in window) {
-
-      const counterObserver =
-        new IntersectionObserver(
-          (entries, observer) => {
-
-            entries.forEach((entry) => {
-
-              if (entry.isIntersecting) {
-
-                animateCounter(entry.target);
-
-                observer.unobserve(entry.target);
-
-              }
-
-            });
-
-          },
-          {
-            threshold: 0.35
-          }
+        requestAnimationFrame(
+          animateCounter
         );
 
-      counters.forEach((counter) => {
-
-        counterObserver.observe(counter);
-
-      });
-
-    } else {
-
-      counters.forEach((counter) => {
-
-        animateCounter(counter);
+        /*
+          Only animate each counter once.
+        */
+        counterObserver.unobserve(counter);
 
       });
 
+    },
+    {
+      threshold: 0.2
     }
+  );
 
-  }
+
+  counters.forEach((counter) => {
+
+    counterObserver.observe(counter);
+
+  });
+
+}
+ 
 
 
   /* =====================================================
