@@ -133,7 +133,7 @@ if (counters.length) {
 
         observer.unobserve(entry.target);
 
-        // Only start the sequence once
+        // Start the sequence only from the first counter
         if (entry.target !== counters[0]) return;
 
         let currentIndex = 0;
@@ -175,13 +175,10 @@ if (counters.length) {
 
             const value = target * eased;
 
-            if (decimals > 0) {
-              counter.textContent =
-                value.toFixed(decimals);
-            } else {
-              counter.textContent =
-                Math.floor(value).toLocaleString();
-            }
+            counter.textContent =
+              decimals > 0
+                ? value.toFixed(decimals)
+                : Math.floor(value).toLocaleString();
 
             if (progress < 1) {
 
@@ -191,21 +188,16 @@ if (counters.length) {
 
             } else {
 
-              // Make sure the final number is exact
-
+              // Exact final value
               counter.textContent =
                 decimals > 0
                   ? target.toFixed(decimals)
                   : target.toLocaleString();
 
-              // Wait briefly before starting next counter
-              setTimeout(() => {
+              currentIndex++;
 
-                currentIndex++;
-
-                runNextCounter();
-
-              }, 250);
+              // Immediately start the next counter
+              runNextCounter();
             }
           }
 
@@ -221,12 +213,6 @@ if (counters.length) {
       threshold: 0.5
     }
   );
-
-  /*
-     Observe only the first counter.
-     The remaining counters are started
-     automatically in sequence.
-  */
 
   counterObserver.observe(counters[0]);
 }
