@@ -2139,3 +2139,166 @@ body {
   }
 
 }
+
+/* =========================================================
+   FISCAL SPONSORSHIP
+   ========================================================= */
+
+.fiscal-sponsorship {
+  max-width: none;
+
+  background: var(--blue);
+
+  padding-top: 95px;
+  padding-bottom: 95px;
+}
+
+.fiscal-sponsorship-inner {
+  max-width: 1120px;
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns: 0.9fr 1.1fr;
+
+  gap: 90px;
+
+  align-items: start;
+}
+
+.fiscal-sponsorship-heading {
+  max-width: 430px;
+}
+
+.fiscal-sponsorship-heading h2 {
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(40px, 4.5vw, 58px);
+
+  line-height: 1.1;
+
+  letter-spacing: -1.5px;
+
+  margin: 0;
+}
+
+.fiscal-sponsorship-content {
+  max-width: 650px;
+}
+
+.fiscal-sponsorship-content p {
+  margin: 0 0 24px;
+
+  font-size: 17px;
+
+  line-height: 1.85;
+
+  color: #425a62;
+}
+
+.fiscal-sponsorship-content p:first-child {
+  font-size: 19px;
+
+  line-height: 1.75;
+
+  color: var(--ink);
+}
+
+.fiscal-ein {
+  margin-top: 35px;
+
+  padding-top: 22px;
+
+  border-top:
+    1px solid rgba(40, 93, 112, 0.18);
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+}
+
+.fiscal-ein span {
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.8px;
+
+  text-transform: uppercase;
+
+  color: var(--blue3);
+}
+
+.fiscal-ein strong {
+  font-size: 15px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.5px;
+
+  color: var(--ink);
+}
+
+
+/* =========================================================
+   FISCAL SPONSORSHIP — TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .fiscal-sponsorship-inner {
+    grid-template-columns: 1fr;
+
+    gap: 40px;
+  }
+
+  .fiscal-sponsorship-heading {
+    max-width: 650px;
+  }
+
+}
+
+
+/* =========================================================
+   FISCAL SPONSORSHIP — MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .fiscal-sponsorship {
+    padding:
+      68px 22px;
+  }
+
+  .fiscal-sponsorship-inner {
+    gap: 32px;
+  }
+
+  .fiscal-sponsorship-heading h2 {
+    font-size: 38px;
+
+    letter-spacing: -1px;
+  }
+
+  .fiscal-sponsorship-content p {
+    font-size: 16px;
+
+    line-height: 1.75;
+  }
+
+  .fiscal-sponsorship-content p:first-child {
+    font-size: 17px;
+  }
+
+  .fiscal-ein {
+    margin-top: 30px;
+  }
+
+}
