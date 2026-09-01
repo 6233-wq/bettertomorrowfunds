@@ -2011,3 +2011,131 @@ body {
   }
 
 }
+/* =========================================================
+   DONATION FORM
+   ========================================================= */
+
+.donation-area {
+  max-width: 1180px;
+  margin: 75px auto 0;
+
+  padding-top: 65px;
+
+  border-top: 1px solid rgba(40, 93, 112, 0.18);
+
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+
+  gap: 70px;
+
+  align-items: center;
+}
+
+.donation-copy {
+  max-width: 500px;
+}
+
+.donation-copy h2 {
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: clamp(40px, 4.5vw, 58px);
+
+  line-height: 1.1;
+
+  letter-spacing: -1.5px;
+
+  margin: 0 0 22px;
+}
+
+.donation-copy > p:last-child {
+  margin: 0;
+
+  font-size: 17px;
+
+  line-height: 1.75;
+
+  color: #425a62;
+
+  max-width: 500px;
+}
+
+.donation-frame {
+  width: 100%;
+
+  background: #fff;
+
+  border: 1px solid rgba(40, 93, 112, 0.12);
+
+  border-radius: 24px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 15px 35px rgba(40, 93, 112, 0.08);
+}
+
+.donation-frame iframe {
+  display: block;
+
+  width: 100%;
+
+  height: 600px;
+
+  border: none;
+}
+
+
+/* =========================================================
+   DONATION FORM — TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .donation-area {
+    grid-template-columns: 1fr;
+
+    gap: 40px;
+
+    margin-top: 60px;
+
+    padding-top: 55px;
+  }
+
+  .donation-copy {
+    max-width: 700px;
+  }
+
+}
+
+
+/* =========================================================
+   DONATION FORM — MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .donation-area {
+    margin-top: 50px;
+
+    padding-top: 45px;
+
+    gap: 30px;
+  }
+
+  .donation-copy h2 {
+    font-size: 38px;
+  }
+
+  .donation-copy > p:last-child {
+    font-size: 16px;
+  }
+
+  .donation-frame {
+    border-radius: 18px;
+  }
+
+  .donation-frame iframe {
+    height: 600px;
+  }
+
+}
