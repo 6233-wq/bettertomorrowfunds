@@ -151,10 +151,11 @@ img {
   align-items: center;
   gap: 50px;
 
-  /* Animation starting state */
   opacity: 0;
   transform: translateY(30px);
-  animation: homeHeroReveal 1s cubic-bezier(0.22, 1, 0.36, 1)
+
+  animation:
+    homeHeroReveal 1s cubic-bezier(0.22, 1, 0.36, 1)
     forwards;
 }
 
@@ -195,6 +196,7 @@ img {
   padding: 12px 22px;
   font-size: 14px;
   font-weight: 700;
+
   transition:
     transform 0.25s ease,
     background 0.25s ease,
@@ -209,7 +211,9 @@ img {
 .btn-dark:hover {
   transform: translateY(-3px);
   background: #000;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 .text-link {
@@ -235,15 +239,21 @@ img {
 .hero-art {
   height: 420px;
   position: relative;
+
   background: var(--blue);
-  border-radius: 44% 56% 50% 50% / 48% 45% 55% 52%;
+
+  border-radius:
+    44% 56% 50% 50% /
+    48% 45% 55% 52%;
+
   overflow: hidden;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  animation: heroArtReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1)
+  animation:
+    heroArtReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1)
     0.15s both;
 }
 
@@ -254,7 +264,8 @@ img {
 
   animation:
     logoFloat 5s ease-in-out infinite,
-    logoReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both;
+    logoReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1)
+    0.35s both;
 }
 
 
@@ -291,7 +302,6 @@ img {
 
 /* =========================================================
    HOMEPAGE SCROLL REVEAL
-   These only activate when JS adds .visible
    ========================================================= */
 
 .home-page .mission,
@@ -301,6 +311,7 @@ img {
 .home-page .closing {
   opacity: 0;
   transform: translateY(45px);
+
   transition:
     opacity 0.9s ease,
     transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
@@ -339,9 +350,13 @@ img {
 
 .focus-intro h2 {
   margin: 12px 0 22px;
+
   font-family: "Playfair Display", serif;
+
   font-size: clamp(42px, 4vw, 64px);
+
   line-height: 1.05;
+
   color: #202426;
 }
 
@@ -358,19 +373,28 @@ img {
 
 .focus-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
   gap: 28px;
+
   width: 100%;
 }
 
 .focus-card {
   background: #ffffff;
+
   border: 1px solid #e1e2df;
+
   border-radius: 20px;
+
   padding: 30px;
+
   min-height: 500px;
 
-  box-shadow: 0 8px 25px rgba(30, 40, 45, 0.05);
+  box-shadow:
+    0 8px 25px rgba(30, 40, 45, 0.05);
 
   transition:
     transform 0.35s ease,
@@ -379,7 +403,9 @@ img {
 
 .focus-card:hover {
   transform: translateY(-7px);
-  box-shadow: 0 18px 40px rgba(30, 40, 45, 0.1);
+
+  box-shadow:
+    0 18px 40px rgba(30, 40, 45, 0.1);
 }
 
 .focus-card > div {
@@ -388,36 +414,51 @@ img {
 
 .focus-card > div > span {
   display: block;
+
   margin-bottom: 22px;
+
   font-size: 17px;
+
   font-weight: 700;
+
   letter-spacing: 0.08em;
+
   color: #28657a;
 }
 
 .focus-card h3 {
   margin: 0 0 20px;
+
   font-size: 25px;
+
   line-height: 1.2;
+
   color: #202426;
 }
 
 .focus-card p {
   margin: 0;
+
   font-size: 16px;
+
   line-height: 1.65;
+
   color: #687277;
 }
 
 .focus-card ul {
   margin: 20px 0;
+
   padding-left: 22px;
 }
 
 .focus-card li {
   margin-bottom: 12px;
+
   font-size: 16px;
+
   line-height: 1.55;
+
   color: #687277;
 }
 
@@ -428,15 +469,24 @@ img {
 
 .fundraising {
   background: var(--blue);
+
   padding: 82px 30px;
+
+  position: relative;
+  overflow: hidden;
 }
 
 .fundraising-inner {
   max-width: 1180px;
+
   margin: auto;
+
   display: grid;
-  grid-template-columns: 1fr 1fr;
+
+  grid-template-columns: 1.05fr 0.95fr;
+
   gap: 90px;
+
   align-items: center;
 }
 
@@ -446,8 +496,137 @@ img {
 
 .fundraising-inner > p {
   font-size: 18px;
+
   color: #425a62;
+
   max-width: 560px;
+}
+
+
+/* =========================================================
+   FUNDRAISING STATS
+   ========================================================= */
+
+.fundraising-stats {
+  max-width: 1180px;
+
+  margin: 65px auto 0;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 24px;
+
+  opacity: 1;
+  transform: none;
+}
+
+
+/* =========================================================
+   INDIVIDUAL FUNDRAISING STAT
+   ========================================================= */
+
+.fundraising-stat {
+  background: rgba(255, 255, 255, 0.55);
+
+  border: 1px solid rgba(40, 93, 112, 0.12);
+
+  border-radius: 24px;
+
+  padding: 34px 30px;
+
+  min-width: 0;
+  min-height: 170px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  opacity: 1;
+  transform: translateY(0);
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.fundraising-stat:hover {
+  transform: translateY(-5px);
+
+  background: rgba(255, 255, 255, 0.82);
+
+  box-shadow:
+    0 15px 35px rgba(40, 93, 112, 0.08);
+}
+
+
+/* =========================================================
+   FUNDRAISING STAT REVEAL
+   ========================================================= */
+
+.fundraising.visible .fundraising-stats {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fundraising.visible .fundraising-stat:nth-child(1) {
+  transition-delay: 0.05s;
+}
+
+.fundraising.visible .fundraising-stat:nth-child(2) {
+  transition-delay: 0.15s;
+}
+
+.fundraising.visible .fundraising-stat:nth-child(3) {
+  transition-delay: 0.25s;
+}
+
+
+/* =========================================================
+   FUNDRAISING NUMBER
+   ========================================================= */
+
+.stat-number {
+  display: block;
+
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(48px, 6vw, 72px);
+
+  line-height: 1;
+
+  letter-spacing: -2px;
+
+  color: var(--ink);
+
+  margin-bottom: 16px;
+
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* =========================================================
+   FUNDRAISING LABEL
+   ========================================================= */
+
+.fundraising-stat p {
+  margin: 0;
+
+  max-width: 230px;
+
+  font-size: 15px;
+
+  line-height: 1.5;
+
+  color: #526267;
 }
 
 
@@ -457,21 +636,29 @@ img {
 
 .closing {
   padding-top: 85px;
+
   padding-bottom: 85px;
 }
 
 .closing-box {
   background: #f5eee7;
+
   border-radius: 28px;
+
   padding: 58px 65px;
+
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
+
   gap: 40px;
 }
 
 .closing h2 {
   font-size: 43px;
+
   max-width: 730px;
 }
 
@@ -482,49 +669,70 @@ img {
 
 .footer {
   background: #202628;
+
   color: #fff;
+
   padding: 65px 30px 25px;
 }
 
 .footer-top {
   max-width: 1180px;
+
   margin: auto;
+
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1.4fr;
+
+  grid-template-columns:
+    1.5fr 1fr 1.4fr;
+
   gap: 80px;
 }
 
 .footer-brand img {
   width: 48px;
+
   height: 48px;
+
   object-fit: contain;
+
   margin-bottom: 15px;
 }
 
 .footer h3 {
   font-size: 19px;
+
   margin: 0 0 5px;
 }
 
 .footer h4 {
   font-size: 11px;
+
   letter-spacing: 2px;
+
   text-transform: uppercase;
+
   color: #a9cbd5;
+
   margin: 2px 0 15px;
 }
 
 .footer p {
   color: #aeb8ba;
+
   font-size: 13px;
+
   max-width: 380px;
 }
 
 .footer a {
   display: block;
+
   text-decoration: none;
+
   color: #d8ddde;
+
   font-size: 13px;
+
   margin: 7px 0;
 }
 
@@ -534,23 +742,33 @@ img {
 
 .footer-bottom {
   max-width: 1180px;
+
   margin: 45px auto 0;
+
   padding-top: 20px;
+
   border-top: 1px solid #3c4547;
+
   display: flex;
+
   justify-content: space-between;
+
   gap: 30px;
+
   align-items: center;
 }
 
 .footer-bottom p {
   margin: 0;
+
   max-width: 750px;
 }
 
 .footer-bottom span {
   font-size: 12px;
+
   color: #879194;
+
   white-space: nowrap;
 }
 
@@ -561,65 +779,99 @@ img {
 
 .about-heading {
   max-width: 1180px;
+
   margin: auto;
+
   min-height: 350px;
+
   padding: 75px 30px;
 
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
 
   background: var(--blue);
-  border-radius: 0 0 34px 34px;
+
+  border-radius:
+    0 0 34px 34px;
 }
 
 .about-heading h1 {
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(48px, 6vw, 76px);
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size:
+    clamp(48px, 6vw, 76px);
+
   line-height: 1.05;
+
   margin: 0;
+
   max-width: 700px;
 }
 
 .about-heading img {
   width: 190px;
+
   height: 190px;
+
   object-fit: contain;
+
   margin-right: 70px;
 }
 
 .about-intro {
   text-align: center;
+
   padding-top: 82px;
+
   padding-bottom: 82px;
 }
 
 .about-intro p {
   font-size: 21px;
+
   line-height: 1.8;
+
   max-width: 920px;
+
   margin: auto;
 }
 
 .logo-meaning {
   max-width: none;
+
   background: var(--cream);
 
   display: grid;
-  grid-template-columns: 440px 1fr;
+
+  grid-template-columns:
+    440px 1fr;
+
   gap: 90px;
+
   align-items: center;
 
-  padding-left: max(30px, calc((100vw - 1120px) / 2));
-  padding-right: max(30px, calc((100vw - 1120px) / 2));
+  padding-left:
+    max(30px, calc((100vw - 1120px) / 2));
+
+  padding-right:
+    max(30px, calc((100vw - 1120px) / 2));
 }
 
 .logo-display {
   height: 400px;
+
   background: #fff;
+
   border-radius: 28px;
 
   display: grid;
+
   place-items: center;
 
   border: 1px solid #e9e7df;
@@ -627,7 +879,9 @@ img {
 
 .logo-display img {
   width: 250px;
+
   height: 250px;
+
   object-fit: contain;
 }
 
@@ -638,7 +892,9 @@ img {
 .logo-meaning p:last-child,
 .transparency p {
   font-size: 17px;
+
   line-height: 1.85;
+
   color: #515a5c;
 }
 
@@ -648,11 +904,17 @@ img {
 
 .transparency-label {
   display: inline-block;
+
   padding: 7px 13px;
+
   background: var(--pink);
+
   font-size: 10px;
+
   font-weight: 700;
+
   letter-spacing: 1.7px;
+
   margin-bottom: 15px;
 }
 
@@ -671,22 +933,31 @@ img {
 
 .team-card {
   text-align: center;
+
   background: var(--cream);
+
   border-radius: 30px;
+
   padding: 70px 40px;
 }
 
 .team-card img {
   width: 120px;
+
   height: 120px;
+
   object-fit: contain;
+
   margin: 0 auto 20px;
 }
 
 .team-card p:not(.kicker) {
   max-width: 700px;
+
   margin: 20px auto;
+
   color: #5e6668;
+
   font-size: 18px;
 }
 
@@ -700,42 +971,55 @@ img {
    ========================================================= */
 
 @keyframes homeHeroReveal {
+
   from {
     opacity: 0;
+
     transform: translateY(30px);
   }
 
   to {
     opacity: 1;
+
     transform: translateY(0);
   }
+
 }
 
 @keyframes heroArtReveal {
+
   from {
     opacity: 0;
+
     transform: scale(0.94);
   }
 
   to {
     opacity: 1;
+
     transform: scale(1);
   }
+
 }
 
 @keyframes logoReveal {
+
   from {
     opacity: 0;
+
     transform: scale(0.8);
   }
 
   to {
     opacity: 1;
+
     transform: scale(1);
   }
+
 }
 
 @keyframes logoFloat {
+
   0%,
   100% {
     transform: translateY(0);
@@ -744,6 +1028,7 @@ img {
   50% {
     transform: translateY(-10px);
   }
+
 }
 
 
@@ -755,18 +1040,27 @@ img {
 
   .nav {
     display: none;
+
     position: absolute;
+
     left: 0;
     right: 0;
+
     top: 75px;
 
     background: #fff;
-    padding: 15px 25px 25px;
 
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    padding:
+      15px 25px 25px;
+
+    box-shadow:
+      0 15px 30px
+      rgba(0, 0, 0, 0.08);
 
     flex-direction: column;
+
     align-items: flex-start;
+
     gap: 0;
   }
 
@@ -786,17 +1080,22 @@ img {
     display: block;
   }
 
+
   .home-hero {
     grid-template-columns: 1fr;
-    padding: 75px 35px;
+
+    padding:
+      75px 35px;
   }
 
   .hero-art {
     height: 360px;
   }
 
+
   .focus {
     grid-template-columns: 1fr;
+
     gap: 45px;
   }
 
@@ -805,16 +1104,26 @@ img {
   }
 
   .focus-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
   }
+
 
   .fundraising-inner {
     grid-template-columns: 1fr;
+
     gap: 20px;
   }
 
+
+  .fundraising-stats {
+    margin-top: 55px;
+  }
+
+
   .logo-meaning {
     grid-template-columns: 1fr;
+
     gap: 45px;
   }
 
@@ -826,14 +1135,18 @@ img {
     margin-right: 0;
   }
 
+
   .footer-top {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:
+      1fr 1fr;
+
     gap: 45px;
   }
 
   .footer-brand {
     grid-column: 1 / -1;
   }
+
 }
 
 
@@ -844,19 +1157,62 @@ img {
 @media (max-width: 750px) {
 
   .focus {
-    padding: 75px 6vw;
+    padding:
+      75px 6vw;
   }
 
   .focus-grid {
     grid-template-columns: 1fr;
+
     gap: 20px;
   }
 
   .focus-card {
     min-height: auto;
   }
+
+
+  .fundraising-stats {
+    grid-template-columns: 1fr;
+
+    gap: 0;
+
+    margin-top: 45px;
+
+    padding-top: 0;
+
+    border-top: none;
+  }
+
+  .fundraising-stat {
+    padding: 30px 0;
+
+    border-right: none;
+
+    border-bottom:
+      1px solid rgba(40, 93, 112, 0.18);
+  }
+
+  .fundraising-stat:first-child {
+    padding-top: 0;
+  }
+
+  .fundraising-stat:last-child {
+    padding-bottom: 0;
+
+    border-bottom: none;
+  }
+
+  .stat-number {
+    font-size: 58px;
+  }
+
 }
 
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
 
 @media (max-width: 600px) {
 
@@ -864,12 +1220,34 @@ img {
     height: 68px;
   }
 
+  .nav {
+    top: 67px;
+  }
+
+  .nav-shell {
+    padding:
+      0 20px;
+  }
+
+  .brand {
+    gap: 9px;
+  }
+
+  .brand img {
+    width: 38px;
+
+    height: 38px;
+  }
+
   .brand span {
     font-size: 14px;
   }
 
+
   .home-hero {
-    padding: 60px 22px;
+    padding:
+      60px 22px;
+
     min-height: auto;
   }
 
@@ -883,24 +1261,30 @@ img {
 
   .hero-art {
     height: 300px;
+
     border-radius: 30px;
   }
 
   .hero-art img {
     width: 180px;
+
     height: 180px;
   }
 
+
   .section {
-    padding: 68px 22px;
+    padding:
+      68px 22px;
   }
 
   .mission-copy {
     font-size: 16px;
   }
 
+
   .focus {
     padding-left: 22px;
+
     padding-right: 22px;
   }
 
@@ -912,12 +1296,33 @@ img {
     min-height: auto;
   }
 
+
   .fundraising {
-    padding: 68px 22px;
+    padding:
+      68px 22px;
   }
 
+  .fundraising-inner {
+    gap: 18px;
+  }
+
+  .fundraising-stats {
+    margin-top: 40px;
+  }
+
+  .stat-number {
+    font-size: 52px;
+  }
+
+  .fundraising-stat p {
+    font-size: 13px;
+  }
+
+
   .closing-box {
-    padding: 38px 28px;
+    padding:
+      38px 28px;
+
     display: block;
   }
 
@@ -925,22 +1330,29 @@ img {
     font-size: 36px;
   }
 
+
   .about-heading {
     min-height: 300px;
-    padding: 55px 22px;
+
+    padding:
+      55px 22px;
   }
 
   .about-heading img {
     width: 100px;
+
     height: 100px;
   }
+
 
   .about-intro p {
     font-size: 17px;
   }
 
+
   .logo-meaning {
     padding-left: 22px;
+
     padding-right: 22px;
   }
 
@@ -950,11 +1362,14 @@ img {
 
   .logo-display img {
     width: 180px;
+
     height: 180px;
   }
 
+
   .footer-top {
     grid-template-columns: 1fr;
+
     gap: 35px;
   }
 
@@ -964,11 +1379,357 @@ img {
 
   .footer-bottom span {
     display: block;
+
     margin-top: 12px;
   }
 
+
   .hero-actions {
     flex-wrap: wrap;
+  }
+
+}
+
+
+/* =========================================================
+   TEAM PAGE
+   ========================================================= */
+
+
+/* =========================================================
+   TEAM HERO
+   ========================================================= */
+
+.team-hero {
+  max-width: 1180px;
+  min-height: 410px;
+  margin: 0 auto;
+
+  padding: 75px 65px;
+
+  display: grid;
+  grid-template-columns: 1.5fr 0.8fr;
+  align-items: center;
+  gap: 60px;
+
+  background: var(--blue);
+
+  border-radius: 0 0 34px 34px;
+}
+
+.team-hero-content {
+  max-width: 680px;
+}
+
+.team-hero h1 {
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: clamp(52px, 6vw, 76px);
+
+  line-height: 1.05;
+
+  letter-spacing: -2px;
+
+  margin: 0 0 25px;
+}
+
+.team-hero-content > p:last-child {
+  max-width: 650px;
+
+  margin: 0;
+
+  font-size: 19px;
+
+  line-height: 1.75;
+
+  color: #4f5d61;
+}
+
+.team-hero-art {
+  height: 260px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.team-hero-art img {
+  width: 200px;
+  height: 200px;
+
+  object-fit: contain;
+}
+
+
+/* =========================================================
+   TEAM MEMBERS SECTION
+   ========================================================= */
+
+.team-members {
+  max-width: 1180px;
+
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.team-members-heading {
+  max-width: 650px;
+
+  margin-bottom: 55px;
+}
+
+.team-members-heading h2 {
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: clamp(40px, 4.5vw, 58px);
+
+  line-height: 1.1;
+
+  letter-spacing: -1.5px;
+
+  margin: 0;
+}
+
+
+/* =========================================================
+   TEAM GRID
+   ========================================================= */
+
+.team-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 30px;
+}
+
+
+/* =========================================================
+   TEAM MEMBER CARD
+   ========================================================= */
+
+.team-member {
+  background: var(--cream);
+
+  border: 1px solid #e7e5dd;
+
+  border-radius: 26px;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 18px 40px rgba(30, 40, 45, 0.09);
+}
+
+
+/* =========================================================
+   TEAM MEMBER PHOTO
+   ========================================================= */
+
+.team-member-photo {
+  width: 100%;
+
+  height: 390px;
+
+  background: var(--blue);
+
+  overflow: hidden;
+}
+
+.team-member-photo img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.45s ease;
+}
+
+.team-member:hover .team-member-photo img {
+  transform: scale(1.025);
+}
+
+
+/* =========================================================
+   TEAM MEMBER INFORMATION
+   ========================================================= */
+
+.team-member-info {
+  padding: 28px 30px 32px;
+}
+
+.team-member-info h3 {
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: 31px;
+
+  line-height: 1.15;
+
+  margin: 0 0 8px;
+
+  color: var(--ink);
+}
+
+.team-member-role {
+  margin: 0;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.4px;
+
+  text-transform: uppercase;
+
+  color: var(--blue3);
+}
+
+
+/* =========================================================
+   TEAM CLOSING
+   ========================================================= */
+
+.team-closing {
+  padding-top: 0;
+}
+
+.team-closing-box {
+  background: #f5eee7;
+
+  border-radius: 28px;
+
+  padding: 60px 65px;
+
+  text-align: center;
+}
+
+.team-closing-box h2 {
+  max-width: 800px;
+
+  margin: 0 auto;
+
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: clamp(35px, 4vw, 52px);
+
+  line-height: 1.15;
+
+  letter-spacing: -1px;
+}
+
+
+/* =========================================================
+   TEAM PAGE TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .team-hero {
+    grid-template-columns: 1fr;
+
+    padding: 65px 45px;
+
+    gap: 20px;
+  }
+
+  .team-hero-art {
+    height: 180px;
+  }
+
+  .team-hero-art img {
+    width: 150px;
+    height: 150px;
+  }
+
+}
+
+
+/* =========================================================
+   TEAM PAGE MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+  .team-hero {
+    min-height: 0;
+
+    padding: 55px 22px 45px;
+
+    border-radius: 0 0 28px 28px;
+  }
+
+  .team-hero h1 {
+    font-size: 52px;
+
+    letter-spacing: -1.5px;
+  }
+
+  .team-hero-content > p:last-child {
+    font-size: 16px;
+  }
+
+  .team-hero-art {
+    height: 140px;
+  }
+
+  .team-hero-art img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .team-members {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  .team-members-heading {
+    margin-bottom: 35px;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+
+    gap: 22px;
+  }
+
+  .team-member-photo {
+    height: 360px;
+  }
+
+  .team-member-info {
+    padding: 24px;
+  }
+
+  .team-member-info h3 {
+    font-size: 28px;
+  }
+
+  .team-closing-box {
+    padding: 42px 25px;
+  }
+
+}
+
+
+/* =========================================================
+   TEAM PAGE REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .team-member,
+  .team-member-photo img {
+    transition: none;
   }
 
 }
@@ -988,7 +1749,9 @@ img {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+
     animation-iteration-count: 1 !important;
+
     transition-duration: 0.01ms !important;
   }
 
@@ -998,6 +1761,253 @@ img {
   .home-page .fundraising,
   .home-page .closing {
     opacity: 1;
+
     transform: none;
   }
+
+}
+
+
+/* =========================================================
+   MOBILE OVERFLOW FIX
+   ABOUT US + ALL PAGES
+   ========================================================= */
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   ABOUT US — MOBILE
+   ========================================================= */
+
+@media (max-width: 750px) {
+
+  .about-heading,
+  .about-intro,
+  .logo-meaning,
+  .transparency,
+  .team,
+  .team-members {
+    width: 100%;
+    max-width: 100%;
+  }
+
+
+  /* ABOUT HEADING */
+
+  .about-heading {
+    min-height: auto;
+    padding: 55px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 30px;
+    overflow: hidden;
+  }
+
+  .about-heading > div {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .about-heading h1 {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(46px, 12vw, 64px);
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  .about-heading img {
+    width: 110px;
+    height: 110px;
+    margin: 0;
+    align-self: center;
+  }
+
+
+  /* ABOUT INTRO */
+
+  .about-intro {
+    padding: 65px 22px;
+    text-align: center;
+  }
+
+  .about-intro p {
+    width: 100%;
+    max-width: 100%;
+    font-size: 17px;
+    line-height: 1.75;
+    overflow-wrap: break-word;
+  }
+
+
+  /* LOGO MEANING */
+
+  .logo-meaning {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+
+    padding-left: 22px;
+    padding-right: 22px;
+
+    overflow: hidden;
+  }
+
+  .logo-meaning > * {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .logo-display {
+    width: 100%;
+    max-width: 100%;
+    height: 280px;
+  }
+
+  .logo-display img {
+    max-width: 180px;
+    width: 180px;
+    height: 180px;
+  }
+
+  .logo-meaning > div:last-child {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .logo-meaning h2 {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(36px, 9vw, 52px);
+    overflow-wrap: break-word;
+  }
+
+  .logo-meaning p {
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+
+
+  /* TRANSPARENCY */
+
+  .transparency {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .transparency p {
+    width: 100%;
+    max-width: 100%;
+    font-size: 16px;
+    overflow-wrap: break-word;
+  }
+
+
+  /* GENERAL HEADINGS */
+
+  .section-heading h2,
+  .focus h2,
+  .fundraising h2,
+  .closing h2,
+  .logo-meaning h2,
+  .transparency h2,
+  .team-card h2 {
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+
+
+  /* PREVENT GRID/FLEX CHILDREN FROM CREATING OVERFLOW */
+
+  .section,
+  .focus,
+  .fundraising,
+  .closing {
+    min-width: 0;
+  }
+
+  .section > *,
+  .focus > *,
+  .fundraising > *,
+  .closing > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  .about-heading {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .about-heading h1 {
+    font-size: 44px;
+    letter-spacing: -1.5px;
+  }
+
+  .about-intro {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .logo-meaning {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .transparency {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+}
+
+
+/* =========================================================
+   FINAL MOBILE SAFETY
+   ========================================================= */
+
+@media (max-width: 750px) {
+
+  .fundraising-inner,
+  .fundraising-stats,
+  .fundraising-stat {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .fundraising-inner > *,
+  .fundraising-stats > * {
+    min-width: 0;
+  }
+
+  .fundraising-stat {
+    overflow: hidden;
+  }
+
+  .stat-number {
+    max-width: 100%;
+    overflow: hidden;
+  }
+
 }
