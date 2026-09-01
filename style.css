@@ -17,6 +17,7 @@ body {
   background: #fff;
   font-family: "DM Sans", Arial, sans-serif;
   line-height: 1.65;
+  overflow-x: hidden;
 }
 
 a {
@@ -115,6 +116,7 @@ img {
   border: 0;
   background: transparent;
   font-size: 25px;
+  cursor: pointer;
 }
 
 
@@ -146,6 +148,7 @@ img {
   margin: auto;
   min-height: 620px;
   padding: 90px 70px;
+
   display: grid;
   grid-template-columns: 1.02fr 0.98fr;
   align-items: center;
@@ -253,8 +256,11 @@ img {
   justify-content: center;
 
   animation:
-    heroArtReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1)
-    0.15s both;
+    heroArtReveal
+    1.2s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    0.15s
+    both;
 }
 
 .hero-art img {
@@ -264,19 +270,13 @@ img {
 
   animation:
     logoFloat 5s ease-in-out infinite,
-    logoReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1)
-    0.35s both;
+    logoReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both;
 }
 
 
 /* =========================================================
-   MISSION
+   HEADINGS
    ========================================================= */
-
-.mission {
-  border-top: 1px solid var(--line);
-  text-align: center;
-}
 
 .section-heading h2,
 .focus h2,
@@ -291,23 +291,40 @@ img {
   margin: 0;
 }
 
+
+/* =========================================================
+   MISSION
+   ========================================================= */
+
+.mission {
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
 .mission-copy {
   max-width: 1030px;
   margin: 28px auto 0;
+
   font-size: 18px;
   line-height: 1.85;
+
   color: #4f585a;
 }
 
 
 /* =========================================================
    HOMEPAGE SCROLL REVEAL
+   =========================================================
+
+   IMPORTANT:
+   Fundraising is intentionally NOT hidden here.
+   The fundraising section and statistics must remain
+   visible even if JavaScript does not load.
    ========================================================= */
 
 .home-page .mission,
 .home-page .focus-intro,
 .home-page .focus-card,
-.home-page .fundraising,
 .home-page .closing {
   opacity: 0;
   transform: translateY(45px);
@@ -320,7 +337,6 @@ img {
 .home-page .mission.visible,
 .home-page .focus-intro.visible,
 .home-page .focus-card.visible,
-.home-page .fundraising.visible,
 .home-page .closing.visible {
   opacity: 1;
   transform: translateY(0);
@@ -352,9 +368,7 @@ img {
   margin: 12px 0 22px;
 
   font-family: "Playfair Display", serif;
-
   font-size: clamp(42px, 4vw, 64px);
-
   line-height: 1.05;
 
   color: #202426;
@@ -373,12 +387,9 @@ img {
 
 .focus-grid {
   display: grid;
-
-  grid-template-columns:
-    repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 
   gap: 28px;
-
   width: 100%;
 }
 
@@ -386,11 +397,9 @@ img {
   background: #ffffff;
 
   border: 1px solid #e1e2df;
-
   border-radius: 20px;
 
   padding: 30px;
-
   min-height: 500px;
 
   box-shadow:
@@ -418,9 +427,7 @@ img {
   margin-bottom: 22px;
 
   font-size: 17px;
-
   font-weight: 700;
-
   letter-spacing: 0.08em;
 
   color: #28657a;
@@ -430,7 +437,6 @@ img {
   margin: 0 0 20px;
 
   font-size: 25px;
-
   line-height: 1.2;
 
   color: #202426;
@@ -440,7 +446,6 @@ img {
   margin: 0;
 
   font-size: 16px;
-
   line-height: 1.65;
 
   color: #687277;
@@ -448,7 +453,6 @@ img {
 
 .focus-card ul {
   margin: 20px 0;
-
   padding-left: 22px;
 }
 
@@ -456,7 +460,6 @@ img {
   margin-bottom: 12px;
 
   font-size: 16px;
-
   line-height: 1.55;
 
   color: #687277;
@@ -470,16 +473,20 @@ img {
 .fundraising {
   background: var(--blue);
 
-  padding: 82px 30px;
+  padding: 90px 30px;
+
+  /*
+    Prevent anything inside this section from being
+    accidentally clipped by another animation.
+  */
+  overflow: hidden;
 }
 
 .fundraising-inner {
   max-width: 1180px;
-
   margin: auto;
 
   display: grid;
-
   grid-template-columns: 1fr 1fr;
 
   gap: 90px;
@@ -493,6 +500,7 @@ img {
 
 .fundraising-inner > p {
   font-size: 18px;
+  line-height: 1.7;
 
   color: #425a62;
 
@@ -507,269 +515,91 @@ img {
 .fundraising-stats {
   max-width: 1180px;
 
-  margin: 70px auto 0;
-
-  padding-top: 45px;
-
-  border-top: 1px solid rgba(40, 93, 112, 0.18);
+  margin: 65px auto 0;
 
   display: grid;
 
   grid-template-columns:
     repeat(3, minmax(0, 1fr));
 
-  gap: 0;
+  gap: 24px;
 }
+
+
+/* Individual statistic */
 
 .fundraising-stat {
-  padding: 0 40px;
-
-  border-right:
-    1px solid rgba(40, 93, 112, 0.18);
-
-  text-align: center;
-}
-
-.fundraising-stat:first-child {
-  padding-left: 0;
-}
-
-.fundraising-stat:last-child {
-  padding-right: 0;
-  border-right: none;
-}
-
-.stat-number {
-  display: block;
-
-  font-family:
-    "Playfair Display",
-    Georgia,
-    serif;
-
-  font-size:
-    clamp(48px, 5vw, 70px);
-
-  line-height: 1;
-
-  letter-spacing: -2px;
-
-  color: var(--ink);
-
-  margin-bottom: 14px;
-
-  font-variant-numeric: tabular-nums;
-}
-
-.stat-label {
-  display: block;
-
-  font-size: 14px;
-
-  line-height: 1.5;
-
-  color: #425a62;
-
-  max-width: 180px;
-
-  margin: auto;
-}
-/* =========================================================
-   FUNDRAISING STATS
-   ========================================================= */
-
-.fundraising {
-  position: relative;
-  overflow: hidden;
-}
-
-.fundraising-inner {
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 90px;
-}
-
-.fundraising-copy {
-  max-width: 650px;
-}
-
-.fundraising-copy > p:last-child {
-  margin: 28px 0 0;
-  max-width: 560px;
-  font-size: 18px;
-  line-height: 1.75;
-  color: #425a62;
-}
-
-
-/* =========================================================
-   STAT GRID
-   ========================================================= */
-
-.fundraising-stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-
-/* Large first statistic */
-
-.fundraising-stat:first-child {
-  grid-column: 1 / -1;
-}
-
-
-/* Individual stat */
-
-.fundraising-stat {
-  min-height: 170px;
-
-  padding: 30px;
-
-  background: rgba(255, 255, 255, 0.58);
+  background: #ffffff;
 
   border: 1px solid rgba(40, 93, 112, 0.12);
 
   border-radius: 24px;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding: 38px 28px;
+
+  text-align: center;
+
+  /*
+    Always visible.
+    JavaScript is NOT responsible for displaying
+    these cards.
+  */
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+
+  box-shadow:
+    0 10px 30px rgba(32, 36, 38, 0.07);
 
   transition:
     transform 0.3s ease,
-    background 0.3s ease,
     box-shadow 0.3s ease;
 }
 
 .fundraising-stat:hover {
-  transform: translateY(-5px);
-
-  background: rgba(255, 255, 255, 0.82);
+  transform: translateY(-6px);
 
   box-shadow:
-    0 15px 35px rgba(40, 93, 112, 0.08);
+    0 18px 40px rgba(32, 36, 38, 0.11);
 }
 
 
-/* Number */
+/* Large number */
 
 .stat-number {
-  display: block;
+  font-family: "Playfair Display", Georgia, serif;
 
-  font-family:
-    "Playfair Display",
-    Georgia,
-    serif;
+  font-size: clamp(52px, 6vw, 76px);
 
-  font-size: clamp(52px, 5vw, 76px);
-
-  line-height: 0.95;
-
-  letter-spacing: -2px;
+  line-height: 1;
 
   color: var(--ink);
 
-  font-variant-numeric: tabular-nums;
+  margin-bottom: 18px;
+}
+
+.counter {
+  display: inline-block;
+
+  /*
+    Gives the number a little room while it animates.
+  */
+  min-width: 1ch;
 }
 
 
-/* Label */
+/* Statistic label */
 
-.stat-label {
-  display: block;
+.fundraising-stat p {
+  margin: 0;
 
-  margin-top: 15px;
+  font-size: 15px;
 
-  max-width: 230px;
+  line-height: 1.5;
 
-  font-size: 12px;
-
-  line-height: 1.4;
-
-  font-weight: 700;
-
-  letter-spacing: 0.08em;
-
-  text-transform: uppercase;
-
-  color: var(--blue3);
+  color: var(--muted);
 }
 
-
-/* =========================================================
-   FUNDRAISING ANIMATION
-   ========================================================= */
-
-.fundraising-stats {
-  opacity: 0;
-  transform: translateY(35px);
-
-  transition:
-    opacity 0.8s ease,
-    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.fundraising.visible .fundraising-stats {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.fundraising.visible .fundraising-stat:nth-child(1) {
-  transition-delay: 0.05s;
-}
-
-.fundraising.visible .fundraising-stat:nth-child(2) {
-  transition-delay: 0.15s;
-}
-
-.fundraising.visible .fundraising-stat:nth-child(3) {
-  transition-delay: 0.25s;
-}
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media (max-width: 1050px) {
-
-  .fundraising-inner {
-    grid-template-columns: 1fr;
-    gap: 50px;
-  }
-
-  .fundraising-copy {
-    max-width: 700px;
-  }
-
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 600px) {
-
-  .fundraising-stats {
-    grid-template-columns: 1fr;
-  }
-
-  .fundraising-stat:first-child {
-    grid-column: auto;
-  }
-
-  .fundraising-stat {
-    min-height: 145px;
-    padding: 26px;
-  }
-
-  .stat-number {
-    font-size: 55px;
-  }
-
-}
 
 /* =========================================================
    CLOSING
@@ -777,7 +607,6 @@ img {
 
 .closing {
   padding-top: 85px;
-
   padding-bottom: 85px;
 }
 
@@ -791,7 +620,6 @@ img {
   display: flex;
 
   justify-content: space-between;
-
   align-items: center;
 
   gap: 40px;
@@ -799,7 +627,6 @@ img {
 
 .closing h2 {
   font-size: 43px;
-
   max-width: 730px;
 }
 
@@ -831,7 +658,6 @@ img {
 
 .footer-brand img {
   width: 48px;
-
   height: 48px;
 
   object-fit: contain;
@@ -841,7 +667,6 @@ img {
 
 .footer h3 {
   font-size: 19px;
-
   margin: 0 0 5px;
 }
 
@@ -901,7 +726,6 @@ img {
 
 .footer-bottom p {
   margin: 0;
-
   max-width: 750px;
 }
 
@@ -930,23 +754,17 @@ img {
   display: flex;
 
   justify-content: space-between;
-
   align-items: center;
 
   background: var(--blue);
 
-  border-radius:
-    0 0 34px 34px;
+  border-radius: 0 0 34px 34px;
 }
 
 .about-heading h1 {
-  font-family:
-    "Playfair Display",
-    Georgia,
-    serif;
+  font-family: "Playfair Display", Georgia, serif;
 
-  font-size:
-    clamp(48px, 6vw, 76px);
+  font-size: clamp(48px, 6vw, 76px);
 
   line-height: 1.05;
 
@@ -957,7 +775,6 @@ img {
 
 .about-heading img {
   width: 190px;
-
   height: 190px;
 
   object-fit: contain;
@@ -969,7 +786,6 @@ img {
   text-align: center;
 
   padding-top: 82px;
-
   padding-bottom: 82px;
 }
 
@@ -990,8 +806,7 @@ img {
 
   display: grid;
 
-  grid-template-columns:
-    440px 1fr;
+  grid-template-columns: 440px 1fr;
 
   gap: 90px;
 
@@ -1020,7 +835,6 @@ img {
 
 .logo-display img {
   width: 250px;
-
   height: 250px;
 
   object-fit: contain;
@@ -1084,7 +898,6 @@ img {
 
 .team-card img {
   width: 120px;
-
   height: 120px;
 
   object-fit: contain;
@@ -1108,6 +921,134 @@ img {
 
 
 /* =========================================================
+   TEAM PAGE — INTRO
+   ========================================================= */
+
+.team-intro {
+  max-width: 950px;
+
+  text-align: center;
+
+  padding-top: 85px;
+  padding-bottom: 70px;
+}
+
+.team-intro h1 {
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: clamp(50px, 6vw, 76px);
+
+  line-height: 1.05;
+
+  margin: 0;
+}
+
+.team-intro > p:last-child {
+  max-width: 760px;
+
+  margin: 25px auto 0;
+
+  font-size: 18px;
+
+  line-height: 1.8;
+
+  color: #5e6668;
+}
+
+
+/* =========================================================
+   TEAM MEMBERS
+   ========================================================= */
+
+.team-members {
+  max-width: 1100px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 28px;
+
+  padding-top: 30px;
+}
+
+.team-member {
+  background: #fff;
+
+  border: 1px solid #e1e2df;
+
+  border-radius: 24px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 8px 25px rgba(30, 40, 45, 0.05);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 18px 40px rgba(30, 40, 45, 0.1);
+}
+
+.team-member-photo {
+  width: 100%;
+
+  aspect-ratio: 1 / 1;
+
+  background: var(--cream);
+
+  overflow: hidden;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.team-member-photo img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.team-member-info {
+  padding: 25px 28px 30px;
+}
+
+.team-member-info h2 {
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: 30px;
+
+  line-height: 1.15;
+
+  margin: 0;
+}
+
+.team-member-role {
+  margin: 8px 0 0;
+
+  color: var(--blue3);
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
    HOMEPAGE ANIMATIONS
    ========================================================= */
 
@@ -1115,13 +1056,11 @@ img {
 
   from {
     opacity: 0;
-
     transform: translateY(30px);
   }
 
   to {
     opacity: 1;
-
     transform: translateY(0);
   }
 
@@ -1131,13 +1070,11 @@ img {
 
   from {
     opacity: 0;
-
     transform: scale(0.94);
   }
 
   to {
     opacity: 1;
-
     transform: scale(1);
   }
 
@@ -1147,13 +1084,11 @@ img {
 
   from {
     opacity: 0;
-
     transform: scale(0.8);
   }
 
   to {
     opacity: 1;
-
     transform: scale(1);
   }
 
@@ -1191,12 +1126,10 @@ img {
 
     background: #fff;
 
-    padding:
-      15px 25px 25px;
+    padding: 15px 25px 25px;
 
     box-shadow:
-      0 15px 30px
-      rgba(0, 0, 0, 0.08);
+      0 15px 30px rgba(0, 0, 0, 0.08);
 
     flex-direction: column;
 
@@ -1221,18 +1154,15 @@ img {
     display: block;
   }
 
-
   .home-hero {
     grid-template-columns: 1fr;
 
-    padding:
-      75px 35px;
+    padding: 75px 35px;
   }
 
   .hero-art {
     height: 360px;
   }
-
 
   .focus {
     grid-template-columns: 1fr;
@@ -1249,18 +1179,16 @@ img {
       repeat(3, minmax(0, 1fr));
   }
 
-
   .fundraising-inner {
     grid-template-columns: 1fr;
 
     gap: 20px;
   }
 
-
   .fundraising-stats {
-    margin-top: 55px;
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
   }
-
 
   .logo-meaning {
     grid-template-columns: 1fr;
@@ -1276,10 +1204,8 @@ img {
     margin-right: 0;
   }
 
-
   .footer-top {
-    grid-template-columns:
-      1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 
     gap: 45px;
   }
@@ -1298,8 +1224,7 @@ img {
 @media (max-width: 750px) {
 
   .focus {
-    padding:
-      75px 6vw;
+    padding: 75px 6vw;
   }
 
   .focus-grid {
@@ -1312,40 +1237,21 @@ img {
     min-height: auto;
   }
 
+  /* Team */
 
-  .fundraising-stats {
+  .team-intro {
+    padding-top: 65px;
+    padding-bottom: 45px;
+  }
+
+  .team-intro > p:last-child {
+    font-size: 16px;
+  }
+
+  .team-members {
     grid-template-columns: 1fr;
 
-    gap: 0;
-
-    margin-top: 45px;
-
-    padding-top: 0;
-
-    border-top: none;
-  }
-
-  .fundraising-stat {
-    padding: 30px 0;
-
-    border-right: none;
-
-    border-bottom:
-      1px solid rgba(40, 93, 112, 0.18);
-  }
-
-  .fundraising-stat:first-child {
-    padding-top: 0;
-  }
-
-  .fundraising-stat:last-child {
-    padding-bottom: 0;
-
-    border-bottom: none;
-  }
-
-  .stat-number {
-    font-size: 58px;
+    padding-top: 20px;
   }
 
 }
@@ -1366,34 +1272,24 @@ img {
   }
 
   .nav-shell {
-    padding:
-      0 20px;
-  }
-
-  .brand {
-    gap: 9px;
-  }
-
-  .brand img {
-    width: 38px;
-
-    height: 38px;
+    padding-left: 18px;
+    padding-right: 18px;
   }
 
   .brand span {
     font-size: 14px;
   }
 
-
   .home-hero {
-    padding:
-      60px 22px;
+    padding: 60px 22px;
 
     min-height: auto;
   }
 
   .hero-copy h1 {
     font-size: 50px;
+
+    letter-spacing: -2px;
   }
 
   .hero-lead {
@@ -1408,24 +1304,19 @@ img {
 
   .hero-art img {
     width: 180px;
-
     height: 180px;
   }
 
-
   .section {
-    padding:
-      68px 22px;
+    padding: 68px 22px;
   }
 
   .mission-copy {
     font-size: 16px;
   }
 
-
   .focus {
     padding-left: 22px;
-
     padding-right: 22px;
   }
 
@@ -1437,32 +1328,44 @@ img {
     min-height: auto;
   }
 
+  /* Fundraising */
 
   .fundraising {
-    padding:
-      68px 22px;
+    padding: 68px 22px;
   }
 
   .fundraising-inner {
-    gap: 18px;
+    gap: 10px;
+  }
+
+  .fundraising-inner > p {
+    font-size: 16px;
   }
 
   .fundraising-stats {
-    margin-top: 40px;
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+
+    margin-top: 45px;
+  }
+
+  .fundraising-stat {
+    padding: 32px 24px;
   }
 
   .stat-number {
-    font-size: 52px;
+    font-size: 58px;
   }
 
-  .stat-label {
-    font-size: 13px;
+  .fundraising-stat p {
+    font-size: 15px;
   }
 
+  /* Closing */
 
   .closing-box {
-    padding:
-      38px 28px;
+    padding: 38px 28px;
 
     display: block;
   }
@@ -1471,29 +1374,37 @@ img {
     font-size: 36px;
   }
 
+  /* About */
 
   .about-heading {
     min-height: 300px;
 
-    padding:
-      55px 22px;
+    padding: 55px 22px;
+
+    /*
+      Prevent the heading area from creating
+      horizontal overflow on phones.
+    */
+    overflow: hidden;
+  }
+
+  .about-heading h1 {
+    font-size: 50px;
   }
 
   .about-heading img {
     width: 100px;
-
     height: 100px;
-  }
 
+    flex-shrink: 0;
+  }
 
   .about-intro p {
     font-size: 17px;
   }
 
-
   .logo-meaning {
     padding-left: 22px;
-
     padding-right: 22px;
   }
 
@@ -1503,10 +1414,29 @@ img {
 
   .logo-display img {
     width: 180px;
-
     height: 180px;
   }
 
+  /* Team */
+
+  .team-intro h1 {
+    font-size: 50px;
+  }
+
+  .team-member-info {
+    padding: 22px 22px 26px;
+  }
+
+  .team-member-info h2 {
+    font-size: 27px;
+  }
+
+  /* Footer */
+
+  .footer {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
 
   .footer-top {
     grid-template-columns: 1fr;
@@ -1524,354 +1454,45 @@ img {
     margin-top: 12px;
   }
 
+  /* Hero buttons */
 
   .hero-actions {
     flex-wrap: wrap;
   }
 
 }
-/* =========================================================
-   TEAM PAGE
-   ========================================================= */
 
 
 /* =========================================================
-   TEAM HERO
+   VERY SMALL PHONES
    ========================================================= */
 
-.team-hero {
-  max-width: 1180px;
-  min-height: 410px;
-  margin: 0 auto;
+@media (max-width: 400px) {
 
-  padding: 75px 65px;
-
-  display: grid;
-  grid-template-columns: 1.5fr 0.8fr;
-  align-items: center;
-  gap: 60px;
-
-  background: var(--blue);
-
-  border-radius: 0 0 34px 34px;
-}
-
-.team-hero-content {
-  max-width: 680px;
-}
-
-.team-hero h1 {
-  font-family: "Playfair Display", Georgia, serif;
-
-  font-size: clamp(52px, 6vw, 76px);
-
-  line-height: 1.05;
-
-  letter-spacing: -2px;
-
-  margin: 0 0 25px;
-}
-
-.team-hero-content > p:last-child {
-  max-width: 650px;
-
-  margin: 0;
-
-  font-size: 19px;
-
-  line-height: 1.75;
-
-  color: #4f5d61;
-}
-
-.team-hero-art {
-  height: 260px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-}
-
-.team-hero-art img {
-  width: 200px;
-  height: 200px;
-
-  object-fit: contain;
-}
-
-
-/* =========================================================
-   TEAM MEMBERS SECTION
-   ========================================================= */
-
-.team-members {
-  max-width: 1180px;
-
-  padding-top: 100px;
-  padding-bottom: 100px;
-}
-
-.team-members-heading {
-  max-width: 650px;
-
-  margin-bottom: 55px;
-}
-
-.team-members-heading h2 {
-  font-family: "Playfair Display", Georgia, serif;
-
-  font-size: clamp(40px, 4.5vw, 58px);
-
-  line-height: 1.1;
-
-  letter-spacing: -1.5px;
-
-  margin: 0;
-}
-
-
-/* =========================================================
-   TEAM GRID
-   ========================================================= */
-
-.team-grid {
-  display: grid;
-
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-
-  gap: 30px;
-}
-
-
-/* =========================================================
-   TEAM MEMBER CARD
-   ========================================================= */
-
-.team-member {
-  background: var(--cream);
-
-  border: 1px solid #e7e5dd;
-
-  border-radius: 26px;
-
-  overflow: hidden;
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.team-member:hover {
-  transform: translateY(-6px);
-
-  box-shadow:
-    0 18px 40px rgba(30, 40, 45, 0.09);
-}
-
-
-/* =========================================================
-   TEAM MEMBER PHOTO
-   ========================================================= */
-
-.team-member-photo {
-  width: 100%;
-
-  height: 390px;
-
-  background: var(--blue);
-
-  overflow: hidden;
-}
-
-.team-member-photo img {
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-
-  transition: transform 0.45s ease;
-}
-
-.team-member:hover .team-member-photo img {
-  transform: scale(1.025);
-}
-
-
-/* =========================================================
-   TEAM MEMBER INFORMATION
-   ========================================================= */
-
-.team-member-info {
-  padding: 28px 30px 32px;
-}
-
-.team-member-info h3 {
-  font-family: "Playfair Display", Georgia, serif;
-
-  font-size: 31px;
-
-  line-height: 1.15;
-
-  margin: 0 0 8px;
-
-  color: var(--ink);
-}
-
-.team-member-role {
-  margin: 0;
-
-  font-size: 13px;
-
-  font-weight: 700;
-
-  letter-spacing: 1.4px;
-
-  text-transform: uppercase;
-
-  color: var(--blue3);
-}
-
-
-/* =========================================================
-   TEAM CLOSING
-   ========================================================= */
-
-.team-closing {
-  padding-top: 0;
-}
-
-.team-closing-box {
-  background: #f5eee7;
-
-  border-radius: 28px;
-
-  padding: 60px 65px;
-
-  text-align: center;
-}
-
-.team-closing-box h2 {
-  max-width: 800px;
-
-  margin: 0 auto;
-
-  font-family: "Playfair Display", Georgia, serif;
-
-  font-size: clamp(35px, 4vw, 52px);
-
-  line-height: 1.15;
-
-  letter-spacing: -1px;
-}
-
-
-/* =========================================================
-   TEAM PAGE TABLET
-   ========================================================= */
-
-@media (max-width: 900px) {
-
-  .team-hero {
-    grid-template-columns: 1fr;
-
-    padding: 65px 45px;
-
-    gap: 20px;
+  .hero-copy h1 {
+    font-size: 43px;
   }
 
-  .team-hero-art {
-    height: 180px;
+  .about-heading {
+    display: block;
+
+    text-align: left;
   }
 
-  .team-hero-art img {
-    width: 150px;
-    height: 150px;
+  .about-heading img {
+    margin-top: 25px;
+  }
+
+  .team-intro h1 {
+    font-size: 43px;
+  }
+
+  .fundraising h2 {
+    font-size: 39px;
   }
 
 }
 
-
-/* =========================================================
-   TEAM PAGE MOBILE
-   ========================================================= */
-
-@media (max-width: 650px) {
-
-  .team-hero {
-    min-height: 0;
-
-    padding: 55px 22px 45px;
-
-    border-radius: 0 0 28px 28px;
-  }
-
-  .team-hero h1 {
-    font-size: 52px;
-
-    letter-spacing: -1.5px;
-  }
-
-  .team-hero-content > p:last-child {
-    font-size: 16px;
-  }
-
-  .team-hero-art {
-    height: 140px;
-  }
-
-  .team-hero-art img {
-    width: 120px;
-    height: 120px;
-  }
-
-  .team-members {
-    padding-top: 70px;
-    padding-bottom: 70px;
-  }
-
-  .team-members-heading {
-    margin-bottom: 35px;
-  }
-
-  .team-grid {
-    grid-template-columns: 1fr;
-
-    gap: 22px;
-  }
-
-  .team-member-photo {
-    height: 360px;
-  }
-
-  .team-member-info {
-    padding: 24px;
-  }
-
-  .team-member-info h3 {
-    font-size: 28px;
-  }
-
-  .team-closing-box {
-    padding: 42px 25px;
-  }
-
-}
-
-
-/* =========================================================
-   TEAM PAGE REDUCED MOTION
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-  .team-member,
-  .team-member-photo img {
-    transition: none;
-  }
-
-}
 
 /* =========================================================
    ACCESSIBILITY
@@ -1887,302 +1508,21 @@ img {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
-
     animation-iteration-count: 1 !important;
-
     transition-duration: 0.01ms !important;
   }
 
   .home-page .mission,
   .home-page .focus-intro,
   .home-page .focus-card,
-  .home-page .fundraising,
   .home-page .closing {
     opacity: 1;
-
     transform: none;
   }
 
-}
-/* =========================================================
-   MOBILE OVERFLOW FIX
-   ABOUT US + ALL PAGES
-   ========================================================= */
-
-html,
-body {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-
-/* =========================================================
-   ABOUT US — MOBILE
-   ========================================================= */
-
-@media (max-width: 750px) {
-
-  /* Prevent wide grid sections from extending past viewport */
-
-  .about-heading,
-  .about-intro,
-  .logo-meaning,
-  .transparency,
-  .team,
-  .team-members {
-    width: 100%;
-    max-width: 100%;
+  .fundraising-stat {
+    opacity: 1;
+    transform: none;
   }
 
-
-  /* ABOUT HEADING */
-
-  .about-heading {
-    min-height: auto;
-    padding: 55px 22px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 30px;
-    overflow: hidden;
-  }
-
-  .about-heading > div {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .about-heading h1 {
-    width: 100%;
-    max-width: 100%;
-    font-size: clamp(46px, 12vw, 64px);
-    overflow-wrap: break-word;
-    word-break: normal;
-  }
-
-  .about-heading img {
-    width: 110px;
-    height: 110px;
-    margin: 0;
-    align-self: center;
-  }
-
-
-  /* ABOUT INTRO */
-
-  .about-intro {
-    padding: 65px 22px;
-    text-align: center;
-  }
-
-  .about-intro p {
-    width: 100%;
-    max-width: 100%;
-    font-size: 17px;
-    line-height: 1.75;
-    overflow-wrap: break-word;
-  }
-
-
-  /* LOGO MEANING */
-
-  .logo-meaning {
-    display: flex;
-    flex-direction: column;
-    gap: 35px;
-
-    padding-left: 22px;
-    padding-right: 22px;
-
-    overflow: hidden;
-  }
-
-  .logo-meaning > * {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-  }
-
-  .logo-display {
-    width: 100%;
-    max-width: 100%;
-    height: 280px;
-  }
-
-  .logo-display img {
-    max-width: 180px;
-    width: 180px;
-    height: 180px;
-  }
-
-  .logo-meaning > div:last-child {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-  }
-
-  .logo-meaning h2 {
-    width: 100%;
-    max-width: 100%;
-    font-size: clamp(36px, 9vw, 52px);
-    overflow-wrap: break-word;
-  }
-
-  .logo-meaning p {
-    max-width: 100%;
-    overflow-wrap: break-word;
-  }
-
-
-  /* TRANSPARENCY */
-
-  .transparency {
-    padding-left: 22px;
-    padding-right: 22px;
-  }
-
-  .transparency p {
-    width: 100%;
-    max-width: 100%;
-    font-size: 16px;
-    overflow-wrap: break-word;
-  }
-
-
-  /* GENERAL HEADINGS */
-
-  .section-heading h2,
-  .focus h2,
-  .fundraising h2,
-  .closing h2,
-  .logo-meaning h2,
-  .transparency h2,
-  .team-card h2 {
-    max-width: 100%;
-    overflow-wrap: break-word;
-  }
-
-
-  /* PREVENT GRID/FLEX CHILDREN FROM CREATING OVERFLOW */
-
-  .section,
-  .focus,
-  .fundraising,
-  .closing {
-    min-width: 0;
-  }
-
-  .section > *,
-  .focus > *,
-  .fundraising > *,
-  .closing > * {
-    min-width: 0;
-    max-width: 100%;
-  }
-
-}
-
-
-/* =========================================================
-   SMALL PHONES
-   ========================================================= */
-
-@media (max-width: 400px) {
-
-  .about-heading {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  .about-heading h1 {
-    font-size: 44px;
-    letter-spacing: -1.5px;
-  }
-
-  .about-intro {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  .logo-meaning {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  .transparency {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-}
-
-/* =========================================================
-   FUNDRAISING STATS
-   ========================================================= */
-
-.fundraising-stats {
-  max-width: 1180px;
-  margin: 65px auto 0;
-
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-
-  gap: 24px;
-}
-
-.fundraising-stat {
-  background: rgba(255, 255, 255, 0.55);
-  border: 1px solid rgba(40, 93, 112, 0.12);
-
-  border-radius: 24px;
-
-  padding: 34px 30px;
-
-  min-width: 0;
-
-  opacity: 0;
-  transform: translateY(30px);
-
-  transition:
-    opacity 0.8s ease,
-    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.fundraising-stat.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.fundraising-stat:nth-child(2) {
-  transition-delay: 0.1s;
-}
-
-.fundraising-stat:nth-child(3) {
-  transition-delay: 0.2s;
-}
-
-.stat-number {
-  font-family: "Playfair Display", Georgia, serif;
-
-  font-size: clamp(48px, 6vw, 72px);
-
-  line-height: 1;
-
-  letter-spacing: -2px;
-
-  color: var(--ink);
-
-  margin-bottom: 16px;
-}
-
-.fundraising-stat p {
-  margin: 0;
-
-  font-size: 15px;
-
-  line-height: 1.5;
-
-  color: #526267;
 }
