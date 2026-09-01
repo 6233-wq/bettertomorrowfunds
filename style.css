@@ -17,7 +17,6 @@ body {
   background: #fff;
   font-family: "DM Sans", Arial, sans-serif;
   line-height: 1.65;
-  overflow-x: hidden;
 }
 
 a {
@@ -116,7 +115,6 @@ img {
   border: 0;
   background: transparent;
   font-size: 25px;
-  cursor: pointer;
 }
 
 
@@ -148,17 +146,15 @@ img {
   margin: auto;
   min-height: 620px;
   padding: 90px 70px;
-
   display: grid;
   grid-template-columns: 1.02fr 0.98fr;
   align-items: center;
   gap: 50px;
 
+  /* Animation starting state */
   opacity: 0;
   transform: translateY(30px);
-
-  animation:
-    homeHeroReveal 1s cubic-bezier(0.22, 1, 0.36, 1)
+  animation: homeHeroReveal 1s cubic-bezier(0.22, 1, 0.36, 1)
     forwards;
 }
 
@@ -199,7 +195,6 @@ img {
   padding: 12px 22px;
   font-size: 14px;
   font-weight: 700;
-
   transition:
     transform 0.25s ease,
     background 0.25s ease,
@@ -214,9 +209,7 @@ img {
 .btn-dark:hover {
   transform: translateY(-3px);
   background: #000;
-
-  box-shadow:
-    0 10px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 .text-link {
@@ -242,25 +235,16 @@ img {
 .hero-art {
   height: 420px;
   position: relative;
-
   background: var(--blue);
-
-  border-radius:
-    44% 56% 50% 50% /
-    48% 45% 55% 52%;
-
+  border-radius: 44% 56% 50% 50% / 48% 45% 55% 52%;
   overflow: hidden;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  animation:
-    heroArtReveal
-    1.2s
-    cubic-bezier(0.22, 1, 0.36, 1)
-    0.15s
-    both;
+  animation: heroArtReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1)
+    0.15s both;
 }
 
 .hero-art img {
@@ -275,8 +259,13 @@ img {
 
 
 /* =========================================================
-   HEADINGS
+   MISSION
    ========================================================= */
+
+.mission {
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
 
 .section-heading h2,
 .focus h2,
@@ -291,44 +280,27 @@ img {
   margin: 0;
 }
 
-
-/* =========================================================
-   MISSION
-   ========================================================= */
-
-.mission {
-  border-top: 1px solid var(--line);
-  text-align: center;
-}
-
 .mission-copy {
   max-width: 1030px;
   margin: 28px auto 0;
-
   font-size: 18px;
   line-height: 1.85;
-
   color: #4f585a;
 }
 
 
 /* =========================================================
    HOMEPAGE SCROLL REVEAL
-   =========================================================
-
-   IMPORTANT:
-   Fundraising is intentionally NOT hidden here.
-   The fundraising section and statistics must remain
-   visible even if JavaScript does not load.
+   These only activate when JS adds .visible
    ========================================================= */
 
 .home-page .mission,
 .home-page .focus-intro,
 .home-page .focus-card,
+.home-page .fundraising,
 .home-page .closing {
   opacity: 0;
   transform: translateY(45px);
-
   transition:
     opacity 0.9s ease,
     transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
@@ -337,6 +309,7 @@ img {
 .home-page .mission.visible,
 .home-page .focus-intro.visible,
 .home-page .focus-card.visible,
+.home-page .fundraising.visible,
 .home-page .closing.visible {
   opacity: 1;
   transform: translateY(0);
@@ -366,11 +339,9 @@ img {
 
 .focus-intro h2 {
   margin: 12px 0 22px;
-
   font-family: "Playfair Display", serif;
   font-size: clamp(42px, 4vw, 64px);
   line-height: 1.05;
-
   color: #202426;
 }
 
@@ -388,22 +359,18 @@ img {
 .focus-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-
   gap: 28px;
   width: 100%;
 }
 
 .focus-card {
   background: #ffffff;
-
   border: 1px solid #e1e2df;
   border-radius: 20px;
-
   padding: 30px;
   min-height: 500px;
 
-  box-shadow:
-    0 8px 25px rgba(30, 40, 45, 0.05);
+  box-shadow: 0 8px 25px rgba(30, 40, 45, 0.05);
 
   transition:
     transform 0.35s ease,
@@ -412,9 +379,7 @@ img {
 
 .focus-card:hover {
   transform: translateY(-7px);
-
-  box-shadow:
-    0 18px 40px rgba(30, 40, 45, 0.1);
+  box-shadow: 0 18px 40px rgba(30, 40, 45, 0.1);
 }
 
 .focus-card > div {
@@ -423,31 +388,24 @@ img {
 
 .focus-card > div > span {
   display: block;
-
   margin-bottom: 22px;
-
   font-size: 17px;
   font-weight: 700;
   letter-spacing: 0.08em;
-
   color: #28657a;
 }
 
 .focus-card h3 {
   margin: 0 0 20px;
-
   font-size: 25px;
   line-height: 1.2;
-
   color: #202426;
 }
 
 .focus-card p {
   margin: 0;
-
   font-size: 16px;
   line-height: 1.65;
-
   color: #687277;
 }
 
@@ -458,10 +416,8 @@ img {
 
 .focus-card li {
   margin-bottom: 12px;
-
   font-size: 16px;
   line-height: 1.55;
-
   color: #687277;
 }
 
@@ -472,25 +428,15 @@ img {
 
 .fundraising {
   background: var(--blue);
-
-  padding: 90px 30px;
-
-  /*
-    Prevent anything inside this section from being
-    accidentally clipped by another animation.
-  */
-  overflow: hidden;
+  padding: 82px 30px;
 }
 
 .fundraising-inner {
   max-width: 1180px;
   margin: auto;
-
   display: grid;
   grid-template-columns: 1fr 1fr;
-
   gap: 90px;
-
   align-items: center;
 }
 
@@ -500,104 +446,8 @@ img {
 
 .fundraising-inner > p {
   font-size: 18px;
-  line-height: 1.7;
-
   color: #425a62;
-
   max-width: 560px;
-}
-
-
-/* =========================================================
-   FUNDRAISING STATS
-   ========================================================= */
-
-.fundraising-stats {
-  max-width: 1180px;
-
-  margin: 65px auto 0;
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(3, minmax(0, 1fr));
-
-  gap: 24px;
-}
-
-
-/* Individual statistic */
-
-.fundraising-stat {
-  background: #ffffff;
-
-  border: 1px solid rgba(40, 93, 112, 0.12);
-
-  border-radius: 24px;
-
-  padding: 38px 28px;
-
-  text-align: center;
-
-  /*
-    Always visible.
-    JavaScript is NOT responsible for displaying
-    these cards.
-  */
-  opacity: 1;
-  visibility: visible;
-  transform: none;
-
-  box-shadow:
-    0 10px 30px rgba(32, 36, 38, 0.07);
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.fundraising-stat:hover {
-  transform: translateY(-6px);
-
-  box-shadow:
-    0 18px 40px rgba(32, 36, 38, 0.11);
-}
-
-
-/* Large number */
-
-.stat-number {
-  font-family: "Playfair Display", Georgia, serif;
-
-  font-size: clamp(52px, 6vw, 76px);
-
-  line-height: 1;
-
-  color: var(--ink);
-
-  margin-bottom: 18px;
-}
-
-.counter {
-  display: inline-block;
-
-  /*
-    Gives the number a little room while it animates.
-  */
-  min-width: 1ch;
-}
-
-
-/* Statistic label */
-
-.fundraising-stat p {
-  margin: 0;
-
-  font-size: 15px;
-
-  line-height: 1.5;
-
-  color: var(--muted);
 }
 
 
@@ -612,16 +462,11 @@ img {
 
 .closing-box {
   background: #f5eee7;
-
   border-radius: 28px;
-
   padding: 58px 65px;
-
   display: flex;
-
   justify-content: space-between;
   align-items: center;
-
   gap: 40px;
 }
 
@@ -637,31 +482,22 @@ img {
 
 .footer {
   background: #202628;
-
   color: #fff;
-
   padding: 65px 30px 25px;
 }
 
 .footer-top {
   max-width: 1180px;
-
   margin: auto;
-
   display: grid;
-
-  grid-template-columns:
-    1.5fr 1fr 1.4fr;
-
+  grid-template-columns: 1.5fr 1fr 1.4fr;
   gap: 80px;
 }
 
 .footer-brand img {
   width: 48px;
   height: 48px;
-
   object-fit: contain;
-
   margin-bottom: 15px;
 }
 
@@ -672,33 +508,23 @@ img {
 
 .footer h4 {
   font-size: 11px;
-
   letter-spacing: 2px;
-
   text-transform: uppercase;
-
   color: #a9cbd5;
-
   margin: 2px 0 15px;
 }
 
 .footer p {
   color: #aeb8ba;
-
   font-size: 13px;
-
   max-width: 380px;
 }
 
 .footer a {
   display: block;
-
   text-decoration: none;
-
   color: #d8ddde;
-
   font-size: 13px;
-
   margin: 7px 0;
 }
 
@@ -708,19 +534,12 @@ img {
 
 .footer-bottom {
   max-width: 1180px;
-
   margin: 45px auto 0;
-
   padding-top: 20px;
-
   border-top: 1px solid #3c4547;
-
   display: flex;
-
   justify-content: space-between;
-
   gap: 30px;
-
   align-items: center;
 }
 
@@ -731,9 +550,7 @@ img {
 
 .footer-bottom span {
   font-size: 12px;
-
   color: #879194;
-
   white-space: nowrap;
 }
 
@@ -744,90 +561,65 @@ img {
 
 .about-heading {
   max-width: 1180px;
-
   margin: auto;
-
   min-height: 350px;
-
   padding: 75px 30px;
 
   display: flex;
-
   justify-content: space-between;
   align-items: center;
 
   background: var(--blue);
-
   border-radius: 0 0 34px 34px;
 }
 
 .about-heading h1 {
   font-family: "Playfair Display", Georgia, serif;
-
   font-size: clamp(48px, 6vw, 76px);
-
   line-height: 1.05;
-
   margin: 0;
-
   max-width: 700px;
 }
 
 .about-heading img {
   width: 190px;
   height: 190px;
-
   object-fit: contain;
-
   margin-right: 70px;
 }
 
 .about-intro {
   text-align: center;
-
   padding-top: 82px;
   padding-bottom: 82px;
 }
 
 .about-intro p {
   font-size: 21px;
-
   line-height: 1.8;
-
   max-width: 920px;
-
   margin: auto;
 }
 
 .logo-meaning {
   max-width: none;
-
   background: var(--cream);
 
   display: grid;
-
   grid-template-columns: 440px 1fr;
-
   gap: 90px;
-
   align-items: center;
 
-  padding-left:
-    max(30px, calc((100vw - 1120px) / 2));
-
-  padding-right:
-    max(30px, calc((100vw - 1120px) / 2));
+  padding-left: max(30px, calc((100vw - 1120px) / 2));
+  padding-right: max(30px, calc((100vw - 1120px) / 2));
 }
 
 .logo-display {
   height: 400px;
-
   background: #fff;
-
   border-radius: 28px;
 
   display: grid;
-
   place-items: center;
 
   border: 1px solid #e9e7df;
@@ -836,7 +628,6 @@ img {
 .logo-display img {
   width: 250px;
   height: 250px;
-
   object-fit: contain;
 }
 
@@ -847,9 +638,7 @@ img {
 .logo-meaning p:last-child,
 .transparency p {
   font-size: 17px;
-
   line-height: 1.85;
-
   color: #515a5c;
 }
 
@@ -859,17 +648,11 @@ img {
 
 .transparency-label {
   display: inline-block;
-
   padding: 7px 13px;
-
   background: var(--pink);
-
   font-size: 10px;
-
   font-weight: 700;
-
   letter-spacing: 1.7px;
-
   margin-bottom: 15px;
 }
 
@@ -888,30 +671,22 @@ img {
 
 .team-card {
   text-align: center;
-
   background: var(--cream);
-
   border-radius: 30px;
-
   padding: 70px 40px;
 }
 
 .team-card img {
   width: 120px;
   height: 120px;
-
   object-fit: contain;
-
   margin: 0 auto 20px;
 }
 
 .team-card p:not(.kicker) {
   max-width: 700px;
-
   margin: 20px auto;
-
   color: #5e6668;
-
   font-size: 18px;
 }
 
@@ -921,139 +696,10 @@ img {
 
 
 /* =========================================================
-   TEAM PAGE — INTRO
-   ========================================================= */
-
-.team-intro {
-  max-width: 950px;
-
-  text-align: center;
-
-  padding-top: 85px;
-  padding-bottom: 70px;
-}
-
-.team-intro h1 {
-  font-family: "Playfair Display", Georgia, serif;
-
-  font-size: clamp(50px, 6vw, 76px);
-
-  line-height: 1.05;
-
-  margin: 0;
-}
-
-.team-intro > p:last-child {
-  max-width: 760px;
-
-  margin: 25px auto 0;
-
-  font-size: 18px;
-
-  line-height: 1.8;
-
-  color: #5e6668;
-}
-
-
-/* =========================================================
-   TEAM MEMBERS
-   ========================================================= */
-
-.team-members {
-  max-width: 1100px;
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(2, minmax(0, 1fr));
-
-  gap: 28px;
-
-  padding-top: 30px;
-}
-
-.team-member {
-  background: #fff;
-
-  border: 1px solid #e1e2df;
-
-  border-radius: 24px;
-
-  overflow: hidden;
-
-  box-shadow:
-    0 8px 25px rgba(30, 40, 45, 0.05);
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.team-member:hover {
-  transform: translateY(-6px);
-
-  box-shadow:
-    0 18px 40px rgba(30, 40, 45, 0.1);
-}
-
-.team-member-photo {
-  width: 100%;
-
-  aspect-ratio: 1 / 1;
-
-  background: var(--cream);
-
-  overflow: hidden;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-}
-
-.team-member-photo img {
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-}
-
-.team-member-info {
-  padding: 25px 28px 30px;
-}
-
-.team-member-info h2 {
-  font-family: "Playfair Display", Georgia, serif;
-
-  font-size: 30px;
-
-  line-height: 1.15;
-
-  margin: 0;
-}
-
-.team-member-role {
-  margin: 8px 0 0;
-
-  color: var(--blue3);
-
-  font-size: 13px;
-
-  font-weight: 700;
-
-  letter-spacing: 1px;
-
-  text-transform: uppercase;
-}
-
-
-/* =========================================================
    HOMEPAGE ANIMATIONS
    ========================================================= */
 
 @keyframes homeHeroReveal {
-
   from {
     opacity: 0;
     transform: translateY(30px);
@@ -1063,11 +709,9 @@ img {
     opacity: 1;
     transform: translateY(0);
   }
-
 }
 
 @keyframes heroArtReveal {
-
   from {
     opacity: 0;
     transform: scale(0.94);
@@ -1077,11 +721,9 @@ img {
     opacity: 1;
     transform: scale(1);
   }
-
 }
 
 @keyframes logoReveal {
-
   from {
     opacity: 0;
     transform: scale(0.8);
@@ -1091,11 +733,9 @@ img {
     opacity: 1;
     transform: scale(1);
   }
-
 }
 
 @keyframes logoFloat {
-
   0%,
   100% {
     transform: translateY(0);
@@ -1104,7 +744,6 @@ img {
   50% {
     transform: translateY(-10px);
   }
-
 }
 
 
@@ -1116,25 +755,18 @@ img {
 
   .nav {
     display: none;
-
     position: absolute;
-
     left: 0;
     right: 0;
-
     top: 75px;
 
     background: #fff;
-
     padding: 15px 25px 25px;
 
-    box-shadow:
-      0 15px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
 
     flex-direction: column;
-
     align-items: flex-start;
-
     gap: 0;
   }
 
@@ -1156,7 +788,6 @@ img {
 
   .home-hero {
     grid-template-columns: 1fr;
-
     padding: 75px 35px;
   }
 
@@ -1166,7 +797,6 @@ img {
 
   .focus {
     grid-template-columns: 1fr;
-
     gap: 45px;
   }
 
@@ -1175,24 +805,16 @@ img {
   }
 
   .focus-grid {
-    grid-template-columns:
-      repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .fundraising-inner {
     grid-template-columns: 1fr;
-
     gap: 20px;
-  }
-
-  .fundraising-stats {
-    grid-template-columns:
-      repeat(3, minmax(0, 1fr));
   }
 
   .logo-meaning {
     grid-template-columns: 1fr;
-
     gap: 45px;
   }
 
@@ -1206,14 +828,12 @@ img {
 
   .footer-top {
     grid-template-columns: 1fr 1fr;
-
     gap: 45px;
   }
 
   .footer-brand {
     grid-column: 1 / -1;
   }
-
 }
 
 
@@ -1229,51 +849,19 @@ img {
 
   .focus-grid {
     grid-template-columns: 1fr;
-
     gap: 20px;
   }
 
   .focus-card {
     min-height: auto;
   }
-
-  /* Team */
-
-  .team-intro {
-    padding-top: 65px;
-    padding-bottom: 45px;
-  }
-
-  .team-intro > p:last-child {
-    font-size: 16px;
-  }
-
-  .team-members {
-    grid-template-columns: 1fr;
-
-    padding-top: 20px;
-  }
-
 }
 
-
-/* =========================================================
-   SMALL MOBILE
-   ========================================================= */
 
 @media (max-width: 600px) {
 
   .header {
     height: 68px;
-  }
-
-  .nav {
-    top: 67px;
-  }
-
-  .nav-shell {
-    padding-left: 18px;
-    padding-right: 18px;
   }
 
   .brand span {
@@ -1282,14 +870,11 @@ img {
 
   .home-hero {
     padding: 60px 22px;
-
     min-height: auto;
   }
 
   .hero-copy h1 {
     font-size: 50px;
-
-    letter-spacing: -2px;
   }
 
   .hero-lead {
@@ -1298,7 +883,6 @@ img {
 
   .hero-art {
     height: 300px;
-
     border-radius: 30px;
   }
 
@@ -1328,45 +912,12 @@ img {
     min-height: auto;
   }
 
-  /* Fundraising */
-
   .fundraising {
     padding: 68px 22px;
   }
 
-  .fundraising-inner {
-    gap: 10px;
-  }
-
-  .fundraising-inner > p {
-    font-size: 16px;
-  }
-
-  .fundraising-stats {
-    grid-template-columns: 1fr;
-
-    gap: 18px;
-
-    margin-top: 45px;
-  }
-
-  .fundraising-stat {
-    padding: 32px 24px;
-  }
-
-  .stat-number {
-    font-size: 58px;
-  }
-
-  .fundraising-stat p {
-    font-size: 15px;
-  }
-
-  /* Closing */
-
   .closing-box {
     padding: 38px 28px;
-
     display: block;
   }
 
@@ -1374,29 +925,14 @@ img {
     font-size: 36px;
   }
 
-  /* About */
-
   .about-heading {
     min-height: 300px;
-
     padding: 55px 22px;
-
-    /*
-      Prevent the heading area from creating
-      horizontal overflow on phones.
-    */
-    overflow: hidden;
-  }
-
-  .about-heading h1 {
-    font-size: 50px;
   }
 
   .about-heading img {
     width: 100px;
     height: 100px;
-
-    flex-shrink: 0;
   }
 
   .about-intro p {
@@ -1417,30 +953,8 @@ img {
     height: 180px;
   }
 
-  /* Team */
-
-  .team-intro h1 {
-    font-size: 50px;
-  }
-
-  .team-member-info {
-    padding: 22px 22px 26px;
-  }
-
-  .team-member-info h2 {
-    font-size: 27px;
-  }
-
-  /* Footer */
-
-  .footer {
-    padding-left: 22px;
-    padding-right: 22px;
-  }
-
   .footer-top {
     grid-template-columns: 1fr;
-
     gap: 35px;
   }
 
@@ -1450,45 +964,11 @@ img {
 
   .footer-bottom span {
     display: block;
-
     margin-top: 12px;
   }
 
-  /* Hero buttons */
-
   .hero-actions {
     flex-wrap: wrap;
-  }
-
-}
-
-
-/* =========================================================
-   VERY SMALL PHONES
-   ========================================================= */
-
-@media (max-width: 400px) {
-
-  .hero-copy h1 {
-    font-size: 43px;
-  }
-
-  .about-heading {
-    display: block;
-
-    text-align: left;
-  }
-
-  .about-heading img {
-    margin-top: 25px;
-  }
-
-  .team-intro h1 {
-    font-size: 43px;
-  }
-
-  .fundraising h2 {
-    font-size: 39px;
   }
 
 }
@@ -1515,14 +995,9 @@ img {
   .home-page .mission,
   .home-page .focus-intro,
   .home-page .focus-card,
+  .home-page .fundraising,
   .home-page .closing {
     opacity: 1;
     transform: none;
   }
-
-  .fundraising-stat {
-    opacity: 1;
-    transform: none;
-  }
-
 }
