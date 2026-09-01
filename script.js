@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
 /* =====================================================
-   FUNDRAISING COUNTERS
+   FUNDRAISING COUNTER — SEQUENTIAL
 ===================================================== */
 
 const counters = document.querySelectorAll(".counter");
@@ -125,102 +125,110 @@ const counters = document.querySelectorAll(".counter");
 if (counters.length) {
 
   const counterObserver = new IntersectionObserver(
-    (entries) => {
+    (entries, observer) => {
 
       entries.forEach((entry) => {
 
         if (!entry.isIntersecting) return;
 
-        const counter = entry.target;
+        observer.unobserve(entry.target);
 
-        const target =
-          parseFloat(counter.dataset.target);
+        // Only start the sequence once
+        if (entry.target !== counters[0]) return;
 
-        if (Number.isNaN(target)) {
-          console.error(
-            "Invalid counter target:",
+        let currentIndex = 0;
+
+        function runNextCounter() {
+
+          if (currentIndex >= counters.length) return;
+
+          const counter = counters[currentIndex];
+
+          const target = parseFloat(
             counter.dataset.target
           );
-          return;
-        }
 
-        const start = performance.now();
-        const duration = 1800;
+          const decimals = parseInt(
+            counter.dataset.decimals || "0",
+            10
+          );
 
-        function animateCounter(now) {
-
-          const progress =
-            Math.min((now - start) / duration, 1);
-
-          /*
-            Ease-out animation
-          */
-          const eased =
-            1 - Math.pow(1 - progress, 3);
-
-          const value =
-            target * eased;
-
-          /*
-            Keep 6.5 as a decimal,
-            while whole numbers use commas.
-          */
-          if (target % 1 !== 0) {
-
-            counter.textContent =
-              value.toFixed(1);
-
-          } else {
-
-            counter.textContent =
-              Math.floor(value).toLocaleString();
-
+          if (isNaN(target)) {
+            currentIndex++;
+            runNextCounter();
+            return;
           }
 
-          if (progress < 1) {
+          const duration = 1800;
+          const startTime = performance.now();
 
-            requestAnimationFrame(
-              animateCounter
+          function animateCounter(currentTime) {
+
+            const progress = Math.min(
+              (currentTime - startTime) / duration,
+              1
             );
 
-          } else {
+            // Smooth ease-out
+            const eased =
+              1 - Math.pow(1 - progress, 3);
 
-            /*
-              Final exact value
-            */
-            counter.textContent =
-              target % 1 !== 0
-                ? target.toFixed(1)
-                : target.toLocaleString();
+            const value = target * eased;
 
+            if (decimals > 0) {
+              counter.textContent =
+                value.toFixed(decimals);
+            } else {
+              counter.textContent =
+                Math.floor(value).toLocaleString();
+            }
+
+            if (progress < 1) {
+
+              requestAnimationFrame(
+                animateCounter
+              );
+
+            } else {
+
+              // Make sure the final number is exact
+
+              counter.textContent =
+                decimals > 0
+                  ? target.toFixed(decimals)
+                  : target.toLocaleString();
+
+              // Wait briefly before starting next counter
+              setTimeout(() => {
+
+                currentIndex++;
+
+                runNextCounter();
+
+              }, 250);
+            }
           }
 
+          requestAnimationFrame(
+            animateCounter
+          );
         }
 
-        requestAnimationFrame(
-          animateCounter
-        );
-
-        /*
-          Only animate each counter once.
-        */
-        counterObserver.unobserve(counter);
-
+        runNextCounter();
       });
-
     },
     {
-      threshold: 0.2
+      threshold: 0.5
     }
   );
 
+  /*
+     Observe only the first counter.
+     The remaining counters are started
+     automatically in sequence.
+  */
 
-  counters.forEach((counter) => {
-
-    counterObserver.observe(counter);
-
-  });
-
+  counterObserver.observe(counters[0]);
 }
 
   /* =====================================================
