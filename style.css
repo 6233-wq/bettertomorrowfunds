@@ -780,36 +780,62 @@ img {
   color: #fff;
 }
 
+/* =========================
+   FOOTER BOTTOM
+========================= */
+
 .footer-bottom {
-  max-width: 1180px;
-
-  margin: 45px auto 0;
-
-  padding-top: 20px;
-
-  border-top: 1px solid #3c4547;
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 24px 0 28px;
+  border-top: 1px solid var(--line);
 
   display: flex;
-
-  justify-content: space-between;
-
-  gap: 30px;
-
   align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.footer-bottom p,
+.footer-bottom span {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
 }
 
 .footer-bottom p {
-  margin: 0;
-
-  max-width: 750px;
+  max-width: 600px;
 }
 
-.footer-bottom span {
-  font-size: 12px;
-
-  color: #879194;
-
+.footer-bottom > span {
+  text-align: right;
   white-space: nowrap;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    padding: 22px 20px 26px;
+  }
+
+  .footer-bottom p {
+    max-width: 100%;
+  }
+
+  .footer-bottom > span {
+    text-align: center;
+    white-space: normal;
+  }
 }
 
 
