@@ -783,13 +783,13 @@ img {
 /* =========================
    FOOTER BOTTOM
 ========================= */
+
 .footer-bottom {
   width: 100%;
   max-width: var(--max);
-  margin: 32px auto 0;
-  padding: 28px 0 28px;
-
-  border-top: 1px solid rgba(32, 36, 38, 0.08);
+  margin: 0 auto;
+  padding: 24px 0 28px;
+  border-top: 1px solid var(--line);
 
   display: flex;
   align-items: center;
