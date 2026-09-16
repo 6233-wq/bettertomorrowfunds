@@ -139,7 +139,6 @@ img {
 
 /* =========================================================
    HOMEPAGE HERO
-   FULL-WIDTH IMAGE BACKGROUND + CURVED BOTTOM
    ========================================================= */
 
 .home-hero {
@@ -149,9 +148,7 @@ img {
 
   min-height: 680px;
 
-  padding:
-    105px max(30px, calc((100vw - 1280px) / 2 + 70px))
-    135px;
+  padding: 105px max(30px, calc((100vw - 1280px) / 2 + 70px)) 135px;
 
   display: grid;
   grid-template-columns: 1.02fr 0.98fr;
@@ -673,12 +670,11 @@ img {
 
 
 /* =========================================================
-   CLOSING
+   CLOSING / SUPPORT THE WORK
    ========================================================= */
 
 .closing {
   padding-top: 85px;
-
   padding-bottom: 85px;
 }
 
@@ -702,6 +698,83 @@ img {
   font-size: 43px;
 
   max-width: 730px;
+}
+
+
+/* =========================================================
+   DONATION FORM
+   ========================================================= */
+
+.donation-area {
+  max-width: 1180px;
+
+  margin: 75px auto 0;
+
+  padding-top: 65px;
+
+  border-top:
+    1px solid rgba(40, 93, 112, 0.18);
+
+  display: grid;
+
+  grid-template-columns: 0.9fr 1.1fr;
+
+  gap: 70px;
+
+  align-items: center;
+}
+
+.donation-copy {
+  max-width: 500px;
+}
+
+.donation-copy h2 {
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: clamp(40px, 4.5vw, 58px);
+
+  line-height: 1.1;
+
+  letter-spacing: -1.5px;
+
+  margin: 0 0 22px;
+}
+
+.donation-copy > p:last-child {
+  margin: 0;
+
+  font-size: 17px;
+
+  line-height: 1.75;
+
+  color: #425a62;
+
+  max-width: 500px;
+}
+
+.donation-frame {
+  width: 100%;
+
+  background: #fff;
+
+  border: 1px solid rgba(40, 93, 112, 0.12);
+
+  border-radius: 24px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 15px 35px rgba(40, 93, 112, 0.08);
+}
+
+.donation-frame iframe {
+  display: block;
+
+  width: 100%;
+
+  height: 600px;
+
+  border: none;
 }
 
 
@@ -790,21 +863,30 @@ img {
 .footer-bottom {
   width: 100%;
   max-width: var(--max);
+
   margin: 0 auto;
+
   padding: 24px 0 28px;
+
   border-top: 1px solid var(--line);
 
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
+
   gap: 24px;
 }
 
 .footer-bottom p,
 .footer-bottom span {
   margin: 0;
+
   color: var(--muted);
+
   font-size: 0.78rem;
+
   line-height: 1.5;
 }
 
@@ -814,14 +896,19 @@ img {
 
 .footer-bottom small {
   margin: 0;
+
   color: var(--muted);
+
   font-size: 0.68rem;
+
   font-weight: 400;
+
   line-height: 1.4;
 }
 
 .footer-bottom > span {
   text-align: right;
+
   white-space: nowrap;
 }
 
@@ -977,1076 +1064,6 @@ img {
 
 
 /* =========================================================
-   TEAM
-   ========================================================= */
-
-.team {
-  max-width: 950px;
-}
-
-.team-card {
-  text-align: center;
-
-  background: var(--cream);
-
-  border-radius: 30px;
-
-  padding: 70px 40px;
-}
-
-.team-card img {
-  width: 120px;
-
-  height: 120px;
-
-  object-fit: contain;
-
-  margin: 0 auto 20px;
-}
-
-.team-card p:not(.kicker) {
-  max-width: 700px;
-
-  margin: 20px auto;
-
-  color: #5e6668;
-
-  font-size: 18px;
-}
-
-.team-card .btn {
-  margin-top: 10px;
-}
-
-
-/* =========================================================
-   HOMEPAGE ANIMATIONS
-   ========================================================= */
-
-@keyframes homeHeroReveal {
-
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-}
-
-@keyframes heroArtReveal {
-
-  from {
-    opacity: 0;
-    transform: scale(0.94);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-}
-
-@keyframes logoReveal {
-
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-}
-
-@keyframes logoFloat {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
-
-}
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media (max-width: 1050px) {
-
-  .nav {
-    display: none;
-
-    position: absolute;
-
-    left: 0;
-    right: 0;
-
-    top: 75px;
-
-    background: #fff;
-
-    padding:
-      15px 25px 25px;
-
-    box-shadow:
-      0 15px 30px
-      rgba(0, 0, 0, 0.08);
-
-    flex-direction: column;
-
-    align-items: flex-start;
-
-    gap: 0;
-  }
-
-  .nav.open {
-    display: flex;
-  }
-
-  .nav a {
-    padding: 10px 0;
-  }
-
-  .nav a.active:after {
-    bottom: 3px;
-  }
-
-  .menu {
-    display: block;
-  }
-
-
-  .home-hero {
-    grid-template-columns: 1fr;
-
-    min-height: 720px;
-
-    padding:
-      80px 35px 125px;
-
-    background-position: 44% center;
-    background-size: cover;
-
-    border-radius:
-      0 0 50% 50% /
-      0 0 7% 7%;
-  }
-
-  .home-hero::before {
-    background:
-      linear-gradient(
-        180deg,
-        rgba(250, 248, 241, 0.62) 0%,
-        rgba(250, 248, 241, 0.30) 55%,
-        rgba(250, 248, 241, 0.08) 100%
-      );
-  }
-
-  .hero-art {
-    height: 300px;
-  }
-
-
-  .focus {
-    grid-template-columns: 1fr;
-
-    gap: 45px;
-  }
-
-  .focus-intro {
-    max-width: 600px;
-  }
-
-  .focus-grid {
-    grid-template-columns:
-      repeat(3, minmax(0, 1fr));
-  }
-
-
-  .fundraising-inner {
-    grid-template-columns: 1fr;
-
-    gap: 20px;
-  }
-
-
-  .fundraising-stats {
-    margin-top: 55px;
-  }
-
-
-  .logo-meaning {
-    grid-template-columns: 1fr;
-
-    gap: 45px;
-  }
-
-  .logo-display {
-    height: 330px;
-  }
-
-  .about-heading img {
-    margin-right: 0;
-  }
-
-
-  .footer-top {
-    grid-template-columns:
-      1fr 1fr;
-
-    gap: 45px;
-  }
-
-  .footer-brand {
-    grid-column: 1 / -1;
-  }
-
-}
-
-
-/* =========================================================
-   MOBILE — GENERAL
-   ========================================================= */
-
-@media (max-width: 750px) {
-
-  .focus {
-    padding:
-      75px 6vw;
-  }
-
-  .focus-grid {
-    grid-template-columns: 1fr;
-
-    gap: 20px;
-  }
-
-  .focus-card {
-    min-height: auto;
-  }
-
-
-  /* -------------------------------------------------------
-     FUNDRAISING
-  ------------------------------------------------------- */
-
-  .fundraising {
-    width: 100%;
-    max-width: 100%;
-
-    padding:
-      68px 22px;
-
-    overflow: hidden;
-  }
-
-  .fundraising-inner {
-    width: 100%;
-    max-width: 100%;
-
-    display: block;
-  }
-
-  .fundraising-inner > div,
-  .fundraising-inner > p {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-  }
-
-  .fundraising h2 {
-    width: 100%;
-    max-width: 100%;
-
-    font-size:
-      clamp(38px, 10vw, 52px);
-
-    line-height: 1.08;
-
-    overflow-wrap: break-word;
-  }
-
-  .fundraising-inner > p {
-    margin-top: 22px;
-
-    font-size: 16px;
-
-    line-height: 1.7;
-  }
-
-
-  /* -------------------------------------------------------
-     COUNTER CARDS
-  ------------------------------------------------------- */
-
-  .fundraising-stats {
-    width: 100%;
-    max-width: 100%;
-
-    margin: 42px 0 0;
-
-    display: grid;
-
-    grid-template-columns: 1fr;
-
-    gap: 16px;
-
-    padding: 0;
-
-    border: none;
-  }
-
-  .fundraising-stat,
-  .fundraising-stat:first-child {
-    width: 100%;
-    max-width: 100%;
-
-    min-width: 0;
-    min-height: 0;
-
-    padding: 34px 18px;
-
-    border:
-      1px solid rgba(40, 93, 112, 0.12);
-
-    border-radius: 24px;
-
-    background:
-      rgba(255, 255, 255, 0.58);
-
-    text-align: center;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    align-items: center;
-
-    overflow: hidden;
-  }
-
-  .fundraising-stat:hover {
-    transform: translateY(-3px);
-  }
-
-
-  /* -------------------------------------------------------
-     COUNTER NUMBERS
-  ------------------------------------------------------- */
-
-  .stat-number {
-    display: block;
-
-    width: 100%;
-    max-width: 100%;
-
-    margin: 0 0 12px;
-
-    font-family:
-      "Playfair Display",
-      Georgia,
-      serif;
-
-    font-size: 54px;
-
-    line-height: 1;
-
-    letter-spacing: -1px;
-
-    text-align: center;
-
-    white-space: nowrap;
-
-    overflow: visible;
-
-    font-variant-numeric: tabular-nums;
-  }
-
-
-  /* -------------------------------------------------------
-     COUNTER LABELS
-  ------------------------------------------------------- */
-
-  .fundraising-stat p {
-    width: 100%;
-    max-width: 270px;
-
-    margin: 0;
-
-    font-size: 14px;
-
-    line-height: 1.45;
-
-    text-align: center;
-
-    color: #526267;
-  }
-
-
-  /* -------------------------------------------------------
-     SUPPORT THE WORK / DONATION AREA
-  ------------------------------------------------------- */
-
-  .donation-area {
-    width: calc(100% - 44px);
-    max-width: 600px;
-
-    margin:
-      50px auto 0;
-
-    padding:
-      45px 0 0;
-
-    border-top:
-      1px solid rgba(40, 93, 112, 0.18);
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 30px;
-
-    align-items: stretch;
-
-    box-sizing: border-box;
-  }
-
-
-  /* -------------------------------------------------------
-     SUPPORT TEXT
-  ------------------------------------------------------- */
-
-  .donation-copy {
-    width: 100%;
-    max-width: 100%;
-
-    margin: 0;
-    padding: 0;
-  }
-
-  .donation-copy .kicker {
-    margin-bottom: 14px;
-
-    font-size: 10px;
-
-    letter-spacing: 2px;
-  }
-
-  .donation-copy h2 {
-    width: 100%;
-    max-width: 100%;
-
-    margin:
-      0 0 22px;
-
-    font-family:
-      "Playfair Display",
-      Georgia,
-      serif;
-
-    font-size: 38px;
-
-    line-height: 1.08;
-
-    letter-spacing: -1px;
-
-    overflow-wrap: break-word;
-  }
-
-  .donation-copy > p:last-child {
-    width: 100%;
-    max-width: 100%;
-
-    margin: 0;
-
-    font-size: 16px;
-
-    line-height: 1.7;
-
-    color: #425a62;
-  }
-
-
-  /* -------------------------------------------------------
-     DONATION BOX
-  ------------------------------------------------------- */
-
-  .donation-frame {
-    width: 100%;
-    max-width: 100%;
-
-    margin: 0;
-    padding: 0;
-
-    box-sizing: border-box;
-
-    border-radius: 18px;
-
-    overflow: hidden;
-
-    background: #fff;
-
-    border:
-      1px solid rgba(40, 93, 112, 0.12);
-
-    box-shadow:
-      0 15px 35px rgba(40, 93, 112, 0.08);
-  }
-
-  .donation-frame iframe {
-    display: block;
-
-    width: 100%;
-    max-width: 100%;
-
-    height: 600px;
-
-    border: none;
-
-    border-radius: 18px;
-
-    box-sizing: border-box;
-  }
-
-
-  /* -------------------------------------------------------
-     ABOUT PAGE — MOBILE
-  ------------------------------------------------------- */
-
-  .about-heading,
-  .about-intro,
-  .logo-meaning,
-  .transparency,
-  .team,
-  .team-members {
-    width: 100%;
-    max-width: 100%;
-  }
-
-
-  .about-heading {
-    min-height: auto;
-
-    padding:
-      55px 22px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: flex-start;
-
-    justify-content: center;
-
-    gap: 30px;
-
-    overflow: hidden;
-  }
-
-  .about-heading > div {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-  }
-
-
-  /*
-     IMPORTANT:
-     The organization name is treated as one unbreakable
-     unit. The font scales down on narrow screens so the
-     complete name remains visible.
-  */
-
-  .about-heading h1 {
-    width: 100%;
-    max-width: 100%;
-
-    font-size:
-      clamp(32px, 9vw, 58px);
-
-    line-height: 1.05;
-
-    letter-spacing: -1.2px;
-
-    overflow: visible;
-
-    overflow-wrap: normal;
-
-    word-break: normal;
-
-    hyphens: none;
-  }
-
-  .about-heading h1 .organization-name {
-    white-space: nowrap;
-  }
-
-  .about-heading img {
-    width: 110px;
-
-    height: 110px;
-
-    margin: 0;
-
-    align-self: center;
-  }
-
-
-  /* -------------------------------------------------------
-     ABOUT INTRO
-  ------------------------------------------------------- */
-
-  .about-intro {
-    padding:
-      65px 22px;
-
-    text-align: center;
-  }
-
-  .about-intro p {
-    width: 100%;
-    max-width: 100%;
-
-    font-size: 17px;
-
-    line-height: 1.75;
-
-    overflow-wrap: break-word;
-  }
-
-
-  /* -------------------------------------------------------
-     LOGO MEANING
-  ------------------------------------------------------- */
-
-  .logo-meaning {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 35px;
-
-    padding-left: 22px;
-    padding-right: 22px;
-
-    overflow: hidden;
-  }
-
-  .logo-meaning > * {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-  }
-
-  .logo-display {
-    width: 100%;
-    max-width: 100%;
-
-    height: 280px;
-  }
-
-  .logo-display img {
-    max-width: 180px;
-
-    width: 180px;
-
-    height: 180px;
-  }
-
-  .logo-meaning > div:last-child {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-  }
-
-  .logo-meaning h2 {
-    width: 100%;
-    max-width: 100%;
-
-    font-size:
-      clamp(36px, 9vw, 52px);
-
-    overflow-wrap: break-word;
-  }
-
-  .logo-meaning p {
-    max-width: 100%;
-
-    overflow-wrap: break-word;
-  }
-
-
-  /* -------------------------------------------------------
-     TRANSPARENCY
-  ------------------------------------------------------- */
-
-  .transparency {
-    padding-left: 22px;
-    padding-right: 22px;
-  }
-
-  .transparency p {
-    width: 100%;
-    max-width: 100%;
-
-    font-size: 16px;
-
-    overflow-wrap: break-word;
-  }
-
-
-  /* -------------------------------------------------------
-     GENERAL HEADINGS
-  ------------------------------------------------------- */
-
-  .section-heading h2,
-  .focus h2,
-  .fundraising h2,
-  .closing h2,
-  .logo-meaning h2,
-  .transparency h2,
-  .team-card h2 {
-    max-width: 100%;
-
-    overflow-wrap: break-word;
-  }
-
-
-  /* -------------------------------------------------------
-     PREVENT GRID/FLEX OVERFLOW
-  ------------------------------------------------------- */
-
-  .section,
-  .focus,
-  .fundraising,
-  .closing {
-    min-width: 0;
-  }
-
-  .section > *,
-  .focus > *,
-  .fundraising > *,
-  .closing > * {
-    min-width: 0;
-
-    max-width: 100%;
-  }
-
-
-  /* -------------------------------------------------------
-     FOOTER
-  ------------------------------------------------------- */
-
-  .footer-bottom {
-    flex-direction: column;
-
-    align-items: center;
-
-    text-align: center;
-
-    gap: 10px;
-
-    padding:
-      22px 20px 26px;
-  }
-
-  .footer-bottom p {
-    max-width: 100%;
-  }
-
-  .footer-bottom small {
-    font-size: 0.66rem;
-  }
-
-  .footer-bottom > span {
-    text-align: center;
-
-    white-space: normal;
-  }
-
-}
-
-
-/* =========================================================
-   SMALL PHONES
-   ========================================================= */
-
-@media (max-width: 400px) {
-
-  .home-hero {
-    min-height: 700px;
-
-    padding:
-      55px 20px 115px;
-
-    background-position:
-      38% center;
-
-    background-size: cover;
-  }
-
-  .hero-copy h1 {
-    font-size: 44px;
-  }
-
-  .hero-art {
-    height: 220px;
-  }
-
-  .hero-art img {
-    width: 155px;
-    height: 155px;
-  }
-
-
-  .fundraising {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  .fundraising-stats {
-    margin-top: 38px;
-  }
-
-  .fundraising-stat {
-    padding:
-      30px 16px;
-
-    min-height: 0;
-  }
-
-  .stat-number {
-    font-size: 50px;
-
-    letter-spacing: -0.8px;
-  }
-
-
-  /* ABOUT PAGE */
-
-  .about-heading {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  .about-heading h1 {
-    /*
-       38px keeps the complete
-       BetterTomorrowFunds name visible
-       on very narrow screens.
-    */
-    font-size: 38px;
-
-    letter-spacing: -1px;
-
-    white-space: nowrap;
-  }
-
-  .about-intro {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  .logo-meaning {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  .transparency {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-
-  /* SUPPORT THE WORK */
-
-  .donation-area {
-    width: calc(100% - 40px);
-
-    margin-top: 45px;
-
-    padding-top: 40px;
-  }
-
-  .donation-copy h2 {
-    font-size: 35px;
-  }
-
-  .donation-frame iframe {
-    height: 600px;
-  }
-
-
-  .closing {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  .closing-box {
-    padding:
-      34px 22px;
-  }
-
-  .closing h2 {
-    font-size: 34px;
-  }
-
-}
-
-
-/* =========================================================
-   TABLET — DONATION FORM
-   ========================================================= */
-
-@media (max-width: 900px) {
-
-  .donation-area {
-    grid-template-columns: 1fr;
-
-    gap: 40px;
-
-    margin-top: 60px;
-
-    padding-top: 55px;
-  }
-
-  .donation-copy {
-    max-width: 700px;
-  }
-
-
-  .fiscal-sponsorship-inner {
-    grid-template-columns: 1fr;
-
-    gap: 40px;
-  }
-
-  .fiscal-sponsorship-heading {
-    max-width: 650px;
-  }
-
-
-  .team-hero {
-    grid-template-columns: 1fr;
-
-    padding:
-      65px 45px;
-
-    gap: 20px;
-  }
-
-  .team-hero-art {
-    height: 180px;
-  }
-
-  .team-hero-art img {
-    width: 150px;
-    height: 150px;
-  }
-
-}
-
-
-/* =========================================================
-   DONATION FORM — DESKTOP
-   ========================================================= */
-
-.donation-area {
-  max-width: 1180px;
-
-  margin:
-    75px auto 0;
-
-  padding-top: 65px;
-
-  border-top:
-    1px solid rgba(40, 93, 112, 0.18);
-
-  display: grid;
-
-  grid-template-columns:
-    0.9fr 1.1fr;
-
-  gap: 70px;
-
-  align-items: center;
-}
-
-.donation-copy {
-  max-width: 500px;
-}
-
-.donation-copy h2 {
-  font-family:
-    "Playfair Display",
-    Georgia,
-    serif;
-
-  font-size:
-    clamp(40px, 4.5vw, 58px);
-
-  line-height: 1.1;
-
-  letter-spacing: -1.5px;
-
-  margin:
-    0 0 22px;
-}
-
-.donation-copy > p:last-child {
-  margin: 0;
-
-  font-size: 17px;
-
-  line-height: 1.75;
-
-  color: #425a62;
-
-  max-width: 500px;
-}
-
-.donation-frame {
-  width: 100%;
-
-  background: #fff;
-
-  border:
-    1px solid rgba(40, 93, 112, 0.12);
-
-  border-radius: 24px;
-
-  overflow: hidden;
-
-  box-shadow:
-    0 15px 35px rgba(40, 93, 112, 0.08);
-}
-
-.donation-frame iframe {
-  display: block;
-
-  width: 100%;
-
-  height: 600px;
-
-  border: none;
-}
-
-
-/* =========================================================
    FISCAL SPONSORSHIP
    ========================================================= */
 
@@ -2066,8 +1083,7 @@ img {
 
   display: grid;
 
-  grid-template-columns:
-    0.9fr 1.1fr;
+  grid-template-columns: 0.9fr 1.1fr;
 
   gap: 90px;
 
@@ -2099,8 +1115,7 @@ img {
 }
 
 .fiscal-sponsorship-content p {
-  margin:
-    0 0 24px;
+  margin: 0 0 24px;
 
   font-size: 17px;
 
@@ -2156,45 +1171,1228 @@ img {
 
 
 /* =========================================================
-   FISCAL SPONSORSHIP — MOBILE
+   TEAM PAGE
    ========================================================= */
 
-@media (max-width: 600px) {
+.team {
+  max-width: 950px;
+}
 
-  .fiscal-sponsorship {
-    padding:
-      68px 22px;
-  }
+.team-card {
+  text-align: center;
 
-  .fiscal-sponsorship-inner {
-    gap: 32px;
-  }
+  background: var(--cream);
 
-  .fiscal-sponsorship-heading h2 {
-    font-size: 38px;
+  border-radius: 30px;
 
-    letter-spacing: -1px;
-  }
+  padding: 70px 40px;
+}
 
-  .fiscal-sponsorship-content p {
-    font-size: 16px;
+.team-card img {
+  width: 120px;
 
-    line-height: 1.75;
-  }
+  height: 120px;
 
-  .fiscal-sponsorship-content p:first-child {
-    font-size: 17px;
-  }
+  object-fit: contain;
 
-  .fiscal-ein {
-    margin-top: 30px;
-  }
+  margin: 0 auto 20px;
+}
 
+.team-card p:not(.kicker) {
+  max-width: 700px;
+
+  margin: 20px auto;
+
+  color: #5e6668;
+
+  font-size: 18px;
+}
+
+.team-card .btn {
+  margin-top: 10px;
 }
 
 
 /* =========================================================
-   SMALL MOBILE — HEADER
+   TEAM HERO
+   ========================================================= */
+
+.team-hero {
+  max-width: 1180px;
+  min-height: 410px;
+  margin: 0 auto;
+
+  padding: 75px 65px;
+
+  display: grid;
+  grid-template-columns: 1.5fr 0.8fr;
+  align-items: center;
+  gap: 60px;
+
+  background: var(--blue);
+
+  border-radius: 0 0 34px 34px;
+}
+
+.team-hero-content {
+  max-width: 680px;
+}
+
+.team-hero h1 {
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: clamp(52px, 6vw, 76px);
+
+  line-height: 1.05;
+
+  letter-spacing: -2px;
+
+  margin: 0 0 25px;
+}
+
+.team-hero-content > p:last-child {
+  max-width: 650px;
+
+  margin: 0;
+
+  font-size: 19px;
+
+  line-height: 1.75;
+
+  color: #4f5d61;
+}
+
+.team-hero-art {
+  height: 260px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.team-hero-art img {
+  width: 200px;
+  height: 200px;
+
+  object-fit: contain;
+}
+
+
+/* =========================================================
+   TEAM MEMBERS
+   ========================================================= */
+
+.team-members {
+  max-width: 1180px;
+
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.team-members-heading {
+  max-width: 650px;
+
+  margin-bottom: 55px;
+}
+
+.team-members-heading h2 {
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: clamp(40px, 4.5vw, 58px);
+
+  line-height: 1.1;
+
+  letter-spacing: -1.5px;
+
+  margin: 0;
+}
+
+.team-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 30px;
+}
+
+.team-member {
+  background: var(--cream);
+
+  border: 1px solid #e7e5dd;
+
+  border-radius: 26px;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 18px 40px rgba(30, 40, 45, 0.09);
+}
+
+.team-member-photo {
+  width: 100%;
+
+  height: 390px;
+
+  background: var(--blue);
+
+  overflow: hidden;
+}
+
+.team-member-photo img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.45s ease;
+}
+
+.team-member:hover .team-member-photo img {
+  transform: scale(1.025);
+}
+
+.team-member-info {
+  padding: 28px 30px 32px;
+}
+
+.team-member-info h3 {
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: 31px;
+
+  line-height: 1.15;
+
+  margin: 0 0 8px;
+
+  color: var(--ink);
+}
+
+.team-member-role {
+  margin: 0;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.4px;
+
+  text-transform: uppercase;
+
+  color: var(--blue3);
+}
+
+.team-closing {
+  padding-top: 0;
+}
+
+.team-closing-box {
+  background: #f5eee7;
+
+  border-radius: 28px;
+
+  padding: 60px 65px;
+
+  text-align: center;
+}
+
+.team-closing-box h2 {
+  max-width: 800px;
+
+  margin: 0 auto;
+
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: clamp(35px, 4vw, 52px);
+
+  line-height: 1.15;
+
+  letter-spacing: -1px;
+}
+
+
+/* =========================================================
+   HOMEPAGE ANIMATIONS
+   ========================================================= */
+
+@keyframes homeHeroReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroArtReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes logoReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes logoFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1050px) {
+
+  .nav {
+    display: none;
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    top: 75px;
+
+    background: #fff;
+
+    padding: 15px 25px 25px;
+
+    box-shadow:
+      0 15px 30px rgba(0, 0, 0, 0.08);
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 0;
+  }
+
+  .nav.open {
+    display: flex;
+  }
+
+  .nav a {
+    padding: 10px 0;
+  }
+
+  .nav a.active:after {
+    bottom: 3px;
+  }
+
+  .menu {
+    display: block;
+  }
+
+
+  .home-hero {
+    grid-template-columns: 1fr;
+
+    min-height: 720px;
+
+    padding: 80px 35px 125px;
+
+    background-position: 44% center;
+    background-size: cover;
+
+    border-radius:
+      0 0 50% 50% /
+      0 0 7% 7%;
+  }
+
+  .home-hero::before {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(250, 248, 241, 0.62) 0%,
+        rgba(250, 248, 241, 0.30) 55%,
+        rgba(250, 248, 241, 0.08) 100%
+      );
+  }
+
+  .hero-art {
+    height: 300px;
+  }
+
+
+  .focus {
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+  }
+
+  .focus-intro {
+    max-width: 600px;
+  }
+
+  .focus-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+
+
+  .fundraising-inner {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+  }
+
+  .fundraising-stats {
+    margin-top: 55px;
+  }
+
+
+  .donation-area {
+    grid-template-columns: 1fr;
+
+    gap: 40px;
+
+    margin-top: 60px;
+
+    padding-top: 55px;
+  }
+
+  .donation-copy {
+    max-width: 700px;
+  }
+
+
+  .fiscal-sponsorship-inner {
+    grid-template-columns: 1fr;
+
+    gap: 40px;
+  }
+
+  .fiscal-sponsorship-heading {
+    max-width: 650px;
+  }
+
+
+  .logo-meaning {
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+  }
+
+  .logo-display {
+    height: 330px;
+  }
+
+  .about-heading img {
+    margin-right: 0;
+  }
+
+
+  .footer-top {
+    grid-template-columns:
+      1fr 1fr;
+
+    gap: 45px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+
+  .team-hero {
+    grid-template-columns: 1fr;
+
+    padding: 65px 45px;
+
+    gap: 20px;
+  }
+
+  .team-hero-art {
+    height: 180px;
+  }
+
+  .team-hero-art img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE — 750px
+   ========================================================= */
+
+@media (max-width: 750px) {
+
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .focus {
+    padding: 75px 22px;
+  }
+
+  .focus-grid {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+  }
+
+  .focus-card {
+    min-height: auto;
+  }
+
+
+  /* FUNDRAISING */
+
+  .fundraising {
+    width: 100%;
+    max-width: 100%;
+
+    padding: 68px 22px;
+
+    overflow: hidden;
+  }
+
+  .fundraising-inner {
+    width: 100%;
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    display: block;
+
+    min-width: 0;
+  }
+
+  .fundraising-inner > div,
+  .fundraising-inner > p {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .fundraising h2 {
+    font-size: clamp(38px, 10vw, 52px);
+
+    line-height: 1.08;
+
+    overflow-wrap: anywhere;
+  }
+
+  .fundraising-inner > p {
+    margin-top: 22px;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    overflow-wrap: anywhere;
+  }
+
+
+  /* COUNTERS */
+
+  .fundraising-stats {
+    width: 100%;
+    max-width: 100%;
+
+    margin: 45px 0 0;
+
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    gap: 16px;
+
+    padding: 0;
+
+    border: none;
+
+    min-width: 0;
+  }
+
+  .fundraising-stat,
+  .fundraising-stat:first-child {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    min-height: 150px;
+
+    padding: 28px 20px;
+
+    border:
+      1px solid rgba(40, 93, 112, 0.12);
+
+    border-radius: 24px;
+
+    background:
+      rgba(255, 255, 255, 0.58);
+
+    text-align: center;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    overflow: hidden;
+  }
+
+  .fundraising-stat:hover {
+    transform: translateY(-3px);
+  }
+
+  .stat-number {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+
+    font-size: 56px;
+
+    line-height: 1;
+
+    letter-spacing: -1px;
+
+    margin: 0 0 12px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    font-variant-numeric: tabular-nums;
+  }
+
+  .fundraising-stat p {
+    width: 100%;
+    max-width: 280px;
+
+    margin: 0;
+
+    font-size: 14px;
+
+    line-height: 1.45;
+
+    color: #526267;
+
+    overflow-wrap: anywhere;
+  }
+
+
+  /* =======================================================
+     SUPPORT THE WORK / DONATION
+     ======================================================= */
+
+  .donation-area {
+    width: 100%;
+    max-width: 700px;
+
+    margin: 55px auto 0;
+
+    padding: 50px 0 0;
+
+    border-top:
+      1px solid rgba(40, 93, 112, 0.18);
+
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    gap: 38px;
+
+    align-items: start;
+
+    min-width: 0;
+  }
+
+  .donation-copy {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .donation-copy h2 {
+    width: 100%;
+    max-width: 100%;
+
+    font-size: clamp(38px, 10vw, 56px);
+
+    line-height: 1.06;
+
+    letter-spacing: -1.2px;
+
+    margin: 0 0 22px;
+
+    overflow-wrap: anywhere;
+  }
+
+  .donation-copy > p:last-child {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    margin: 0;
+
+    font-size: 16px;
+
+    line-height: 1.75;
+
+    color: #425a62;
+
+    overflow-wrap: anywhere;
+  }
+
+  .donation-frame {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    margin: 0;
+
+    padding: 0;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+  }
+
+  .donation-frame iframe {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+
+    height: 600px;
+
+    min-width: 0;
+
+    border: none;
+
+    box-sizing: border-box;
+  }
+
+
+  /* =======================================================
+     CLOSING
+     ======================================================= */
+
+  .closing {
+    width: 100%;
+    max-width: 100%;
+
+    margin: 0;
+
+    padding: 60px 22px;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+  }
+
+  .closing-box {
+    width: 100%;
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    padding: 42px 26px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    justify-content: center;
+
+    gap: 28px;
+
+    border-radius: 24px;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+  }
+
+  .closing-box > * {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .closing h2 {
+    width: 100%;
+    max-width: 100%;
+
+    font-size: clamp(36px, 10vw, 50px);
+
+    line-height: 1.07;
+
+    letter-spacing: -1px;
+
+    margin: 0;
+
+    overflow-wrap: anywhere;
+  }
+
+  .closing .kicker {
+    font-size: 10px;
+
+    letter-spacing: 2px;
+  }
+
+  .closing .btn {
+    width: 100%;
+
+    max-width: 220px;
+
+    text-align: center;
+  }
+
+
+  /* =======================================================
+     ABOUT US
+     ======================================================= */
+
+  .about-heading {
+    width: 100%;
+    max-width: 100%;
+
+    min-width: 0;
+
+    margin: 0;
+
+    min-height: auto;
+
+    padding: 55px 22px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    justify-content: center;
+
+    gap: 30px;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+  }
+
+  .about-heading > * {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .about-heading h1 {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    font-size: clamp(44px, 12vw, 64px);
+
+    line-height: 1.02;
+
+    letter-spacing: -1.5px;
+
+    margin: 0;
+
+    overflow-wrap: anywhere;
+
+    word-break: normal;
+  }
+
+  .about-heading img {
+    width: 110px;
+
+    height: 110px;
+
+    max-width: 110px;
+
+    margin: 0 auto;
+
+    align-self: center;
+  }
+
+
+  .about-intro {
+    width: 100%;
+    max-width: 100%;
+
+    padding: 65px 22px;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+  }
+
+  .about-intro p {
+    width: 100%;
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    font-size: 17px;
+
+    line-height: 1.75;
+
+    overflow-wrap: anywhere;
+  }
+
+
+  /* =======================================================
+     LOGO MEANING
+     ======================================================= */
+
+  .logo-meaning {
+    width: 100%;
+    max-width: 100%;
+
+    padding:
+      68px 22px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 35px;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+  }
+
+  .logo-meaning > * {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .logo-display {
+    width: 100%;
+    max-width: 100%;
+
+    height: 280px;
+
+    min-width: 0;
+
+    box-sizing: border-box;
+  }
+
+  .logo-display img {
+    max-width: 180px;
+
+    width: 180px;
+
+    height: 180px;
+  }
+
+  .logo-meaning > div:last-child {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    overflow: hidden;
+  }
+
+  .logo-meaning h2 {
+    width: 100%;
+    max-width: 100%;
+
+    font-size: clamp(36px, 9vw, 52px);
+
+    overflow-wrap: anywhere;
+  }
+
+
+  /* =======================================================
+     TRANSPARENCY
+     ======================================================= */
+
+  .transparency {
+    width: 100%;
+    max-width: 100%;
+
+    padding-left: 22px;
+
+    padding-right: 22px;
+  }
+
+  .transparency p {
+    width: 100%;
+    max-width: 100%;
+
+    font-size: 16px;
+
+    overflow-wrap: anywhere;
+  }
+
+
+  /* =======================================================
+     FISCAL SPONSORSHIP
+     ======================================================= */
+
+  .fiscal-sponsorship {
+    width: 100%;
+    max-width: 100%;
+
+    padding: 70px 22px;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+  }
+
+  .fiscal-sponsorship-inner {
+    width: 100%;
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 1fr);
+
+    gap: 38px;
+
+    align-items: start;
+
+    min-width: 0;
+  }
+
+  .fiscal-sponsorship-heading,
+  .fiscal-sponsorship-content {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .fiscal-sponsorship-heading h2 {
+    width: 100%;
+    max-width: 100%;
+
+    font-size: clamp(38px, 10vw, 56px);
+
+    line-height: 1.06;
+
+    letter-spacing: -1.2px;
+
+    margin: 0;
+
+    overflow-wrap: anywhere;
+
+    word-break: normal;
+  }
+
+  .fiscal-sponsorship-content {
+    overflow: hidden;
+  }
+
+  .fiscal-sponsorship-content p {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    margin: 0 0 24px;
+
+    font-size: 16px;
+
+    line-height: 1.75;
+
+    color: #425a62;
+
+    overflow-wrap: anywhere;
+
+    word-break: normal;
+  }
+
+  .fiscal-sponsorship-content p:first-child {
+    font-size: 17px;
+
+    line-height: 1.75;
+
+    color: var(--ink);
+  }
+
+  .fiscal-ein {
+    width: 100%;
+    max-width: 100%;
+
+    margin-top: 30px;
+
+    padding-top: 22px;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    gap: 12px;
+
+    overflow-wrap: anywhere;
+  }
+
+
+  /* =======================================================
+     TEAM
+     ======================================================= */
+
+  .team-members {
+    padding-top: 70px;
+
+    padding-bottom: 70px;
+  }
+
+  .team-members-heading {
+    margin-bottom: 35px;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+
+    gap: 22px;
+  }
+
+  .team-member-photo {
+    height: 360px;
+  }
+
+  .team-member-info {
+    padding: 24px;
+  }
+
+  .team-member-info h3 {
+    font-size: 28px;
+
+    overflow-wrap: anywhere;
+  }
+
+  .team-closing-box {
+    padding: 42px 25px;
+  }
+
+
+  /* =======================================================
+     FOOTER
+     ======================================================= */
+
+  .footer-bottom {
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    gap: 10px;
+
+    padding:
+      22px 20px 26px;
+  }
+
+  .footer-bottom p {
+    max-width: 100%;
+  }
+
+  .footer-bottom small {
+    font-size: 0.66rem;
+  }
+
+  .footer-bottom > span {
+    text-align: center;
+
+    white-space: normal;
+  }
+
+
+  /* =======================================================
+     GENERAL MOBILE TEXT SAFETY
+     ======================================================= */
+
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  span,
+  strong,
+  a,
+  li {
+    overflow-wrap: anywhere;
+
+    word-break: normal;
+  }
+
+  .section,
+  .focus,
+  .fundraising,
+  .closing {
+    min-width: 0;
+
+    max-width: 100%;
+  }
+
+  .section > *,
+  .focus > *,
+  .fundraising > *,
+  .closing > * {
+    min-width: 0;
+
+    max-width: 100%;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE — 600px
    ========================================================= */
 
 @media (max-width: 600px) {
@@ -2208,8 +2406,7 @@ img {
   }
 
   .nav-shell {
-    padding:
-      0 20px;
+    padding: 0 20px;
   }
 
   .brand {
@@ -2218,6 +2415,7 @@ img {
 
   .brand img {
     width: 38px;
+
     height: 38px;
   }
 
@@ -2264,11 +2462,11 @@ img {
 
   .hero-art {
     height: 250px;
-    border-radius: 0;
   }
 
   .hero-art img {
     width: 180px;
+
     height: 180px;
   }
 
@@ -2285,15 +2483,8 @@ img {
 
   .focus {
     padding-left: 22px;
+
     padding-right: 22px;
-  }
-
-  .focus-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .focus-card {
-    min-height: auto;
   }
 
 
@@ -2310,39 +2501,140 @@ img {
     margin-top: 40px;
   }
 
+  .stat-number {
+    font-size: 56px;
+  }
 
-  .closing-box {
+  .fundraising-stat p {
+    font-size: 13px;
+  }
+
+
+  /* DONATION */
+
+  .donation-area {
+    width: 100%;
+
+    max-width: 100%;
+
+    margin-top: 50px;
+
+    padding-top: 45px;
+
+    gap: 32px;
+
+    grid-template-columns:
+      minmax(0, 1fr);
+  }
+
+  .donation-copy h2 {
+    font-size: 39px;
+
+    line-height: 1.05;
+  }
+
+  .donation-copy > p:last-child {
+    font-size: 16px;
+
+    line-height: 1.75;
+  }
+
+  .donation-frame {
+    width: 100%;
+
+    max-width: 100%;
+
+    border-radius: 18px;
+  }
+
+  .donation-frame iframe {
+    width: 100%;
+
+    height: 600px;
+  }
+
+
+  /* FISCAL SPONSORSHIP */
+
+  .fiscal-sponsorship {
     padding:
-      38px 28px;
-
-    display: block;
+      65px 22px;
   }
 
-  .closing h2 {
-    font-size: 36px;
+  .fiscal-sponsorship-inner {
+    gap: 32px;
+  }
+
+  .fiscal-sponsorship-heading h2 {
+    font-size: 39px;
+
+    line-height: 1.05;
+  }
+
+  .fiscal-sponsorship-content p {
+    font-size: 16px;
+
+    line-height: 1.75;
+  }
+
+  .fiscal-sponsorship-content p:first-child {
+    font-size: 17px;
   }
 
 
-  .about-heading {
-    min-height: 300px;
+  /* CLOSING */
 
+  .closing {
     padding:
       55px 22px;
   }
 
-  .about-heading img {
-    width: 100px;
-    height: 100px;
+  .closing-box {
+    padding:
+      40px 24px;
   }
 
+  .closing h2 {
+    font-size: 39px;
+
+    line-height: 1.05;
+  }
+
+
+  /* ABOUT */
+
+  .about-heading {
+    padding:
+      55px 22px;
+  }
+
+  .about-heading h1 {
+    font-size:
+      clamp(43px, 12vw, 62px);
+
+    line-height: 1.02;
+  }
+
+  .about-heading img {
+    width: 110px;
+
+    height: 110px;
+  }
+
+  .about-intro {
+    padding:
+      65px 22px;
+  }
 
   .about-intro p {
-    font-size: 14px;
-  }
+    font-size: 17px;
 
+    line-height: 1.75;
+  }
 
   .logo-meaning {
     padding-left: 22px;
+
     padding-right: 22px;
   }
 
@@ -2352,9 +2644,12 @@ img {
 
   .logo-display img {
     width: 180px;
+
     height: 180px;
   }
 
+
+  /* FOOTER */
 
   .footer-top {
     grid-template-columns: 1fr;
@@ -2363,300 +2658,18 @@ img {
   }
 
   .footer-bottom {
-    display: block;
-  }
-
-  .footer-bottom span {
-    display: block;
-
-    margin-top: 12px;
+    display: flex;
   }
 
 
   .hero-actions {
     flex-wrap: wrap;
   }
-
-
-  /* DONATION */
-
-  .donation-area {
-    margin-top: 50px;
-
-    padding-top: 45px;
-
-    gap: 30px;
-  }
-
-  .donation-copy h2 {
-    font-size: 38px;
-  }
-
-  .donation-copy > p:last-child {
-    font-size: 16px;
-  }
-
-  .donation-frame {
-    border-radius: 18px;
-  }
-
-  .donation-frame iframe {
-    height: 600px;
-  }
-
 }
 
 
 /* =========================================================
-   TEAM PAGE
-   ========================================================= */
-
-.team-hero {
-  max-width: 1180px;
-  min-height: 410px;
-  margin: 0 auto;
-
-  padding: 75px 65px;
-
-  display: grid;
-  grid-template-columns: 1.5fr 0.8fr;
-  align-items: center;
-  gap: 60px;
-
-  background: var(--blue);
-
-  border-radius: 0 0 34px 34px;
-}
-
-.team-hero-content {
-  max-width: 680px;
-}
-
-.team-hero h1 {
-  font-family: "Playfair Display", Georgia, serif;
-
-  font-size:
-    clamp(52px, 6vw, 76px);
-
-  line-height: 1.05;
-
-  letter-spacing: -2px;
-
-  margin:
-    0 0 25px;
-}
-
-.team-hero-content > p:last-child {
-  max-width: 650px;
-
-  margin: 0;
-
-  font-size: 19px;
-
-  line-height: 1.75;
-
-  color: #4f5d61;
-}
-
-.team-hero-art {
-  height: 260px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-}
-
-.team-hero-art img {
-  width: 200px;
-  height: 200px;
-
-  object-fit: contain;
-}
-
-
-/* =========================================================
-   TEAM MEMBERS SECTION
-   ========================================================= */
-
-.team-members {
-  max-width: 1180px;
-
-  padding-top: 100px;
-  padding-bottom: 100px;
-}
-
-.team-members-heading {
-  max-width: 650px;
-
-  margin-bottom: 55px;
-}
-
-.team-members-heading h2 {
-  font-family: "Playfair Display", Georgia, serif;
-
-  font-size:
-    clamp(40px, 4.5vw, 58px);
-
-  line-height: 1.1;
-
-  letter-spacing: -1.5px;
-
-  margin: 0;
-}
-
-
-/* =========================================================
-   TEAM GRID
-   ========================================================= */
-
-.team-grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(2, minmax(0, 1fr));
-
-  gap: 30px;
-}
-
-
-/* =========================================================
-   TEAM MEMBER CARD
-   ========================================================= */
-
-.team-member {
-  background: var(--cream);
-
-  border: 1px solid #e7e5dd;
-
-  border-radius: 26px;
-
-  overflow: hidden;
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.team-member:hover {
-  transform: translateY(-6px);
-
-  box-shadow:
-    0 18px 40px rgba(30, 40, 45, 0.09);
-}
-
-
-/* =========================================================
-   TEAM MEMBER PHOTO
-   ========================================================= */
-
-.team-member-photo {
-  width: 100%;
-
-  height: 390px;
-
-  background: var(--blue);
-
-  overflow: hidden;
-}
-
-.team-member-photo img {
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-
-  transition:
-    transform 0.45s ease;
-}
-
-.team-member:hover .team-member-photo img {
-  transform: scale(1.025);
-}
-
-
-/* =========================================================
-   TEAM MEMBER INFORMATION
-   ========================================================= */
-
-.team-member-info {
-  padding:
-    28px 30px 32px;
-}
-
-.team-member-info h3 {
-  font-family:
-    "Playfair Display",
-    Georgia,
-    serif;
-
-  font-size: 31px;
-
-  line-height: 1.15;
-
-  margin:
-    0 0 8px;
-
-  color: var(--ink);
-}
-
-.team-member-role {
-  margin: 0;
-
-  font-size: 13px;
-
-  font-weight: 700;
-
-  letter-spacing: 1.4px;
-
-  text-transform: uppercase;
-
-  color: var(--blue3);
-}
-
-
-/* =========================================================
-   TEAM CLOSING
-   ========================================================= */
-
-.team-closing {
-  padding-top: 0;
-}
-
-.team-closing-box {
-  background: #f5eee7;
-
-  border-radius: 28px;
-
-  padding:
-    60px 65px;
-
-  text-align: center;
-}
-
-.team-closing-box h2 {
-  max-width: 800px;
-
-  margin:
-    0 auto;
-
-  font-family:
-    "Playfair Display",
-    Georgia,
-    serif;
-
-  font-size:
-    clamp(35px, 4vw, 52px);
-
-  line-height: 1.15;
-
-  letter-spacing: -1px;
-}
-
-
-/* =========================================================
-   TEAM PAGE MOBILE
+   TEAM PAGE MOBILE — 650px
    ========================================================= */
 
 @media (max-width: 650px) {
@@ -2675,10 +2688,14 @@ img {
     font-size: 52px;
 
     letter-spacing: -1.5px;
+
+    overflow-wrap: anywhere;
   }
 
   .team-hero-content > p:last-child {
     font-size: 16px;
+
+    overflow-wrap: anywhere;
   }
 
   .team-hero-art {
@@ -2687,60 +2704,148 @@ img {
 
   .team-hero-art img {
     width: 120px;
+
     height: 120px;
   }
-
-  .team-members {
-    padding-top: 70px;
-    padding-bottom: 70px;
-  }
-
-  .team-members-heading {
-    margin-bottom: 35px;
-  }
-
-  .team-grid {
-    grid-template-columns: 1fr;
-
-    gap: 22px;
-  }
-
-  .team-member-photo {
-    height: 360px;
-  }
-
-  .team-member-info {
-    padding: 24px;
-  }
-
-  .team-member-info h3 {
-    font-size: 28px;
-  }
-
-  .team-closing-box {
-    padding:
-      42px 25px;
-  }
-
 }
 
 
 /* =========================================================
-   TEAM PAGE REDUCED MOTION
+   VERY SMALL PHONES — 400px
    ========================================================= */
 
-@media (prefers-reduced-motion: reduce) {
+@media (max-width: 400px) {
 
-  .team-member,
-  .team-member-photo img {
-    transition: none;
+  .home-hero {
+    min-height: 700px;
+
+    padding:
+      55px 20px 115px;
+
+    background-position:
+      38% center;
+
+    background-size: cover;
   }
 
+  .hero-copy h1 {
+    font-size: 44px;
+  }
+
+  .hero-art {
+    height: 220px;
+  }
+
+  .hero-art img {
+    width: 155px;
+
+    height: 155px;
+  }
+
+
+  .section {
+    padding-left: 20px;
+
+    padding-right: 20px;
+  }
+
+
+  .fundraising {
+    padding-left: 20px;
+
+    padding-right: 20px;
+  }
+
+  .fundraising-stats {
+    margin-top: 38px;
+  }
+
+  .fundraising-stat {
+    padding:
+      26px 20px;
+
+    min-height: 140px;
+  }
+
+  .stat-number {
+    font-size: 52px;
+
+    letter-spacing: -0.5px;
+  }
+
+
+  .donation-area {
+    margin-top: 45px;
+
+    padding-top: 40px;
+  }
+
+  .donation-copy h2 {
+    font-size: 36px;
+  }
+
+
+  .fiscal-sponsorship {
+    padding-left: 20px;
+
+    padding-right: 20px;
+  }
+
+  .fiscal-sponsorship-heading h2 {
+    font-size: 36px;
+  }
+
+
+  .closing {
+    padding-left: 20px;
+
+    padding-right: 20px;
+  }
+
+  .closing-box {
+    padding:
+      34px 22px;
+  }
+
+  .closing h2 {
+    font-size: 34px;
+  }
+
+
+  .about-heading {
+    padding-left: 20px;
+
+    padding-right: 20px;
+  }
+
+  .about-heading h1 {
+    font-size: 44px;
+
+    letter-spacing: -1.5px;
+  }
+
+  .about-intro {
+    padding-left: 20px;
+
+    padding-right: 20px;
+  }
+
+  .logo-meaning {
+    padding-left: 20px;
+
+    padding-right: 20px;
+  }
+
+  .transparency {
+    padding-left: 20px;
+
+    padding-right: 20px;
+  }
 }
 
 
 /* =========================================================
-   ACCESSIBILITY
+   REDUCED MOTION
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
@@ -2769,105 +2874,20 @@ img {
     transform: none;
   }
 
+  .team-member,
+  .team-member-photo img {
+    transition: none;
+  }
 }
 
 
 /* =========================================================
-   MOBILE OVERFLOW SAFETY
+   FINAL GLOBAL OVERFLOW PROTECTION
    ========================================================= */
 
 html,
 body {
   width: 100%;
   max-width: 100%;
-
   overflow-x: hidden;
-}
-
-
-/* =========================================================
-   FINAL FUNDRAISING SAFETY
-   ========================================================= */
-
-@media (max-width: 750px) {
-
-  .fundraising-inner,
-  .fundraising-stats,
-  .fundraising-stat {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-  }
-
-  .fundraising-inner > *,
-  .fundraising-stats > * {
-    min-width: 0;
-  }
-
-  .fundraising-stat {
-    overflow: hidden;
-  }
-
-  .stat-number {
-    max-width: 100%;
-  }
-
-}
-
-
-/* =========================================================
-   ABOUT PAGE — NAME PROTECTION
-   ========================================================= */
-
-/*
-   If the About page uses:
-
-   <h1>
-     <span class="organization-name">BetterTomorrowFunds</span>
-   </h1>
-
-   this guarantees that the organization's name itself
-   will never be broken into pieces.
-*/
-
-.organization-name {
-  white-space: nowrap;
-}
-
-
-/* =========================================================
-   FINAL MOBILE NAME SAFETY
-   ========================================================= */
-
-@media (max-width: 750px) {
-
-  .about-heading h1 {
-    max-width: 100%;
-
-    overflow: visible;
-
-    overflow-wrap: normal;
-
-    word-break: normal;
-
-    hyphens: none;
-  }
-
-  .about-heading h1 .organization-name {
-    white-space: nowrap;
-  }
-
-}
-
-
-/* =========================================================
-   VERY SMALL PHONE NAME SAFETY
-   ========================================================= */
-
-@media (max-width: 400px) {
-
-  .about-heading h1 .organization-name {
-    white-space: nowrap;
-  }
-
 }
