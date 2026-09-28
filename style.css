@@ -1834,7 +1834,9 @@ img {
 
     margin: 55px auto 0;
 
-    padding: 50px 0 0;
+    padding: 50px 20px 0;
+
+    box-sizing: border-box;
 
     border-top:
       1px solid rgba(40, 93, 112, 0.18);
@@ -2525,7 +2527,9 @@ img {
 
     margin-top: 50px;
 
-    padding-top: 45px;
+    padding: 45px 32px 0;
+
+    box-sizing: border-box;
 
     gap: 32px;
 
@@ -2549,6 +2553,9 @@ img {
     width: 100%;
 
     max-width: 100%;
+
+    margin-left: auto;
+    margin-right: auto;
 
     border-radius: 18px;
   }
@@ -2785,7 +2792,9 @@ img {
   .donation-area {
     margin-top: 45px;
 
-    padding-top: 40px;
+    padding: 40px 24px 0;
+
+    box-sizing: border-box;
   }
 
   .donation-copy h2 {
