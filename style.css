@@ -2977,60 +2977,251 @@ body {
   }
 
 }
-/* =========================================================
-   RESPONSIVE WIDTH + LARGE-SCREEN LAYOUT PATCH
-   Append this block to the END of the existing style.css.
-   ========================================================= */
-html, body { width:100%; min-width:320px; max-width:100%; margin:0; }
-*, *::before, *::after { box-sizing:border-box; }
-body { overflow-x:clip; }
-main { width:100%; }
-img, video, iframe { max-width:100%; }
-.section, .footer-top, .footer-bottom { width:min(100%, 1280px); }
-.nav-shell { width:100%; }
-@media (min-width:1500px) {
-  :root { --max:1280px; }
-  .nav-shell, .footer-top, .footer-bottom { max-width:1400px; }
-  .focus { padding-left:max(5vw,calc((100vw - 1400px)/2)); padding-right:max(5vw,calc((100vw - 1400px)/2)); }
-  .fundraising-inner, .fundraising-stats, .donation-area { max-width:1280px; }
+
+/* =================================
+   VOLUNTEER SELECTOR
+================================= */
+
+.btf-volunteer {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto 100px;
+  padding: clamp(28px, 5vw, 64px);
+  background: #faf8f1;
+  border: 1px solid #e5e8e8;
+  border-radius: 24px;
+  color: #202426;
+  font-family: "DM Sans", sans-serif;
 }
-@media (max-width:1050px) {
-  .nav { gap:20px; }
-  .focus { grid-template-columns:1fr; gap:35px; }
-  .focus-intro { max-width:650px; }
-  .fundraising-inner { gap:40px; }
-  .donation-area { gap:38px; }
-  .footer-top { gap:40px; }
+
+.btf-volunteer *,
+.btf-volunteer *::before,
+.btf-volunteer *::after {
+  box-sizing: border-box;
 }
-@media (max-width:760px) {
-  .header { height:68px; }
-  .nav-shell { padding:0 20px; }
-  .nav { gap:14px; }
-  .nav a { font-size:12px; }
-  .section { padding:65px 22px; }
-  .focus { padding:65px 22px; }
-  .focus-grid { grid-template-columns:1fr; }
-  .focus-card { min-height:0; }
-  .fundraising-inner, .donation-area { grid-template-columns:1fr; gap:28px; }
-  .fundraising-stats { grid-template-columns:repeat(2,minmax(0,1fr)); }
-  .closing-box { padding:35px 28px; }
-  .footer-top { grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px; }
-  .footer-brand { grid-column:1/-1; }
+
+.btf-volunteer-intro {
+  max-width: 700px;
+  margin-bottom: 42px;
 }
-@media (max-width:560px) {
-  .menu { display:block; }
-  .nav { display:none; position:absolute; top:68px; left:0; right:0; padding:16px 22px 22px; background:#fff; border-bottom:1px solid var(--line); flex-direction:column; align-items:flex-start; gap:0; }
-  .nav.is-open { display:flex; }
-  .nav a { width:100%; padding:12px 0; font-size:14px; }
-  .nav a.active:after { bottom:5px; right:auto; width:28px; }
-  .fundraising-stats { grid-template-columns:1fr; }
-  .closing-box { align-items:flex-start; flex-direction:column; gap:22px; }
-  .footer { padding:48px 22px 20px; }
-  .footer-top { grid-template-columns:1fr 1fr; gap:28px 20px; }
-  .footer-bottom { align-items:flex-start; flex-direction:column; gap:12px; }
-  .footer-bottom > span { text-align:left; }
+
+.btf-volunteer-intro h2 {
+  margin: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(34px, 5vw, 54px);
+  line-height: 1.1;
 }
-@media (prefers-reduced-motion:reduce) {
-  html { scroll-behavior:auto; }
-  *, *::before, *::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; }
+
+.btf-volunteer-intro > p:last-child {
+  max-width: 620px;
+  color: #687174;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.volunteer-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin: 30px 0 18px;
+}
+
+.volunteer-heading > span {
+  display: grid;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid #b9cdd3;
+  border-radius: 50%;
+  color: #285d70;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.volunteer-heading h3 {
+  margin: 2px 0 5px;
+  font-size: 18px;
+}
+
+.volunteer-heading p {
+  margin: 0;
+  color: #687174;
+  font-size: 13px;
+}
+
+.volunteer-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.volunteer-options label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 18px;
+  min-height: 82px;
+  border: 1px solid #e5e8e8;
+  border-radius: 13px;
+  background: white;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.volunteer-options label:hover {
+  border-color: #4f879a;
+  transform: translateY(-2px);
+}
+
+.volunteer-options label:has(input:checked) {
+  border-color: #285d70;
+  background: #f0f6f7;
+}
+
+.volunteer-options input {
+  margin-top: 4px;
+  accent-color: #285d70;
+}
+
+.volunteer-options b,
+.volunteer-options small {
+  display: block;
+}
+
+.volunteer-options b {
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+
+.volunteer-options small {
+  color: #687174;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.volunteer-error {
+  color: #a33b35;
+  font-size: 12px;
+}
+
+.volunteer-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 14px;
+}
+
+.volunteer-fields label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.volunteer-fields input,
+.volunteer-fields select,
+.volunteer-fields textarea {
+  width: 100%;
+  min-height: 47px;
+  padding: 12px;
+  border: 1px solid #d9dfdf;
+  border-radius: 9px;
+  background: white;
+  color: #202426;
+  font: inherit;
+  font-size: 13px;
+}
+
+.volunteer-fields textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.volunteer-fields input:focus,
+.volunteer-fields select:focus,
+.volunteer-fields textarea:focus {
+  outline: 2px solid #9bbbc5;
+  border-color: #285d70;
+}
+
+.volunteer-wide {
+  grid-column: 1 / -1;
+}
+
+.volunteer-consent {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 22px 0;
+  color: #687174;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.volunteer-consent input {
+  margin-top: 2px;
+  accent-color: #285d70;
+}
+
+#volunteerSubmit {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+  min-height: 49px;
+  padding: 0 22px;
+  border: none;
+  border-radius: 100px;
+  background: #285d70;
+  color: white;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+#volunteerSubmit:hover {
+  background: #202426;
+}
+
+#volunteerSubmit:disabled {
+  opacity: .6;
+  cursor: wait;
+}
+
+#volunteerStatus {
+  min-height: 20px;
+  margin-top: 15px;
+  color: #285d70;
+  font-size: 13px;
+}
+
+#volunteerStatus.error {
+  color: #a33b35;
+}
+
+/* =================================
+   RESPONSIVE VOLUNTEER FORM
+================================= */
+
+@media (max-width: 640px) {
+  .btf-volunteer {
+    width: calc(100% - 32px);
+    padding: 27px 19px;
+    margin-bottom: 60px;
+  }
+
+  .volunteer-options,
+  .volunteer-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .volunteer-wide {
+    grid-column: auto;
+  }
+
+  #volunteerSubmit {
+    width: 100%;
+  }
 }
