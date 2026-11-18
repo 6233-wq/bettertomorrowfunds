@@ -327,9 +327,9 @@ if (counters.length) {
    VOLUNTEER FORM EMAIL SUBMISSION
 ================================= */
 
+
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("btfVolunteerForm");
-
   if (!form) return;
 
   const button = document.getElementById("volunteerSubmit");
@@ -339,7 +339,7 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    status.textContent = "";
+    status.textContent = "Sending your application...";
     status.classList.remove("error");
     error.textContent = "";
 
@@ -352,6 +352,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (interests.length === 0) {
       error.textContent =
         "Please select at least one area of interest.";
+      status.textContent = "";
       return;
     }
 
@@ -362,18 +363,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const payload = {
       _subject: "New BetterTomorrowFunds Volunteer Application",
       _template: "table",
+      _replyto: data.get("email"),
       Name: data.get("name"),
       Email: data.get("email"),
       Interests: interests.join(", "),
       Availability: data.get("availability"),
       Format: data.get("format"),
       Message: data.get("message") || "Not provided",
-      Permission: data.get("permission"),
-      Source: window.location.href
+      Permission: "Yes"
     };
 
     button.disabled = true;
-    button.innerHTML = "Sending...";
+    button.textContent = "Sending...";
 
     try {
       const response = await fetch(
@@ -390,26 +391,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const result = await response.json();
 
-      if (!response.ok || result.success === false) {
-        throw new Error("Submission failed.");
+      console.log("FormSubmit response:", result);
+
+      // FormSubmit returns success as a string.
+      if (String(result.success) !== "true") {
+        throw new Error(
+          result.message || "FormSubmit rejected the application."
+        );
       }
 
       form.reset();
-
       status.textContent =
-        "Thank you! Your volunteer interest has been submitted.";
+        "Thank you! Your application was successfully submitted.";
 
     } catch (err) {
+      console.error("Volunteer submission error:", err);
+
       status.textContent =
-        "Unable to send your application. Please email bettertomorrowfunds@gmail.com.";
+        "Submission failed: " + err.message +
+        " Please try again or email bettertomorrowfunds@gmail.com.";
 
       status.classList.add("error");
 
-      console.error(err);
-
     } finally {
       button.disabled = false;
-      button.innerHTML = 'Send my interest <span>↗</span>';
+      button.innerHTML =
+        'Send my interest <span>↗</span>';
     }
   });
 });
+
